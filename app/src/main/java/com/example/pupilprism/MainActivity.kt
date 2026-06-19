@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
             applicationContext,
             AppDatabase::class.java,
             "speedreader-db"
-        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6).build()
+        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7).build()
         setContent {
             SpeedReaderTheme {
                 val navController = rememberNavController()
@@ -128,5 +128,53 @@ val MIGRATION_4_5 = object : Migration(4, 5) {
 val MIGRATION_5_6 = object : Migration(5, 6) {
     override fun migrate(db: SupportSQLiteDatabase) {
         db.execSQL("ALTER TABLE user_stats ADD COLUMN isBackgroundEnabled INTEGER NOT NULL DEFAULT 0")
+    }
+}
+
+val MIGRATION_6_7 = object : Migration(6, 7) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        // Create reading_materials table
+        db.execSQL("""
+            CREATE TABLE IF NOT EXISTS `reading_materials` (
+                `id` TEXT NOT NULL, 
+                `title` TEXT NOT NULL, 
+                `content` TEXT NOT NULL, 
+                `difficultyLevel` INTEGER NOT NULL, 
+                `isCalibrationMode` INTEGER NOT NULL, 
+                PRIMARY KEY(`id`)
+            )
+        """.trimIndent())
+
+        // Create comprehension_questions table
+        db.execSQL("""
+            CREATE TABLE IF NOT EXISTS `comprehension_questions` (
+                `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+                `materialId` TEXT NOT NULL, 
+                `questionText` TEXT NOT NULL, 
+                `optionA` TEXT NOT NULL, 
+                `optionB` TEXT NOT NULL, 
+                `optionC` TEXT NOT NULL, 
+                `optionD` TEXT NOT NULL, 
+                `correctAnswerIndex` INTEGER NOT NULL, 
+                FOREIGN KEY(`materialId`) REFERENCES `reading_materials`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE
+            )
+        """.trimIndent())
+
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_comprehension_questions_materialId` ON `comprehension_questions` (`materialId`)")
+
+        // Create assessment_sessions table
+        db.execSQL("""
+            CREATE TABLE IF NOT EXISTS `assessment_sessions` (
+                `sessionId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+                `timestamp` INTEGER NOT NULL, 
+                `materialId` TEXT NOT NULL, 
+                `initialWpm` INTEGER NOT NULL, 
+                `finalWpm` INTEGER NOT NULL, 
+                `totalReadingTimeMs` INTEGER NOT NULL, 
+                `backtrackCount` INTEGER NOT NULL, 
+                `correctAnswers` INTEGER NOT NULL, 
+                `totalQuestions` INTEGER NOT NULL
+            )
+        """.trimIndent())
     }
 }

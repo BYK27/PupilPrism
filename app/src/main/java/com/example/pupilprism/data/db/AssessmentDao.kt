@@ -1,0 +1,31 @@
+package com.example.pupilprism.data.db
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
+import com.example.pupilprism.data.model.AssessmentSession
+import com.example.pupilprism.data.model.ComprehensionQuestion
+import com.example.pupilprism.data.model.ReadingMaterial
+
+@Dao
+interface AssessmentDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMaterial(material: ReadingMaterial)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertQuestions(questions: List<ComprehensionQuestion>)
+
+    @Insert
+    suspend fun insertSession(session: AssessmentSession)
+
+    @Query("SELECT * FROM reading_materials WHERE isCalibrationMode = :isCalibration")
+    suspend fun getMaterialsByMode(isCalibration: Boolean): List<ReadingMaterial>
+
+    @Query("SELECT * FROM comprehension_questions WHERE materialId = :materialId")
+    suspend fun getQuestionsForMaterial(materialId: String): List<ComprehensionQuestion>
+
+    @Query("SELECT * FROM assessment_sessions ORDER BY timestamp DESC")
+    suspend fun getAllSessions(): List<AssessmentSession>
+}
