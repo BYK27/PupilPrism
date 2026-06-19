@@ -1,0 +1,17 @@
+package com.example.pupilprism.data.model
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "user_stats")
+data class UserStats(
+    @PrimaryKey val id: Int = 1,
+    val totalWordsRead: Int = 0,
+    val todayWords: Int = 0,
+    val lastReadDate: String = "",
+    val streak: Int = 0,
+    val streakUpdatedDate: String = "",
+    val yesterdayWords: Int = 0,
+    val themeColor: Int = 0xFF6650a4.toInt(),
+    val isBackgroundEnabled: Boolean = false
+)
