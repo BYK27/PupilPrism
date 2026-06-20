@@ -48,7 +48,8 @@ fun SpeedReaderScreen(
     LaunchedEffect(uiState.isFinished) {
         if (isCalibrationMode && uiState.isFinished && materialId != null) {
             navController.navigate("quiz/$materialId") {
-                popUpTo("calibration_reader") { inclusive = true }
+                // Safely clear the reader off the stack by anchoring to the coordinator
+                popUpTo("calibration_flow") { inclusive = false }
             }
         }
     }
