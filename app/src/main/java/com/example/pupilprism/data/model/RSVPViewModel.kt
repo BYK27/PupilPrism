@@ -173,4 +173,14 @@ class RSVPViewModel(
         super.onCleared()
         stopReadingLoop()
     }
+
+    fun loadMaterialFromDb(materialId: String, startWpm: Int, isCalibration: Boolean) {
+        viewModelScope.launch {
+            val material = assessmentDao.getMaterialById(materialId)
+            if (material != null) {
+                // Uses your existing loadContent function
+                loadContent(material.content, materialId, startWpm, isCalibration)
+            }
+        }
+    }
 }

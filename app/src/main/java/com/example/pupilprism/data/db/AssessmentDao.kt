@@ -33,4 +33,7 @@ interface AssessmentDao {
     // Add this missing method!
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertQuestion(question: ComprehensionQuestion)
+
+    @Query("SELECT * FROM reading_materials WHERE id = :materialId")
+    suspend fun getMaterialById(materialId: String): ReadingMaterial?
 }
