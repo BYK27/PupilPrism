@@ -3,47 +3,52 @@ package com.example.pupilprism.ui.reader
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pupilprism.data.db.AssessmentDao
-import com.example.pupilprism.data.model.AssessmentSession
 import com.example.pupilprism.data.model.ComprehensionQuestion
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class QuizViewModel(private val dao: AssessmentDao) : ViewModel() {
+class QuizViewModel(private val assessmentDao: AssessmentDao) : ViewModel() {
+
     private val _questions = MutableStateFlow<List<ComprehensionQuestion>>(emptyList())
-    val questions = _questions.asStateFlow()
+    val questions: StateFlow<List<ComprehensionQuestion>> = _questions.asStateFlow()
 
     private val _currentIndex = MutableStateFlow(0)
-    val currentIndex = _currentIndex.asStateFlow()
+    val currentIndex: StateFlow<Int> = _currentIndex.asStateFlow()
 
-    private var correctCount = 0
+    private var correctAnswersCount = 0
 
     fun loadQuestions(materialId: String) {
         viewModelScope.launch {
-            _questions.value = dao.getQuestionsForMaterial(materialId)
+            // Load questions from DB for this material
+            _questions.value = assessmentDao.getQuestionsForMaterial(materialId)
+            _currentIndex.value = 0
+            correctAnswersCount = 0
         }
     }
 
-    fun submitAnswer(selectedIndex: Int, sessionData: AssessmentSession) {
-        val currentQ = _questions.value[_currentIndex.value]
-        if (selectedIndex == currentQ.correctAnswerIndex) {
-            correctCount++
+    // Returns TRUE if the quiz is finished, FALSE if there are more questions
+    fun submitAnswer(selectedIndex: Int): Boolean {
+        val currentQuestion = _questions.value[_currentIndex.value]
+
+        if (selectedIndex == currentQuestion.correctAnswerIndex) {
+            correctAnswersCount++
         }
 
-        if (_currentIndex.value < _questions.value.size - 1) {
-            _currentIndex.value++
+        val isFinished = _currentIndex.value >= _questions.value.size - 1
+
+        if (isFinished) {
+            // Save results to DB / calculate score here
+            saveSessionResults()
+            return true
         } else {
-            finishQuiz(sessionData)
+            _currentIndex.value += 1
+            return false
         }
     }
 
-    private fun finishQuiz(sessionData: AssessmentSession) {
-        val finalSession = sessionData.copy(
-            correctAnswers = correctCount,
-            totalQuestions = _questions.value.size
-        )
-        viewModelScope.launch {
-            dao.insertSession(finalSession)
-        }
+    private fun saveSessionResults() {
+        // Implement logic to save the SessionData / Results to AssessmentDao
     }
 }

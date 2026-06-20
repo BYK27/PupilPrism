@@ -21,9 +21,13 @@ import com.example.pupilprism.data.db.AssessmentDao
 import com.example.pupilprism.data.db.PdfBookDao
 import com.example.pupilprism.data.db.UserStatsDao
 import com.example.pupilprism.data.model.RSVPViewModel
+import com.example.pupilprism.ui.library.AssessmentQuizScreen
+import com.example.pupilprism.ui.library.CalibrationFlowCoordinator
 import com.example.pupilprism.ui.library.LibraryScreen
+import com.example.pupilprism.ui.reader.CalibrationViewModel
 import com.example.pupilprism.ui.reader.EyeTrackingReaderScreen
 import com.example.pupilprism.ui.reader.FullPdfScreen
+import com.example.pupilprism.ui.reader.QuizViewModel
 import com.example.pupilprism.ui.reader.SpeedReaderScreen
 import com.example.pupilprism.ui.theme.SpeedReaderTheme
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
@@ -58,47 +62,82 @@ fun AppNavigation(
 ) {
     NavHost(navController = navController, startDestination = "library") {
         composable("library") {
-            LibraryScreen(pdfBookDao = pdfBookDao, userStatsDao = userStatsDao, onPdfSelected = { uri, name ->
+            LibraryScreen(pdfBookDao, userStatsDao, navController, onPdfSelected = { uri, name ->
                 navController.navigate("reader/pdf/${Uri.encode(uri.toString())}/$name")
             }, onUrlSelected = { url ->
                 navController.navigate("reader/web/${Uri.encode(url)}/Web Article")
             })
         }
 
+        // Standard Reader
         composable("reader/{type}/{uri}/{name}") { backStackEntry ->
-            val type = backStackEntry.arguments?.getString("type") ?: "pdf"
-            val uri = Uri.parse(backStackEntry.arguments?.getString("uri"))
+            // EXTRACT VARIABLES HERE to fix "Unresolved reference"
+            val type = backStackEntry.arguments?.getString("type") ?: "db"
+            val uriString = backStackEntry.arguments?.getString("uri") ?: ""
+            val uri = Uri.parse(Uri.decode(uriString))
             val name = backStackEntry.arguments?.getString("name") ?: "Unknown"
 
-            // 2. Create the RSVPViewModel using a factory
-            val rsvpViewModel: RSVPViewModel = viewModel(
+            // Removed the "..." to fix "Expecting ')'" syntax error
+            val rsvpViewModel: RSVPViewModel = viewModel()
+
+            SpeedReaderScreen(
+                pdfUri = uri,
+                pdfName = name,
+                type = type,
+                isCalibrationMode = false,
+                calibrationWpm = 0,
+                pdfBookDao = pdfBookDao,
+                userStatsDao = userStatsDao,
+                navController = navController,
+                rsvpViewModel = rsvpViewModel
+            )
+        }
+
+        // Calibration Flow Route
+        composable("calibration_flow") {
+            val calibrationViewModel: CalibrationViewModel = viewModel(
                 factory = object : ViewModelProvider.Factory {
                     @Suppress("UNCHECKED_CAST")
-                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                        return RSVPViewModel(assessmentDao) as T
-                    }
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+                        CalibrationViewModel(assessmentDao, userStatsDao) as T
                 }
             )
-
-            SpeedReaderScreen(uri, name, type, pdfBookDao, userStatsDao, navController, rsvpViewModel)
+            com.example.pupilprism.ui.library.CalibrationFlowCoordinator(calibrationViewModel, navController)
         }
 
-        // MODIFIED: Added {type} to the route and parameters [cite: 5]
-        composable("full_reader/{type}/{uri}/{name}") { backStackEntry ->
-            val type = backStackEntry.arguments?.getString("type") ?: "pdf"
-            val uri = Uri.parse(backStackEntry.arguments?.getString("uri"))
-            val name = backStackEntry.arguments?.getString("name") ?: "Unknown"
+        // Calibration Reader (Locked Speed)
+        composable("calibration_reader/{materialId}/{wpm}") { backStackEntry ->
+            val materialId = backStackEntry.arguments?.getString("materialId") ?: ""
+            val wpm = backStackEntry.arguments?.getString("wpm")?.toIntOrNull() ?: 250
 
-            FullPdfScreen(uri, name, type, pdfBookDao, navController)
+            val rsvpViewModel: RSVPViewModel = viewModel()
+
+            SpeedReaderScreen(
+                pdfUri = Uri.EMPTY,
+                pdfName = "Assessment",
+                type = "db",
+                isCalibrationMode = true,
+                calibrationWpm = wpm,
+                pdfBookDao = pdfBookDao,
+                userStatsDao = userStatsDao,
+                navController = navController,
+                rsvpViewModel = rsvpViewModel,
+                materialId = materialId
+            )
         }
 
-        // MODIFIED: Added {type} to the route and parameters [cite: 5, 6]
-        composable("eye_tracker/{type}/{uri}/{name}") { backStackEntry ->
-            val type = backStackEntry.arguments?.getString("type") ?: "pdf"
-            val uri = Uri.parse(backStackEntry.arguments?.getString("uri"))
-            val name = backStackEntry.arguments?.getString("name") ?: "Unknown"
+        // Sleek Quiz Screen
+        composable("quiz/{materialId}") { backStackEntry ->
+            val materialId = backStackEntry.arguments?.getString("materialId") ?: ""
 
-            EyeTrackingReaderScreen(uri, name, type, navController)
+            val quizViewModel: QuizViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    @Suppress("UNCHECKED_CAST")
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+                        QuizViewModel(assessmentDao) as T
+                }
+            )
+            com.example.pupilprism.ui.library.AssessmentQuizScreen(quizViewModel, materialId, navController)
         }
     }
 }

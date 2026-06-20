@@ -81,17 +81,7 @@ fun EyeTrackingReaderScreen(
         ActivityResultContracts.RequestPermission()
     ) { isGranted -> hasCameraPermission = isGranted }
 
-    LaunchedEffect(Unit) {
-        permissionLauncher.launch(Manifest.permission.CAMERA)
-        // Fetch text dynamically based on type
-        val extractedText = if (type == "web") {
-            extractTextFromWeb(pdfUri.toString())
-        } else {
-            extractTextFromPdfCached(context, pdfUri)
-        }
-        words = extractedText.split("\\s+".toRegex()).filter { it.isNotBlank() }
-        //words = List(300) { "Word$it" }
-    }
+
 
     LaunchedEffect(isLookingAtScreen, showStats) {
         while (isLookingAtScreen && !showStats) {

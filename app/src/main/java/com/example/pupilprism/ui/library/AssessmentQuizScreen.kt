@@ -1,46 +1,66 @@
 package com.example.pupilprism.ui.library
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.pupilprism.data.model.AssessmentSession
+import androidx.navigation.NavHostController
 import com.example.pupilprism.ui.reader.QuizViewModel
 
 @Composable
-fun AssessmentQuizScreen(viewModel: QuizViewModel, sessionData: AssessmentSession) {
+fun AssessmentQuizScreen(
+    viewModel: QuizViewModel,
+    materialId: String,
+    navController: NavHostController
+) {
     val questions by viewModel.questions.collectAsState()
     val index by viewModel.currentIndex.collectAsState()
 
+    LaunchedEffect(materialId) {
+        viewModel.loadQuestions(materialId)
+    }
+
     if (questions.isEmpty()) {
-        Text("Loading quiz...")
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
         return
     }
 
     val currentQ = questions[index]
 
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text("Question ${index + 1} of ${questions.size}", style = MaterialTheme.typography.labelLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(currentQ.questionText, style = MaterialTheme.typography.headlineSmall)
+    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            LinearProgressIndicator(
+                progress = (index + 1) / questions.size.toFloat(),
+                modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp)
+            )
 
-        val options = listOf(currentQ.optionA, currentQ.optionB, currentQ.optionC, currentQ.optionD)
+            Text("Question ${index + 1} of ${questions.size}", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary)
+            Spacer(modifier = Modifier.height(12.dp))
 
-        options.forEachIndexed { i, text ->
-            Button(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                onClick = { viewModel.submitAnswer(i, sessionData) }
-            ) {
-                Text(text)
+            Text(currentQ.questionText, style = MaterialTheme.typography.headlineMedium)
+            Spacer(modifier = Modifier.height(32.dp))
+
+            val options = listOf(currentQ.optionA, currentQ.optionB, currentQ.optionC, currentQ.optionD)
+
+            options.forEachIndexed { i, text ->
+                OutlinedButton(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),
+                    shape = MaterialTheme.shapes.medium,
+                    onClick = {
+                        // This now successfully expects and receives a Boolean
+                        val isFinished = viewModel.submitAnswer(i)
+
+                        if (isFinished) {
+                            navController.popBackStack() // Returns to CalibrationFlowCoordinator
+                        }
+                    }
+                ) {
+                    Text(text, style = MaterialTheme.typography.bodyLarge)
+                }
             }
         }
     }
