@@ -6,6 +6,9 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,8 +17,10 @@ import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.pupilprism.data.db.AppDatabase
+import com.example.pupilprism.data.db.AssessmentDao
 import com.example.pupilprism.data.db.PdfBookDao
 import com.example.pupilprism.data.db.UserStatsDao
+import com.example.pupilprism.data.model.RSVPViewModel
 import com.example.pupilprism.ui.library.LibraryScreen
 import com.example.pupilprism.ui.reader.EyeTrackingReaderScreen
 import com.example.pupilprism.ui.reader.FullPdfScreen
@@ -34,11 +39,11 @@ class MainActivity : ComponentActivity() {
             applicationContext,
             AppDatabase::class.java,
             "speedreader-db"
-        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7).build()
+        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8).build()
         setContent {
             SpeedReaderTheme {
                 val navController = rememberNavController()
-                AppNavigation(navController, db.pdfBookDao(), db.userStatsDao())
+                AppNavigation(navController, db.pdfBookDao(), db.userStatsDao(), db.assessmentDao())
             }
         }
     }
@@ -48,11 +53,11 @@ class MainActivity : ComponentActivity() {
 fun AppNavigation(
     navController: NavHostController,
     pdfBookDao: PdfBookDao,
-    userStatsDao: UserStatsDao
+    userStatsDao: UserStatsDao,
+    assessmentDao: AssessmentDao
 ) {
     NavHost(navController = navController, startDestination = "library") {
         composable("library") {
-            // MODIFIED: Added onUrlSelected callback here
             LibraryScreen(pdfBookDao = pdfBookDao, userStatsDao = userStatsDao, onPdfSelected = { uri, name ->
                 navController.navigate("reader/pdf/${Uri.encode(uri.toString())}/$name")
             }, onUrlSelected = { url ->
@@ -60,13 +65,22 @@ fun AppNavigation(
             })
         }
 
-        // MODIFIED: Added {type} to the route and parameters [cite: 4]
         composable("reader/{type}/{uri}/{name}") { backStackEntry ->
             val type = backStackEntry.arguments?.getString("type") ?: "pdf"
             val uri = Uri.parse(backStackEntry.arguments?.getString("uri"))
             val name = backStackEntry.arguments?.getString("name") ?: "Unknown"
 
-            SpeedReaderScreen(uri, name, type, pdfBookDao, userStatsDao, navController)
+            // 2. Create the RSVPViewModel using a factory
+            val rsvpViewModel: RSVPViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    @Suppress("UNCHECKED_CAST")
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        return RSVPViewModel(assessmentDao) as T
+                    }
+                }
+            )
+
+            SpeedReaderScreen(uri, name, type, pdfBookDao, userStatsDao, navController, rsvpViewModel)
         }
 
         // MODIFIED: Added {type} to the route and parameters [cite: 5]
@@ -176,5 +190,11 @@ val MIGRATION_6_7 = object : Migration(6, 7) {
                 `totalQuestions` INTEGER NOT NULL
             )
         """.trimIndent())
+    }
+}
+
+val MIGRATION_7_8 = object : Migration(7, 8) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE user_stats ADD COLUMN optimalWpm INTEGER NOT NULL DEFAULT 250")
     }
 }
