@@ -17,7 +17,8 @@ class QuizViewModel(private val assessmentDao: AssessmentDao) : ViewModel() {
     private val _currentIndex = MutableStateFlow(0)
     val currentIndex: StateFlow<Int> = _currentIndex.asStateFlow()
 
-    private var correctAnswersCount = 0
+    var correctAnswersCount = 0
+        private set
 
     fun loadQuestions(materialId: String) {
         viewModelScope.launch {

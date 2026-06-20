@@ -40,13 +40,16 @@ class CalibrationViewModel(
 
     private fun loadCalibrationMaterials() {
         viewModelScope.launch {
-            // Fetch the 3 short baseline texts flagged for Phase 1
-            val materials = assessmentDao.getMaterialsByMode(isCalibration = true)
-            _uiState.update {
-                it.copy(
-                    calibrationMaterials = materials.take(3), // Ensure we only use 3
-                    isLoading = false
-                )
+            // Collect the flow reactively
+            assessmentDao.getMaterialsByMode(isCalibration = true).collect { materials ->
+                if (materials.isNotEmpty()) {
+                    _uiState.update {
+                        it.copy(
+                            calibrationMaterials = materials.take(3),
+                            isLoading = false
+                        )
+                    }
+                }
             }
         }
     }

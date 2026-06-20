@@ -51,11 +51,13 @@ fun AssessmentQuizScreen(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),
                     shape = MaterialTheme.shapes.medium,
                     onClick = {
-                        // This now successfully expects and receives a Boolean
                         val isFinished = viewModel.submitAnswer(i)
 
                         if (isFinished) {
-                            navController.popBackStack() // Returns to CalibrationFlowCoordinator
+                            // Pass the results back to the Coordinator before navigating away
+                            navController.previousBackStackEntry?.savedStateHandle?.set("quiz_correct", viewModel.correctAnswersCount)
+                            navController.previousBackStackEntry?.savedStateHandle?.set("quiz_total", questions.size)
+                            navController.popBackStack()
                         }
                     }
                 ) {

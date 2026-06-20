@@ -8,6 +8,7 @@ import androidx.room.Transaction
 import com.example.pupilprism.data.model.AssessmentSession
 import com.example.pupilprism.data.model.ComprehensionQuestion
 import com.example.pupilprism.data.model.ReadingMaterial
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AssessmentDao {
@@ -21,7 +22,7 @@ interface AssessmentDao {
     suspend fun insertSession(session: AssessmentSession)
 
     @Query("SELECT * FROM reading_materials WHERE isCalibrationMode = :isCalibration")
-    suspend fun getMaterialsByMode(isCalibration: Boolean): List<ReadingMaterial>
+    fun getMaterialsByMode(isCalibration: Boolean): Flow<List<ReadingMaterial>>
 
     @Query("SELECT * FROM comprehension_questions WHERE materialId = :materialId")
     suspend fun getQuestionsForMaterial(materialId: String): List<ComprehensionQuestion>

@@ -1,0 +1,54 @@
+{
+  "reading_materials": [
+    {
+      "id": "calib_01",
+      "title": "The Ritual of the Ibrik",
+      "content": "Brewing traditional coffee requires patience and precision. The finely ground beans are combined with cold water in a small copper pot, often called a cezve. As it slowly heats over a low flame, a rich, dark foam begins to rise. This daily anchor provides a strong, unfiltered source of caffeine, perfect for starting a focused morning.",
+      "difficultyLevel": 1,
+      "isCalibrationMode": 1
+    },
+    {
+      "id": "calib_02",
+      "title": "Overnight Excursions",
+      "content": "Packing for an overnight cycling trip requires balancing weight and utility. A lightweight, one-person tent can easily be strapped to the handlebars or rear rack. You must carefully distribute the gear to maintain the bicycle's center of gravity. This preparation allows you to cover large distances during the day and comfortably camp under the stars at night.",
+      "difficultyLevel": 2,
+      "isCalibrationMode": 1
+    },
+    {
+      "id": "calib_03",
+      "title": "Digital Text Processing",
+      "content": "Rapid Serial Visual Presentation reduces the cognitive load of ocular saccades. By flashing words sequentially in a fixed central focal point, the reader no longer needs to scan across lines of text. This experimental interface allows for significant increases in words per minute, provided the user maintains a high level of reading comprehension.",
+      "difficultyLevel": 3,
+      "isCalibrationMode": 1
+    }
+  ],
+  "comprehension_questions": [
+    {
+      "materialId": "calib_01",
+      "questionText": "What type of pot is traditionally used to brew this coffee?",
+      "optionA": "French press",
+      "optionB": "Copper cezve",
+      "optionC": "Ceramic mug",
+      "optionD": "Glass percolator",
+      "correctAnswerIndex": 1
+    },
+    {
+      "materialId": "calib_02",
+      "questionText": "Why is gear distribution important on a bicycle?",
+      "optionA": "To make the bike look aerodynamic",
+      "optionB": "To ensure the tent stays dry",
+      "optionC": "To maintain the center of gravity",
+      "optionD": "To increase tire pressure",
+      "correctAnswerIndex": 2
+    },
+    {
+      "materialId": "calib_03",
+      "questionText": "What cognitive load does RSVP reading reduce?",
+      "optionA": "Memory retention",
+      "optionB": "Ocular saccades",
+      "optionC": "Vocabulary processing",
+      "optionD": "Auditory processing",
+      "correctAnswerIndex": 1
+    }
+  ]
+}
