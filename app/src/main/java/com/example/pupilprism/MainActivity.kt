@@ -18,6 +18,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.pupilprism.data.db.AppDatabase
 import com.example.pupilprism.data.db.AssessmentDao
+import com.example.pupilprism.data.db.DatabasePrepopulateCallback
 import com.example.pupilprism.data.db.PdfBookDao
 import com.example.pupilprism.data.db.UserStatsDao
 import com.example.pupilprism.data.model.RSVPViewModel
@@ -31,6 +32,8 @@ import com.example.pupilprism.ui.reader.QuizViewModel
 import com.example.pupilprism.ui.reader.SpeedReaderScreen
 import com.example.pupilprism.ui.theme.SpeedReaderTheme
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 class MainActivity : ComponentActivity() {
     private lateinit var db: AppDatabase
@@ -39,11 +42,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         PDFBoxResourceLoader.init(applicationContext)
+
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
             "speedreader-db"
-        ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8).build()
+        )
+            // Add the callback here to seed the experimental data
+            .addCallback(DatabasePrepopulateCallback(applicationContext,
+                CoroutineScope(Dispatchers.IO)
+            ))
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8)
+            .build()
+
         AppDatabase.INSTANCE = db
         setContent {
             SpeedReaderTheme {

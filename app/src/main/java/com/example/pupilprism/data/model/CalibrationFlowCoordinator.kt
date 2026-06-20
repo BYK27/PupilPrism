@@ -3,11 +3,13 @@ package com.example.pupilprism.ui.library
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pupilprism.ui.reader.CalibrationViewModel
@@ -42,25 +44,30 @@ fun CalibrationFlowCoordinator(
 
                 if (currentMaterial != null) {
                     Card(modifier = Modifier.fillMaxWidth()) {
-                        Column(modifier = Modifier.padding(24.dp)) {
-                            Text("Stage ${state.currentStageIndex + 1} of 3", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text("Next Test: ${targetSpeed} WPM", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Text("You will read a short text at a fixed speed. Pay close attention, as you will answer comprehension questions immediately after.", style = MaterialTheme.typography.bodyMedium)
-                            Spacer(modifier = Modifier.height(24.dp))
-                            Button(
-                                modifier = Modifier.fillMaxWidth(),
-                                onClick = {
-                                    navController.navigate("calibration_reader/${currentMaterial.id}/${targetSpeed}")
-                                }
-                            ) {
-                                Text("Start Reading")
-                            }
-                        }
+                        // ... Your existing Card content ...
+                    }
+                } else {
+                    // Fallback UI to prevent the blank screen
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(16.dp)
+                    ) {
+                        Icon(Icons.Rounded.Warning, contentDescription = "Error", tint = MaterialTheme.colorScheme.error, modifier = Modifier.size(48.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = "Error: Calibration texts failed to load.",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.error
+                        )
+                        Text(
+                            text = "Please try reinstalling the app or checking the database configuration.",
+                            style = MaterialTheme.typography.bodyMedium,
+                            textAlign = TextAlign.Center
+                        )
                     }
                 }
             }
+
         }
     }
 }
