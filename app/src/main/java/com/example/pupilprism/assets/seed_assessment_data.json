@@ -1,0 +1,81 @@
+{
+  "reading_materials": [
+    {
+      "id": "calib_1",
+      "title": "The Digital Footprint",
+      "content": "Every time you browse the internet, use social media, or shop online, you leave a trail of data behind. This trail is known as your digital footprint. It includes the websites you visit, the emails you send, and the information you submit to online services. While a digital footprint can be useful for personalizing your online experience, such as recommending movies you might like, it also raises significant privacy concerns. Companies often collect this data to build detailed profiles of consumers for targeted advertising. Therefore, it is crucial to be mindful of what you share online and to regularly review your privacy settings.",
+      "difficultyLevel": 1,
+      "isCalibrationMode": 1
+    },
+    {
+      "id": "calib_2",
+      "title": "The Migration of the Monarch",
+      "content": "The Monarch butterfly is renowned for its spectacular annual migration, one of the most complex and highly evolved of any insect. Every autumn, millions of Monarchs in North America fly up to 3,000 miles south to escape the freezing winter. Those from the eastern regions of the continent migrate to the Sierra Madre mountains of Mexico, where they cluster in fir trees to conserve heat. What makes this journey extraordinary is that the butterflies making the trip have never been there before. It takes up to four successive generations of Monarchs to complete the annual cycle of migrating north and then south again. Scientists believe they navigate using the position of the sun and the Earth's magnetic pull.",
+      "difficultyLevel": 2,
+      "isCalibrationMode": 1
+    },
+    {
+      "id": "calib_3",
+      "title": "AI in Modern Diagnostics",
+      "content": "Artificial Intelligence (AI) is rapidly transforming the landscape of modern healthcare, particularly in the field of diagnostics. By analyzing vast amounts of medical data—including X-rays, MRI scans, and genetic profiles—machine learning algorithms can identify patterns that may be imperceptible to the human eye. For instance, AI systems have demonstrated remarkable accuracy in detecting early-stage tumors and diabetic retinopathy, often matching or exceeding the performance of specialized physicians. However, the integration of AI is not without its challenges. The \"black box\" nature of some neural networks makes it difficult for doctors to understand exactly how the AI arrived at a specific diagnosis. Consequently, the current consensus in the medical community is that AI should be utilized as a powerful supplementary tool to enhance human decision-making, rather than a total replacement for medical professionals.",
+      "difficultyLevel": 3,
+      "isCalibrationMode": 1
+    }
+  ],
+  "comprehension_questions": [
+    {
+      "materialId": "calib_1",
+      "questionText": "According to the text, what is a primary reason companies collect digital footprints?",
+      "optionA": "To improve internet speeds.",
+      "optionB": "To build profiles for targeted advertising.",
+      "optionC": "To protect users from cyber-attacks.",
+      "optionD": "To monitor employee productivity.",
+      "correctAnswerIndex": 1
+    },
+    {
+      "materialId": "calib_1",
+      "questionText": "Which of the following is an example of a digital footprint mentioned in the text?",
+      "optionA": "The websites you visit.",
+      "optionB": "Your computer's hardware specifications.",
+      "optionC": "The physical location of your internet provider.",
+      "optionD": "The time of day you turn on your device.",
+      "correctAnswerIndex": 0
+    },
+    {
+      "materialId": "calib_2",
+      "questionText": "Where do eastern North American Monarch butterflies migrate to for the winter?",
+      "optionA": "The Rocky Mountains of Colorado.",
+      "optionB": "The coastal regions of California.",
+      "optionC": "The Sierra Madre mountains of Mexico.",
+      "optionD": "The tropical forests of Costa Rica.",
+      "correctAnswerIndex": 2
+    },
+    {
+      "materialId": "calib_2",
+      "questionText": "How many generations of Monarchs does it take to complete one full annual migration cycle?",
+      "optionA": "One",
+      "optionB": "Two",
+      "optionC": "Three",
+      "optionD": "Four",
+      "correctAnswerIndex": 3
+    },
+    {
+      "materialId": "calib_3",
+      "questionText": "In which medical field has AI demonstrated remarkable accuracy according to the text?",
+      "optionA": "Performing complex surgeries.",
+      "optionB": "Detecting early-stage tumors.",
+      "optionC": "Synthesizing new medications.",
+      "optionD": "Managing hospital administration.",
+      "correctAnswerIndex": 1
+    },
+    {
+      "materialId": "calib_3",
+      "questionText": "What does the 'black box' nature of AI refer to in this context?",
+      "optionA": "The physical hardware servers where the AI is stored.",
+      "optionB": "The difficulty doctors have in understanding how the AI makes a diagnosis.",
+      "optionC": "The high cost of implementing AI technology in hospitals.",
+      "optionD": "The confidential patient data that the AI protects.",
+      "correctAnswerIndex": 1
+    }
+  ]
+}

@@ -28,4 +28,8 @@ interface AssessmentDao {
 
     @Query("SELECT * FROM assessment_sessions ORDER BY timestamp DESC")
     suspend fun getAllSessions(): List<AssessmentSession>
+
+    // Add this missing method!
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertQuestion(question: ComprehensionQuestion)
 }

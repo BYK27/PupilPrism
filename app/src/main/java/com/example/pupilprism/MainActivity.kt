@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
             AppDatabase::class.java,
             "speedreader-db"
         ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8).build()
+        AppDatabase.INSTANCE = db
         setContent {
             SpeedReaderTheme {
                 val navController = rememberNavController()
@@ -71,14 +72,19 @@ fun AppNavigation(
 
         // Standard Reader
         composable("reader/{type}/{uri}/{name}") { backStackEntry ->
-            // EXTRACT VARIABLES HERE to fix "Unresolved reference"
             val type = backStackEntry.arguments?.getString("type") ?: "db"
             val uriString = backStackEntry.arguments?.getString("uri") ?: ""
             val uri = Uri.parse(Uri.decode(uriString))
             val name = backStackEntry.arguments?.getString("name") ?: "Unknown"
 
-            // Removed the "..." to fix "Expecting ')'" syntax error
-            val rsvpViewModel: RSVPViewModel = viewModel()
+            val rsvpViewModel: RSVPViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    @Suppress("UNCHECKED_CAST")
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        return RSVPViewModel(assessmentDao) as T
+                    }
+                }
+            )
 
             SpeedReaderScreen(
                 pdfUri = uri,
@@ -110,7 +116,15 @@ fun AppNavigation(
             val materialId = backStackEntry.arguments?.getString("materialId") ?: ""
             val wpm = backStackEntry.arguments?.getString("wpm")?.toIntOrNull() ?: 250
 
-            val rsvpViewModel: RSVPViewModel = viewModel()
+            val rsvpViewModel: RSVPViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    @Suppress("UNCHECKED_CAST")
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        // Add assessmentDao here!
+                        return RSVPViewModel(assessmentDao) as T
+                    }
+                }
+            )
 
             SpeedReaderScreen(
                 pdfUri = Uri.EMPTY,
