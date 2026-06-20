@@ -2,22 +2,22 @@
   "reading_materials": [
     {
       "id": "calib_01",
-      "title": "The Ritual of the Ibrik",
-      "content": "Brewing traditional coffee requires patience and precision. The finely ground beans are combined with cold water in a small copper pot, often called a cezve. As it slowly heats over a low flame, a rich, dark foam begins to rise. This daily anchor provides a strong, unfiltered source of caffeine, perfect for starting a focused morning.",
+      "title": "The History of the Bicycle",
+      "content": "The bicycle is a relatively modern invention. The first human-powered land vehicle, the draisine, was invented in 1817 by a German baron. It had two wheels but no pedals, so the rider had to push along the ground with their feet. It wasn't until the 1860s that French inventors added rotary cranks and pedals to the front wheel, creating what became known as the velocipede. Eventually, the chain-driven mechanism was introduced, allowing the rider to sit further back and propelling the rear wheel. This design made the bicycle much safer and more efficient, sparking a worldwide cycling boom in the late nineteenth century.",
       "difficultyLevel": 1,
       "isCalibrationMode": 1
     },
     {
       "id": "calib_02",
-      "title": "Overnight Excursions",
-      "content": "Packing for an overnight cycling trip requires balancing weight and utility. A lightweight, one-person tent can easily be strapped to the handlebars or rear rack. You must carefully distribute the gear to maintain the bicycle's center of gravity. This preparation allows you to cover large distances during the day and comfortably camp under the stars at night.",
+      "title": "The Importance of Sleep Architecture",
+      "content": "Sleep is not a uniform state of rest, but rather a complex architecture of alternating cycles. The brain progresses through multiple stages of non-REM and REM sleep throughout the night. During deep, slow-wave sleep, the body repairs tissues, builds bone and muscle, and strengthens the immune system. REM sleep, characterized by rapid eye movements and dreaming, is critical for cognitive functions like memory consolidation and emotional regulation. Disruptions to this architecture, whether from artificial light or irregular schedules, can severely impair daytime performance. A healthy adult typically requires four to five complete sleep cycles per night to function optimally.",
       "difficultyLevel": 2,
       "isCalibrationMode": 1
     },
     {
       "id": "calib_03",
-      "title": "Digital Text Processing",
-      "content": "Rapid Serial Visual Presentation reduces the cognitive load of ocular saccades. By flashing words sequentially in a fixed central focal point, the reader no longer needs to scan across lines of text. This experimental interface allows for significant increases in words per minute, provided the user maintains a high level of reading comprehension.",
+      "title": "The Mechanics of Ocean Tides",
+      "content": "Ocean tides are the rise and fall of sea levels caused by the combined effects of the gravitational forces exerted by the Moon and the Sun, and the rotation of the Earth. The Moon's gravity pulls on the Earth's oceans, creating a tidal bulge on the side facing the Moon. Simultaneously, the centrifugal force from the Earth-Moon system's rotation creates a secondary bulge on the opposite side. When the Sun, Moon, and Earth align during full or new moons, their combined gravitational pull results in higher high tides and lower low tides, known as spring tides. Conversely, when the Sun and Moon are at right angles, neap tides occur, resulting in minimal tidal variation.",
       "difficultyLevel": 3,
       "isCalibrationMode": 1
     }
@@ -25,30 +25,84 @@
   "comprehension_questions": [
     {
       "materialId": "calib_01",
-      "questionText": "What type of pot is traditionally used to brew this coffee?",
-      "optionA": "French press",
-      "optionB": "Copper cezve",
-      "optionC": "Ceramic mug",
-      "optionD": "Glass percolator",
+      "questionText": "What was the main limitation of the draisine invented in 1817?",
+      "optionA": "It was too heavy to carry.",
+      "optionB": "It lacked pedals and required pushing with the feet.",
+      "optionC": "The wheels were made of fragile glass.",
+      "optionD": "It could only be steered in a straight line.",
+      "correctAnswerIndex": 1
+    },
+    {
+      "materialId": "calib_01",
+      "questionText": "What innovation made the bicycle significantly safer and more efficient?",
+      "optionA": "The chain-driven rear-wheel mechanism.",
+      "optionB": "Adding a third wheel for stability.",
+      "optionC": "Using rubber instead of wood for tires.",
+      "optionD": "The invention of hand brakes.",
+      "correctAnswerIndex": 0
+    },
+    {
+      "materialId": "calib_01",
+      "questionText": "Which country is credited with adding pedals to the front wheel?",
+      "optionA": "Germany",
+      "optionB": "England",
+      "optionC": "France",
+      "optionD": "Italy",
+      "correctAnswerIndex": 2
+    },
+    {
+      "materialId": "calib_02",
+      "questionText": "What primarily happens during deep, slow-wave sleep?",
+      "optionA": "The brain consolidates complex memories.",
+      "optionB": "The body repairs tissues and builds muscle.",
+      "optionC": "Rapid eye movements occur.",
+      "optionD": "Most vivid dreaming takes place.",
       "correctAnswerIndex": 1
     },
     {
       "materialId": "calib_02",
-      "questionText": "Why is gear distribution important on a bicycle?",
-      "optionA": "To make the bike look aerodynamic",
-      "optionB": "To ensure the tent stays dry",
-      "optionC": "To maintain the center of gravity",
-      "optionD": "To increase tire pressure",
+      "questionText": "Why is REM sleep considered critical?",
+      "optionA": "It lowers the body's core temperature.",
+      "optionB": "It allows the digestive system to rest.",
+      "optionC": "It is essential for memory consolidation and emotional regulation.",
+      "optionD": "It stimulates physical bone growth.",
+      "correctAnswerIndex": 2
+    },
+    {
+      "materialId": "calib_02",
+      "questionText": "How many complete sleep cycles does a healthy adult typically need?",
+      "optionA": "One to two",
+      "optionB": "Two to three",
+      "optionC": "Four to five",
+      "optionD": "Six to eight",
       "correctAnswerIndex": 2
     },
     {
       "materialId": "calib_03",
-      "questionText": "What cognitive load does RSVP reading reduce?",
-      "optionA": "Memory retention",
-      "optionB": "Ocular saccades",
-      "optionC": "Vocabulary processing",
-      "optionD": "Auditory processing",
+      "questionText": "What causes the secondary tidal bulge on the side of the Earth opposite the Moon?",
+      "optionA": "The Sun's radiation.",
+      "optionB": "Underwater volcanic activity.",
+      "optionC": "The centrifugal force from the Earth-Moon rotation.",
+      "optionD": "High atmospheric pressure.",
+      "correctAnswerIndex": 2
+    },
+    {
+      "materialId": "calib_03",
+      "questionText": "Under what condition do spring tides occur?",
+      "optionA": "During the spring equinox.",
+      "optionB": "When the Sun, Moon, and Earth are aligned.",
+      "optionC": "When the Moon is at a right angle to the Sun.",
+      "optionD": "When the Earth's oceans are warmest.",
       "correctAnswerIndex": 1
+    },
+    {
+      "materialId": "calib_03",
+      "questionText": "What characterizes neap tides?",
+      "optionA": "Extremely high sea levels.",
+      "optionB": "The water freezes rapidly.",
+      "optionC": "Minimal tidal variation.",
+      "optionD": "Strong ocean currents.",
+      "correctAnswerIndex": 2
     }
   ]
 }
