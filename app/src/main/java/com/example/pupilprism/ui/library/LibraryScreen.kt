@@ -151,8 +151,53 @@ fun LibraryScreen(
 
     Scaffold(
         topBar = { LargeTopAppBar(title = { Text("Dashboard") }) },
-        floatingActionButton = { /* ... keep existing FAB ... */ }
+        floatingActionButton = {
+            Box(modifier = Modifier.fillMaxWidth().padding(start = 32.dp)) {
+                FloatingActionButton(
+                    onClick = { showUrlDialog = true },
+                    modifier = Modifier.align(Alignment.BottomStart)
+                ) {
+                    Text("URL", fontWeight = FontWeight.Bold)
+                }
+                FloatingActionButton(
+                    onClick = { pdfPicker.launch(arrayOf("application/pdf")) },
+                    modifier = Modifier.align(Alignment.BottomEnd)
+                ) {
+                    Text("+", fontSize = 24.sp)
+                }
+            }
+        }
     ) { paddingValues ->
+
+        // Restore the URL input dialog
+        if (showUrlDialog) {
+            AlertDialog(
+                onDismissRequest = { showUrlDialog = false },
+                title = { Text("Read from Web") },
+                text = {
+                    TextField(
+                        value = urlInput,
+                        onValueChange = { urlInput = it },
+                        label = { Text("https://...") },
+                        singleLine = true
+                    )
+                },
+                confirmButton = {
+                    Button(onClick = {
+                        if (urlInput.isNotBlank()) {
+                            val validUrl = if (!urlInput.startsWith("http")) "https://$urlInput" else urlInput
+                            onUrlSelected(validUrl)
+                        }
+                        showUrlDialog = false
+                        urlInput = ""
+                    }) { Text("Read") }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showUrlDialog = false }) { Text("Cancel") }
+                }
+            )
+        }
+
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(paddingValues),
             contentPadding = PaddingValues(16.dp),

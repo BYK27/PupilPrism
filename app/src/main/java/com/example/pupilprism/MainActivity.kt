@@ -151,6 +151,33 @@ fun AppNavigation(
             )
         }
 
+        composable("reader/{type}/{uri}/{name}") { backStackEntry ->
+            val type = backStackEntry.arguments?.getString("type") ?: "db"
+            val uriString = backStackEntry.arguments?.getString("uri") ?: ""
+            val uri = Uri.parse(Uri.decode(uriString))
+            val name = backStackEntry.arguments?.getString("name") ?: "Unknown"
+
+            val rsvpViewModel: RSVPViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    @Suppress("UNCHECKED_CAST")
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        return RSVPViewModel(assessmentDao) as T
+                    }
+                }
+            )
+
+            // Inject the new dedicated screen
+            com.example.pupilprism.ui.reader.IndependentReaderScreen(
+                pdfUri = uri,
+                pdfName = name,
+                type = type,
+                pdfBookDao = pdfBookDao,
+                userStatsDao = userStatsDao,
+                navController = navController,
+                rsvpViewModel = rsvpViewModel
+            )
+        }
+
         // Sleek Quiz Screen
         composable("quiz/{materialId}") { backStackEntry ->
             val materialId = backStackEntry.arguments?.getString("materialId") ?: ""

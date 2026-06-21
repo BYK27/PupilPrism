@@ -34,7 +34,7 @@ class RSVPViewModel(
 
     private var materialId: String = ""
 
-    fun loadContent(text: String, id: String, startWpm: Int, isCalibration: Boolean) {
+    fun loadContent(text: String, id: String, startWpm: Int, isCalibration: Boolean, startIndex: Int = 0) {
         val extractedWords = text.split("\\s+".toRegex()).filter { it.isNotBlank() }
         materialId = id
         initialWpm = startWpm
@@ -42,7 +42,8 @@ class RSVPViewModel(
         _uiState.update {
             it.copy(
                 words = extractedWords,
-                currentIndex = 0,
+                // Ensure the start index doesn't exceed the bounds of the book
+                currentIndex = startIndex.coerceIn(0, maxOf(0, extractedWords.size - 1)),
                 wpm = startWpm,
                 isPaused = true,
                 isFinished = false,
