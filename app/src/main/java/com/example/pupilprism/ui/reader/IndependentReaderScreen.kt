@@ -4,11 +4,12 @@ import android.net.Uri
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.PlayArrow
-import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,6 +23,7 @@ import androidx.navigation.NavHostController
 import com.example.pupilprism.data.db.PdfBookDao
 import com.example.pupilprism.data.db.UserStatsDao
 import com.example.pupilprism.data.model.PdfBook
+import com.example.pupilprism.data.model.ProgressDisplayMode
 import com.example.pupilprism.data.model.RSVPViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -41,6 +43,22 @@ fun IndependentReaderScreen(
     val context = LocalContext.current
     val uiState by rsvpViewModel.uiState.collectAsState()
     var isLoaded by remember { mutableStateOf(false) }
+    var selectedTab by remember { mutableIntStateOf(0) }
+
+    // NEW: SharedPreferences for global settings
+    val prefs = context.getSharedPreferences("reader_prefs", android.content.Context.MODE_PRIVATE)
+
+    // NEW: Load saved settings on first launch
+    LaunchedEffect(Unit) {
+        val savedAdaptiveSpeed = prefs.getBoolean("adaptive_speed", false)
+        val savedDisplayMode = prefs.getString("display_mode", ProgressDisplayMode.PERCENTAGE.name) ?: ProgressDisplayMode.PERCENTAGE.name
+        val savedMultiWord = prefs.getBoolean("multi_word", false)
+
+        // Sync ViewModel with saved preferences
+        if (uiState.isAdaptiveSpeedEnabled != savedAdaptiveSpeed) rsvpViewModel.toggleAdaptiveSpeed()
+        if (uiState.displayMode.name != savedDisplayMode) rsvpViewModel.toggleProgressDisplayMode()
+        if (uiState.isMultiWordMode != savedMultiWord) rsvpViewModel.toggleMultiWordMode()
+    }
 
     // 1. Initial Load: Parse the document and fetch reading history
     LaunchedEffect(pdfUri) {
@@ -61,7 +79,7 @@ fun IndependentReaderScreen(
         isLoaded = true
     }
 
-    // 2. Continuous Tracking: Save progress every 10 words to prevent DB lag
+    // 2. Continuous Tracking
     LaunchedEffect(uiState.currentIndex) {
         if (isLoaded && uiState.currentIndex > 0 && uiState.currentIndex % 10 == 0) {
             withContext(Dispatchers.IO) {
@@ -69,7 +87,6 @@ fun IndependentReaderScreen(
                     pdfBookDao.insertOrUpdate(PdfBook(uri = pdfUri.toString(), name = pdfName, lastWordIndex = uiState.currentIndex))
                 }
 
-                // Track user reading streaks
                 val today = LocalDate.now().toString()
                 val s = userStatsDao.getStats()
                 if (s != null) {
@@ -102,7 +119,13 @@ fun IndependentReaderScreen(
                         }
                     },
                     actions = {
-                        Text("${(uiState.progressPercentage * 100).toInt()}%", modifier = Modifier.padding(end = 16.dp))
+                        // NEW: Toggle between Percentage and Total Fraction mode
+                        val progressText = if (uiState.displayMode == ProgressDisplayMode.PERCENTAGE) {
+                            "${(uiState.progressPercentage * 100).toInt()}%"
+                        } else {
+                            "${uiState.currentIndex} / ${uiState.words.size}"
+                        }
+                        Text(progressText, modifier = Modifier.padding(end = 16.dp))
                     }
                 )
             }
@@ -125,17 +148,68 @@ fun IndependentReaderScreen(
 
             // Focus Reading Canvas
             Box(
-                modifier = Modifier.weight(1f).fillMaxWidth().clickable { rsvpViewModel.togglePause() },
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    // Reattach simple tap-to-pause only if single word mode is active
+                    .then(if (!uiState.isMultiWordMode) Modifier.clickable { rsvpViewModel.togglePause() } else Modifier),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = uiState.currentWord,
-                    fontSize = 56.sp,
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Medium,
-                    letterSpacing = 1.sp,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                if (uiState.isMultiWordMode) {
+                    val listState = rememberLazyListState(initialFirstVisibleItemIndex = maxOf(0, uiState.currentIndex - 2))
+
+                    // Automatically scroll context alongside the reading pace
+                    LaunchedEffect(uiState.currentIndex) {
+                        if (!uiState.isPaused) {
+                            listState.scrollToItem(maxOf(0, uiState.currentIndex - 2))
+                        }
+                    }
+
+                    // CHANGED: LazyRow is now LazyColumn
+                    LazyColumn(
+                        state = listState,
+                        modifier = Modifier.fillMaxSize(),
+                        // CHANGED: Padding is now vertical to allow space at the top and bottom
+                        contentPadding = PaddingValues(vertical = 120.dp),
+                        // CHANGED: Use verticalArrangement and horizontalAlignment
+                        verticalArrangement = Arrangement.spacedBy(24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        items(uiState.words.size) { index ->
+                            val word = uiState.words[index]
+                            val isCurrent = index == uiState.currentIndex
+                            val alpha = if (isCurrent) 1f else 0.3f
+
+                            Text(
+                                text = word,
+                                fontSize = if (isCurrent) 56.sp else 36.sp,
+                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha),
+                                fontWeight = if (isCurrent) FontWeight.Bold else FontWeight.Normal,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.clickable {
+                                    // CHANGED: If playing, any tap pauses it. Jumps only happen when paused.
+                                    if (!uiState.isPaused) {
+                                        rsvpViewModel.togglePause()
+                                    } else if (isCurrent) {
+                                        rsvpViewModel.togglePause()
+                                    } else {
+                                        rsvpViewModel.jumpToIndex(index)
+                                    }
+                                }
+                            )
+                        }
+                    }
+
+                } else {
+                    Text(
+                        text = uiState.currentWord,
+                        fontSize = 56.sp,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Medium,
+                        letterSpacing = 1.sp,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
             }
 
             AnimatedVisibility(visible = uiState.isPaused, enter = fadeIn(), exit = fadeOut()) {
@@ -144,33 +218,74 @@ fun IndependentReaderScreen(
                     tonalElevation = 4.dp,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Column(modifier = Modifier.padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
 
-                        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 24.dp)) {
-                            Switch(
-                                checked = uiState.isAdaptiveSpeedEnabled,
-                                onCheckedChange = { rsvpViewModel.toggleAdaptiveSpeed() }
-                            )
-                            Spacer(modifier = Modifier.width(12.dp))
-                            Text("Adaptive Punctuation Delay", style = MaterialTheme.typography.bodyMedium)
+                        // NEW: Settings and Controls Tabs
+                        TabRow(selectedTabIndex = selectedTab, modifier = Modifier.padding(bottom = 16.dp)) {
+                            Tab(selected = selectedTab == 0, onClick = { selectedTab = 0 }) {
+                                Text("Controls", modifier = Modifier.padding(16.dp))
+                            }
+                            Tab(selected = selectedTab == 1, onClick = { selectedTab = 1 }) {
+                                Text("Settings", modifier = Modifier.padding(16.dp))
+                            }
                         }
 
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceEvenly,
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp)
-                        ) {
-                            IconButton(onClick = { rsvpViewModel.changeWpm(-10) }) { Text("-", fontSize = 24.sp) }
-                            Text("${uiState.wpm} WPM", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-                            IconButton(onClick = { rsvpViewModel.changeWpm(10) }) { Text("+", fontSize = 24.sp) }
-                        }
+                        if (selectedTab == 0) {
+                            // Controls View
+                            Row(
+                                horizontalArrangement = Arrangement.SpaceEvenly,
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp)
+                            ) {
+                                IconButton(onClick = { rsvpViewModel.changeWpm(-50) }) { Text("--", fontSize = 24.sp, fontWeight = FontWeight.Bold) }
+                                IconButton(onClick = { rsvpViewModel.changeWpm(-10) }) { Text("-", fontSize = 24.sp, fontWeight = FontWeight.Bold) }
+                                Text("${uiState.wpm} WPM", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+                                IconButton(onClick = { rsvpViewModel.changeWpm(10) }) { Text("+", fontSize = 24.sp, fontWeight = FontWeight.Bold) }
+                                IconButton(onClick = { rsvpViewModel.changeWpm(50) }) { Text("++", fontSize = 24.sp, fontWeight = FontWeight.Bold) }
+                            }
 
-                        FloatingActionButton(
-                            onClick = { rsvpViewModel.togglePause() },
-                            modifier = Modifier.size(72.dp),
-                            containerColor = MaterialTheme.colorScheme.primary
-                        ) {
-                            Icon(Icons.Rounded.PlayArrow, contentDescription = "Play/Pause", modifier = Modifier.size(36.dp))
+                            FloatingActionButton(
+                                onClick = { rsvpViewModel.togglePause() },
+                                modifier = Modifier.size(72.dp),
+                                containerColor = MaterialTheme.colorScheme.primary
+                            ) {
+                                Icon(Icons.Rounded.PlayArrow, contentDescription = "Play/Pause", modifier = Modifier.size(36.dp))
+                            }
+                        } else {
+                            // Settings View
+                            Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)) {
+                                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
+                                    Text("Adaptive Punctuation Delay", style = MaterialTheme.typography.bodyLarge)
+                                    Switch(
+                                        checked = uiState.isAdaptiveSpeedEnabled,
+                                        onCheckedChange = {
+                                            rsvpViewModel.toggleAdaptiveSpeed()
+                                            prefs.edit().putBoolean("adaptive_speed", !uiState.isAdaptiveSpeedEnabled).apply()
+                                        }
+                                    )
+                                }
+                                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
+                                    Text("Show Progress as Fraction", style = MaterialTheme.typography.bodyLarge)
+                                    Switch(
+                                        checked = uiState.displayMode == ProgressDisplayMode.FRACTION,
+                                        onCheckedChange = {
+                                            rsvpViewModel.toggleProgressDisplayMode()
+                                            val newMode = if (uiState.displayMode == ProgressDisplayMode.PERCENTAGE) ProgressDisplayMode.FRACTION else ProgressDisplayMode.PERCENTAGE
+                                            prefs.edit().putString("display_mode", newMode.name).apply()
+                                        }
+                                    )
+                                }
+                                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
+                                    Text("Multi-word Context Mode", style = MaterialTheme.typography.bodyLarge)
+                                    Switch(
+                                        checked = uiState.isMultiWordMode,
+                                        onCheckedChange = {
+                                            rsvpViewModel.toggleMultiWordMode()
+                                            prefs.edit().putBoolean("multi_word", !uiState.isMultiWordMode).apply()
+                                        }
+                                    )
+                                }
+                            }
                         }
                     }
                 }

@@ -231,11 +231,17 @@ fun LibraryScreen(
             }
 
             // User Stats Row
+            // User Stats Row
             item {
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    StatCard("Streak", "${stats?.streak ?: 0} days", Modifier.weight(1f))
-                    StatCard("Optimal", "${stats?.optimalWpm ?: 250} WPM", Modifier.weight(1f))
-                    StatCard("Read Today", "${stats?.todayWords ?: 0} words", Modifier.weight(1f))
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        StatCard("Words Read Today", "${stats?.todayWords ?: 0} words", Modifier.weight(1f))
+                        StatCard("Total Words Read", "${stats?.totalWordsRead ?: 0} words", Modifier.weight(1f))
+                    }
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        StatCard("Streak", "${stats?.streak ?: 0} days", Modifier.weight(1f))
+                        StatCard("Optimal Reading speed", "${stats?.optimalWpm ?: 250} WPM", Modifier.weight(1f))
+                    }
                 }
             }
 

@@ -184,4 +184,19 @@ class RSVPViewModel(
             }
         }
     }
+
+    fun toggleProgressDisplayMode() {
+        _uiState.update {
+            val newMode = if (it.displayMode == ProgressDisplayMode.PERCENTAGE) ProgressDisplayMode.FRACTION else ProgressDisplayMode.PERCENTAGE
+            it.copy(displayMode = newMode)
+        }
+    }
+
+    fun toggleMultiWordMode() {
+        _uiState.update { it.copy(isMultiWordMode = !it.isMultiWordMode) }
+    }
+
+    fun jumpToIndex(index: Int) {
+        _uiState.update { it.copy(currentIndex = index.coerceIn(0, maxOf(0, it.words.size - 1))) }
+    }
 }
