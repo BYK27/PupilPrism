@@ -152,7 +152,7 @@ fun LibraryScreen(
 
     Scaffold(
         topBar = {
-            LargeTopAppBar(
+            TopAppBar(
                 title = { Text("Dashboard") },
                 actions = {
                     IconButton(onClick = { navController.navigate("settings") }) {
