@@ -13,7 +13,6 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-// Explicitly import delegates to prevent 'Unresolved reference' errors
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -39,23 +38,21 @@ fun SettingsScreen(
     val scope = rememberCoroutineScope()
     val stats by userStatsDao.getStatsFlow().collectAsState(initial = UserStats())
 
-    // 1. Explicitly type the curated list as List<Color>
     val curatedColors: List<Color> = listOf(
         Color(0xFF6650a4), Color(0xFFc45e5e), Color(0xFFf79e3e),
         Color(0xFFffd261), Color(0xFF8fd993), Color(0xFF70a6db),
         Color(0xFF3e4959)
     )
 
-    // 2. Safely parse SharedPreferences and explicitly type the state to List<Color>
     val prefs = context.getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
     var favoriteColors: List<Color> by remember {
         val savedFavorites = prefs.getString("favorites", "") ?: ""
         val loadedColors = if (savedFavorites.isNotBlank()) {
             savedFavorites.split(",")
-                .mapNotNull { it.toIntOrNull() } // Safely extract the ARGB Int
-                .map { Color(it) }               // Convert Int to Compose Color
+                .mapNotNull { it.toIntOrNull() }
+                .map { Color(it) }
         } else {
-            emptyList<Color>()                   // Explicit type prevents inference failure
+            emptyList<Color>()
         }
         mutableStateOf(loadedColors)
     }
@@ -65,6 +62,29 @@ fun SettingsScreen(
     var green by remember { mutableFloatStateOf(80f) }
     var blue by remember { mutableFloatStateOf(164f) }
     val customColor = Color(red.toInt(), green.toInt(), blue.toInt())
+
+    // --- NEW: Helper to sync sliders to a clicked color ---
+    val syncSlidersToColor = { color: Color ->
+        red = color.red * 255f
+        green = color.green * 255f
+        blue = color.blue * 255f
+    }
+
+    // Sync sliders on initial load if a theme is already set
+    LaunchedEffect(Unit) {
+        val initialStats = userStatsDao.getStats()
+        if (initialStats != null) {
+            syncSlidersToColor(Color(initialStats.themeColor))
+        }
+    }
+
+    // --- NEW: Helper to save color instantly ---
+    val saveThemeColor = { colorToSave: Color ->
+        scope.launch {
+            val current = stats ?: UserStats()
+            userStatsDao.insertOrUpdate(current.copy(themeColor = colorToSave.toArgb()))
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -115,15 +135,13 @@ fun SettingsScreen(
             LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                 items(curatedColors) { color ->
                     ColorCircle(color = color, isSelected = stats?.themeColor == color.toArgb()) {
-                        scope.launch {
-                            val current = stats ?: UserStats()
-                            userStatsDao.insertOrUpdate(current.copy(themeColor = color.toArgb()))
-                        }
+                        syncSlidersToColor(color) // Sync the sliders
+                        saveThemeColor(color)     // Apply the theme
                     }
                 }
             }
 
-            HorizontalDivider() // Updated to M3 standard
+            HorizontalDivider()
 
             // --- Custom Color Picker ---
             Text("Custom Color", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
@@ -134,32 +152,51 @@ fun SettingsScreen(
                         .size(80.dp)
                         .clip(MaterialTheme.shapes.medium)
                         .background(customColor)
-                        .clickable {
-                            scope.launch {
-                                val current = stats ?: UserStats()
-                                userStatsDao.insertOrUpdate(current.copy(themeColor = customColor.toArgb()))
-                            }
-                        }
                 )
 
                 Column(modifier = Modifier.weight(1f)) {
-                    Slider(value = red, onValueChange = { red = it }, valueRange = 0f..255f, colors = SliderDefaults.colors(thumbColor = Color.Red, activeTrackColor = Color.Red))
-                    Slider(value = green, onValueChange = { green = it }, valueRange = 0f..255f, colors = SliderDefaults.colors(thumbColor = Color.Green, activeTrackColor = Color.Green))
-                    Slider(value = blue, onValueChange = { blue = it }, valueRange = 0f..255f, colors = SliderDefaults.colors(thumbColor = Color.Blue, activeTrackColor = Color.Blue))
+                    Slider(
+                        value = red,
+                        onValueChange = { red = it },
+                        onValueChangeFinished = { saveThemeColor(customColor) },
+                        valueRange = 0f..255f,
+                        colors = SliderDefaults.colors(
+                            thumbColor = Color.Red,
+                            activeTrackColor = Color.Red,
+                            inactiveTrackColor = Color.White.copy(alpha = 0.24f) // Forces the track to be white
+                        )
+                    )
+                    Slider(
+                        value = green,
+                        onValueChange = { green = it },
+                        onValueChangeFinished = { saveThemeColor(customColor) },
+                        valueRange = 0f..255f,
+                        colors = SliderDefaults.colors(
+                            thumbColor = Color.Green,
+                            activeTrackColor = Color.Green,
+                            inactiveTrackColor = Color.White.copy(alpha = 0.24f)
+                        )
+                    )
+                    Slider(
+                        value = blue,
+                        onValueChange = { blue = it },
+                        onValueChangeFinished = { saveThemeColor(customColor) },
+                        valueRange = 0f..255f,
+                        colors = SliderDefaults.colors(
+                            thumbColor = Color.Blue,
+                            activeTrackColor = Color.Blue,
+                            inactiveTrackColor = Color.White.copy(alpha = 0.24f)
+                        )
+                    )
                 }
             }
 
             Button(
                 onClick = {
-                    // 3. Explicitly state the type of the merged list so 'plus' resolves correctly
                     val newList: List<Color> = (favoriteColors + customColor).distinct().takeLast(5)
                     favoriteColors = newList
                     prefs.edit().putString("favorites", newList.joinToString(",") { it.toArgb().toString() }).apply()
-
-                    scope.launch {
-                        val current = stats ?: UserStats()
-                        userStatsDao.insertOrUpdate(current.copy(themeColor = customColor.toArgb()))
-                    }
+                    saveThemeColor(customColor)
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -174,10 +211,8 @@ fun SettingsScreen(
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     items(favoriteColors.reversed()) { color ->
                         ColorCircle(color = color, isSelected = stats?.themeColor == color.toArgb()) {
-                            scope.launch {
-                                val current = stats ?: UserStats()
-                                userStatsDao.insertOrUpdate(current.copy(themeColor = color.toArgb()))
-                            }
+                            syncSlidersToColor(color)
+                            saveThemeColor(color)
                         }
                     }
                 }

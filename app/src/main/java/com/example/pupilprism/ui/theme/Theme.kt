@@ -1,44 +1,18 @@
 package com.example.pupilprism.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import com.example.pupilprism.data.model.UserStats
-
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
-)
 
 @Composable
 fun SpeedReaderTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    userStats: UserStats?, // Inject UserStats here
+    userStats: UserStats?,
     content: @Composable () -> Unit
 ) {
     // Determine the primary color (fallback to default purple if null)
@@ -51,17 +25,28 @@ fun SpeedReaderTheme(
         if (darkTheme) Color(0xFF1C1B1F) else Color(0xFFFFFBFE)
     }
 
+    // Explicitly override container colors so FABs and secondary buttons match your theme
     val colorScheme = if (darkTheme) {
         darkColorScheme(
             primary = primaryColor,
+            primaryContainer = primaryColor, // Fixes FABs
+            onPrimaryContainer = Color.White,
+            secondary = primaryColor,
+            secondaryContainer = primaryColor,
             background = tintedBackground,
-            surface = tintedBackground
+            surface = tintedBackground,
+            surfaceVariant = tintedBackground
         )
     } else {
         lightColorScheme(
             primary = primaryColor,
+            primaryContainer = primaryColor, // Fixes FABs
+            onPrimaryContainer = Color.White,
+            secondary = primaryColor,
+            secondaryContainer = primaryColor,
             background = tintedBackground,
-            surface = tintedBackground
+            surface = tintedBackground,
+            surfaceVariant = tintedBackground
         )
     }
 

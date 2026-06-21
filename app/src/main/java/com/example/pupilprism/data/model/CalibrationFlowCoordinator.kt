@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -99,11 +100,17 @@ fun CalibrationFlowCoordinator(
                         modifier = Modifier.padding(bottom = 32.dp)
                     )
 
-                    ElevatedCard(
+                    Card(
                         modifier = Modifier.fillMaxWidth(),
                         shape = MaterialTheme.shapes.extraLarge,
-                        colors = CardDefaults.elevatedCardColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceVariant
+                        colors = CardDefaults.cardColors(
+                            // Makes the card blend perfectly into your tinted background
+                            containerColor = Color.Transparent
+                        ),
+                        // Adds a sleek, modern outline matching your chosen theme color
+                        border = androidx.compose.foundation.BorderStroke(
+                            width = 1.dp,
+                            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)
                         )
                     ) {
                         Column(
