@@ -7,9 +7,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.pupilprism.data.model.ComprehensionQuestion
 import com.example.pupilprism.data.model.ReadingMaterial
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.json.JSONObject
+import org.json.JSONArray
 import java.io.BufferedReader
 
 class DatabasePrepopulateCallback(
@@ -19,61 +18,58 @@ class DatabasePrepopulateCallback(
 
     override fun onCreate(db: SupportSQLiteDatabase) {
         super.onCreate(db)
+        Log.d("DatabasePrepopulate", "onCreate triggered. Seeding data...")
 
-        // This is executed only once, when the database is first created.
-        scope.launch(Dispatchers.IO) {
-            prePopulateDatabase()
-        }
-    }
+        scope.launch {
+            try {
+                // 1. Read JSON from assets
+                val inputStream = context.assets.open("seed_assessment_data.json")
+                val jsonString = inputStream.bufferedReader().use(BufferedReader::readText)
 
-    private suspend fun prePopulateDatabase() {
-        try {
-            // 1. Read JSON from assets
-            val inputStream = context.assets.open("seed_assessment_data.json")
-            val jsonString = inputStream.bufferedReader().use(BufferedReader::readText)
+                // 2. Parse the new flat JSON array
+                val jsonArray = JSONArray(jsonString)
 
-            val jsonObject = JSONObject(jsonString)
+                val database = AppDatabase.getInstance(context)
+                val assessmentDao = database.assessmentDao()
 
-            // Get our DAO from the AppDatabase instance
-            // Note: In a real DI setup (Hilt/Dagger), you'd inject the DAO directly.
-            // Since you are instantiating Room in MainActivity, we need to fetch it.
-            val database = AppDatabase.getInstance(context) // Ensure you have a getInstance() method
-            val assessmentDao = database.assessmentDao()
+                // 3. Loop through each material
+                for (i in 0 until jsonArray.length()) {
+                    val matObj = jsonArray.getJSONObject(i)
+                    val materialId = matObj.getString("id")
 
-            // 2. Parse and Insert Reading Materials
-            val materialsArray = jsonObject.getJSONArray("reading_materials")
-            for (i in 0 until materialsArray.length()) {
-                val matObj = materialsArray.getJSONObject(i)
-                val material = ReadingMaterial(
-                    id = matObj.getString("id"),
-                    title = matObj.getString("title"),
-                    content = matObj.getString("content"),
-                    difficultyLevel = matObj.getInt("difficultyLevel"),
-                    isCalibrationMode = matObj.getInt("isCalibrationMode") == 1
-                )
-                assessmentDao.insertMaterial(material)
+                    // Insert the ReadingMaterial
+                    val material = ReadingMaterial(
+                        id = materialId,
+                        title = "Assessment Phase ${i + 1}", // Title generated dynamically as it was removed from JSON
+                        content = matObj.getString("content"),
+                        difficultyLevel = i + 1, // Scaling difficulty based on index
+                        isCalibrationMode = matObj.getBoolean("isCalibration")
+                    )
+                    assessmentDao.insertMaterial(material)
+
+                    // 4. Parse the inner nested array of questions for this specific material
+                    val questionsArray = matObj.getJSONArray("questions")
+                    for (j in 0 until questionsArray.length()) {
+                        val qObj = questionsArray.getJSONObject(j)
+                        val optionsArray = qObj.getJSONArray("options")
+
+                        val question = ComprehensionQuestion(
+                            materialId = materialId,
+                            questionText = qObj.getString("text"),
+                            optionA = optionsArray.getString(0),
+                            optionB = optionsArray.getString(1),
+                            optionC = optionsArray.getString(2),
+                            optionD = optionsArray.getString(3),
+                            correctAnswerIndex = qObj.getInt("correctAnswerIndex")
+                        )
+                        assessmentDao.insertQuestion(question)
+                    }
+                }
+
+                Log.d("DatabasePrepopulate", "Successfully seeded database with calibration materials.")
+            } catch (e: Exception) {
+                Log.e("DatabasePrepopulate", "Error seeding database", e)
             }
-
-            // 3. Parse and Insert Comprehension Questions
-            val questionsArray = jsonObject.getJSONArray("comprehension_questions")
-            for (i in 0 until questionsArray.length()) {
-                val qObj = questionsArray.getJSONObject(i)
-                val question = ComprehensionQuestion(
-                    materialId = qObj.getString("materialId"),
-                    questionText = qObj.getString("questionText"),
-                    optionA = qObj.getString("optionA"),
-                    optionB = qObj.getString("optionB"),
-                    optionC = qObj.getString("optionC"),
-                    optionD = qObj.getString("optionD"),
-                    correctAnswerIndex = qObj.getInt("correctAnswerIndex")
-                )
-                assessmentDao.insertQuestion(question)
-            }
-
-            Log.d("DatabasePrepopulate", "Successfully seeded database with calibration materials.")
-
-        } catch (e: Exception) {
-            Log.e("DatabasePrepopulate", "Error seeding database", e)
         }
     }
 }

@@ -1,108 +1,258 @@
-{
-  "reading_materials": [
-    {
-      "id": "calib_01",
-      "title": "The History of the Bicycle",
-      "content": "The bicycle is a relatively modern invention. The first human-powered land vehicle, the draisine, was invented in 1817 by a German baron. It had two wheels but no pedals, so the rider had to push along the ground with their feet. It wasn't until the 1860s that French inventors added rotary cranks and pedals to the front wheel, creating what became known as the velocipede. Eventually, the chain-driven mechanism was introduced, allowing the rider to sit further back and propelling the rear wheel. This design made the bicycle much safer and more efficient, sparking a worldwide cycling boom in the late nineteenth century.",
-      "difficultyLevel": 1,
-      "isCalibrationMode": 1
-    },
-    {
-      "id": "calib_02",
-      "title": "The Importance of Sleep Architecture",
-      "content": "Sleep is not a uniform state of rest, but rather a complex architecture of alternating cycles. The brain progresses through multiple stages of non-REM and REM sleep throughout the night. During deep, slow-wave sleep, the body repairs tissues, builds bone and muscle, and strengthens the immune system. REM sleep, characterized by rapid eye movements and dreaming, is critical for cognitive functions like memory consolidation and emotional regulation. Disruptions to this architecture, whether from artificial light or irregular schedules, can severely impair daytime performance. A healthy adult typically requires four to five complete sleep cycles per night to function optimally.",
-      "difficultyLevel": 2,
-      "isCalibrationMode": 1
-    },
-    {
-      "id": "calib_03",
-      "title": "The Mechanics of Ocean Tides",
-      "content": "Ocean tides are the rise and fall of sea levels caused by the combined effects of the gravitational forces exerted by the Moon and the Sun, and the rotation of the Earth. The Moon's gravity pulls on the Earth's oceans, creating a tidal bulge on the side facing the Moon. Simultaneously, the centrifugal force from the Earth-Moon system's rotation creates a secondary bulge on the opposite side. When the Sun, Moon, and Earth align during full or new moons, their combined gravitational pull results in higher high tides and lower low tides, known as spring tides. Conversely, when the Sun and Moon are at right angles, neap tides occur, resulting in minimal tidal variation.",
-      "difficultyLevel": 3,
-      "isCalibrationMode": 1
-    }
-  ],
-  "comprehension_questions": [
-    {
-      "materialId": "calib_01",
-      "questionText": "What was the main limitation of the draisine invented in 1817?",
-      "optionA": "It was too heavy to carry.",
-      "optionB": "It lacked pedals and required pushing with the feet.",
-      "optionC": "The wheels were made of fragile glass.",
-      "optionD": "It could only be steered in a straight line.",
-      "correctAnswerIndex": 1
-    },
-    {
-      "materialId": "calib_01",
-      "questionText": "What innovation made the bicycle significantly safer and more efficient?",
-      "optionA": "The chain-driven rear-wheel mechanism.",
-      "optionB": "Adding a third wheel for stability.",
-      "optionC": "Using rubber instead of wood for tires.",
-      "optionD": "The invention of hand brakes.",
-      "correctAnswerIndex": 0
-    },
-    {
-      "materialId": "calib_01",
-      "questionText": "Which country is credited with adding pedals to the front wheel?",
-      "optionA": "Germany",
-      "optionB": "England",
-      "optionC": "France",
-      "optionD": "Italy",
-      "correctAnswerIndex": 2
-    },
-    {
-      "materialId": "calib_02",
-      "questionText": "What primarily happens during deep, slow-wave sleep?",
-      "optionA": "The brain consolidates complex memories.",
-      "optionB": "The body repairs tissues and builds muscle.",
-      "optionC": "Rapid eye movements occur.",
-      "optionD": "Most vivid dreaming takes place.",
-      "correctAnswerIndex": 1
-    },
-    {
-      "materialId": "calib_02",
-      "questionText": "Why is REM sleep considered critical?",
-      "optionA": "It lowers the body's core temperature.",
-      "optionB": "It allows the digestive system to rest.",
-      "optionC": "It is essential for memory consolidation and emotional regulation.",
-      "optionD": "It stimulates physical bone growth.",
-      "correctAnswerIndex": 2
-    },
-    {
-      "materialId": "calib_02",
-      "questionText": "How many complete sleep cycles does a healthy adult typically need?",
-      "optionA": "One to two",
-      "optionB": "Two to three",
-      "optionC": "Four to five",
-      "optionD": "Six to eight",
-      "correctAnswerIndex": 2
-    },
-    {
-      "materialId": "calib_03",
-      "questionText": "What causes the secondary tidal bulge on the side of the Earth opposite the Moon?",
-      "optionA": "The Sun's radiation.",
-      "optionB": "Underwater volcanic activity.",
-      "optionC": "The centrifugal force from the Earth-Moon rotation.",
-      "optionD": "High atmospheric pressure.",
-      "correctAnswerIndex": 2
-    },
-    {
-      "materialId": "calib_03",
-      "questionText": "Under what condition do spring tides occur?",
-      "optionA": "During the spring equinox.",
-      "optionB": "When the Sun, Moon, and Earth are aligned.",
-      "optionC": "When the Moon is at a right angle to the Sun.",
-      "optionD": "When the Earth's oceans are warmest.",
-      "correctAnswerIndex": 1
-    },
-    {
-      "materialId": "calib_03",
-      "questionText": "What characterizes neap tides?",
-      "optionA": "Extremely high sea levels.",
-      "optionB": "The water freezes rapidly.",
-      "optionC": "Minimal tidal variation.",
-      "optionD": "Strong ocean currents.",
-      "correctAnswerIndex": 2
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "isCalibration": true,
+    "content": "Tea is one of the oldest and most popular beverages in the world. It originated in ancient China, where it was initially used for medicinal purposes. Legend says that Emperor Shen Nong discovered tea in 2737 BCE when leaves from a wild tree blew into his pot of boiling water. The resulting brew had a pleasant aroma and refreshing taste. Over centuries, tea drinking spread to Japan and eventually to Europe. Today, there are many varieties of tea, including green, black, white, and oolong, but they all come from the same plant, Camellia sinensis. The differences in flavor and color depend entirely on how the leaves are processed and oxidized after harvesting.",
+    "questions": [
+      {
+        "text": "Where did tea originate?",
+        "options": ["Japan", "India", "China", "Europe"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What was tea initially used for?",
+        "options": ["Currency", "Medicinal purposes", "Religious ceremonies", "Dyeing clothes"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Who is said to have discovered tea?",
+        "options": ["Emperor Shen Nong", "Marco Polo", "Confucius", "Emperor Meiji"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "text": "Which plant do all traditional teas come from?",
+        "options": ["Mentha spicata", "Camellia sinensis", "Coffea arabica", "Matricaria chamomilla"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What determines the different flavors of tea?",
+        "options": ["The soil type", "The type of plant", "The processing and oxidation", "The boiling water temperature"],
+        "correctAnswerIndex": 2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "isCalibration": true,
+    "content": "The solar system consists of our star, the Sun, and everything bound to it by gravity. This includes eight planets, dozens of moons, and millions of asteroids, comets, and meteoroids. The planets are divided into two main categories: the inner, rocky planets (Mercury, Venus, Earth, and Mars) and the outer gas and ice giants (Jupiter, Saturn, Uranus, and Neptune). The asteroid belt, a region filled with rocky debris, separates these two groups. Jupiter is the largest planet, so massive that more than 1,300 Earths could fit inside it. Despite its vast size, the solar system is just a tiny drop in the ocean of the Milky Way galaxy.",
+    "questions": [
+      {
+        "text": "How many planets are in the solar system?",
+        "options": ["Seven", "Eight", "Nine", "Ten"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What binds the solar system together?",
+        "options": ["Magnetic fields", "Dark matter", "Gravity", "Solar wind"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Which planet is NOT an inner rocky planet?",
+        "options": ["Venus", "Mars", "Earth", "Uranus"],
+        "correctAnswerIndex": 3
+      },
+      {
+        "text": "What separates the rocky planets from the giants?",
+        "options": ["The Oort Cloud", "The Asteroid Belt", "The Kuiper Belt", "The Sun's corona"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Which is the largest planet in the solar system?",
+        "options": ["Saturn", "Jupiter", "Neptune", "Earth"],
+        "correctAnswerIndex": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "isCalibration": true,
+    "content": "Ocean tides are the rise and fall of sea levels caused by the combined effects of the gravitational forces exerted by the Moon and the Sun, and the rotation of the Earth. While the Sun is much larger, the Moon has a greater influence on the tides because it is significantly closer to our planet. When the gravitational pull of the Moon acts on the Earth, it creates a bulge in the ocean's water nearest to the Moon. Another bulge occurs on the exact opposite side of the Earth due to inertial forces. Most coastal areas experience two high tides and two low tides every lunar day, which is roughly 24 hours and 50 minutes long.",
+    "questions": [
+      {
+        "text": "What primarily causes ocean tides?",
+        "options": ["Wind currents", "Gravitational forces", "Earthquakes", "Temperature changes"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Which celestial body has the greatest influence on Earth's tides?",
+        "options": ["The Sun", "Mars", "The Moon", "Venus"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Why does the Moon have a stronger tidal effect than the Sun?",
+        "options": ["It is denser", "It is closer to Earth", "It rotates faster", "It reflects more light"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "How many high tides do most coastal areas experience in a lunar day?",
+        "options": ["One", "Two", "Three", "Four"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "How long is a lunar day?",
+        "options": ["24 hours", "24 hours and 50 minutes", "12 hours", "28 days"],
+        "correctAnswerIndex": 1
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "isCalibration": true,
+    "content": "Photosynthesis is the fundamental biological process by which green plants, algae, and some bacteria convert light energy into chemical energy. Using sunlight, these organisms synthesize nutrients from carbon dioxide and water. The process primarily takes place in the chloroplasts of plant cells, which contain a green pigment called chlorophyll. Chlorophyll absorbs light energy, which is then used to combine carbon dioxide from the air with water from the soil to produce glucose, a type of sugar that serves as food for the plant. As a vital byproduct of this reaction, oxygen is released into the atmosphere, making life on Earth possible for aerobic organisms.",
+    "questions": [
+      {
+        "text": "What do plants convert light energy into?",
+        "options": ["Heat energy", "Kinetic energy", "Chemical energy", "Nuclear energy"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What two ingredients are combined during photosynthesis?",
+        "options": ["Oxygen and water", "Carbon dioxide and water", "Nitrogen and sunlight", "Glucose and soil"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Where does photosynthesis primarily take place?",
+        "options": ["Mitochondria", "Nucleus", "Chloroplasts", "Cell wall"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What is the green pigment in plants called?",
+        "options": ["Carotene", "Melanin", "Hemoglobin", "Chlorophyll"],
+        "correctAnswerIndex": 3
+      },
+      {
+        "text": "What is the essential byproduct of photosynthesis?",
+        "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
+        "correctAnswerIndex": 1
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "isCalibration": true,
+    "content": "The Roman aqueducts remain one of the most remarkable engineering achievements of the ancient world. Designed to bring fresh water from distant sources into cities and towns, they supplied public baths, latrines, fountains, and private households. Rome itself was served by an extensive network of eleven aqueducts built over a period of 500 years. The water moved entirely by gravity, requiring a precise, downward gradient over miles of varied terrain. To maintain this gentle slope, engineers constructed massive stone bridges across valleys and carved tunnels through mountains. The materials used, particularly the revolutionary Roman concrete (pozzolana), proved so durable that some aqueducts are still functioning today.",
+    "questions": [
+      {
+        "text": "What was the primary purpose of the Roman aqueducts?",
+        "options": ["To transport troops", "To bring fresh water to cities", "To drain flooded valleys", "To transport grain"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "How many aqueducts served the city of Rome?",
+        "options": ["Seven", "Nine", "Eleven", "Fifteen"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What force moved the water through the aqueducts?",
+        "options": ["Steam power", "Windmills", "Gravity", "Animal labor"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "How did engineers cross deep valleys?",
+        "options": ["With pressurized pipes", "By building stone bridges", "By digging deeper canals", "Using wooden ramps"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What material contributed to the aqueducts' durability?",
+        "options": ["Roman concrete (pozzolana)", "Cast iron", "Bronze", "Marble"],
+        "correctAnswerIndex": 0
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "isCalibration": true,
+    "content": "Honey bees are complex social insects that live in highly organized colonies. A typical hive consists of three castes: the queen, the workers, and the drones. There is only one queen, and her sole responsibility is to lay eggs. Drones are male bees whose only purpose is to mate with a queen. The vast majority of the hive consists of worker bees, which are sterile females. They perform all the vital tasks necessary for the colony's survival, including foraging for nectar and pollen, nursing the young, guarding the hive, and building the hexagonal wax honeycombs. Bees communicate primarily through chemical scents called pheromones and a unique \"waggle dance\" used to indicate the location of food sources.",
+    "questions": [
+      {
+        "text": "How many queens are typically in a honey bee hive?",
+        "options": ["One", "Two", "Three", "It varies by season"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "text": "What is the sole purpose of the drone bees?",
+        "options": ["To forage for food", "To guard the hive", "To mate with the queen", "To build honeycombs"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Which bees perform the majority of the work in the hive?",
+        "options": ["The queens", "The drones", "The worker bees", "The larvae"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What shape are the wax honeycombs built by bees?",
+        "options": ["Square", "Circular", "Hexagonal", "Octagonal"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "How do bees communicate the location of food?",
+        "options": ["By buzzing loudly", "Through a \"waggle dance\"", "By changing color", "By flying in circles"],
+        "correctAnswerIndex": 1
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "isCalibration": true,
+    "content": "The invention of the mechanical movable type printing press by Johannes Gutenberg around 1440 initiated an information revolution in Europe. Prior to this, books were copied by hand, making them rare, expensive, and prone to human error. Gutenberg’s press utilized metal alloys that could melt easily and cool quickly to form durable, reusable type matrices. The resulting mass production of texts drastically lowered the cost of books and accelerated the spread of literacy and knowledge. This technological leap facilitated the Renaissance, the Scientific Revolution, and the Protestant Reformation, as ideas could now be disseminated across borders at an unprecedented speed, permanently altering the structure of human society.",
+    "questions": [
+      {
+        "text": "Who invented the mechanical movable type printing press?",
+        "options": ["Leonardo da Vinci", "Johannes Gutenberg", "Isaac Newton", "Galileo Galilei"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Around what year was the printing press invented?",
+        "options": ["1240", "1340", "1440", "1540"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "How were books primarily produced before the printing press?",
+        "options": ["Woodblock printing", "Copied by hand", "Etched in stone", "Stamped on clay"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What was an immediate consequence of the printing press?",
+        "options": ["Decreased literacy", "The cost of books dropped", "Books became heavier", "Paper became extinct"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Which historical movement was heavily facilitated by the printing press?",
+        "options": ["The Industrial Revolution", "The Bronze Age", "The Protestant Reformation", "The Crusades"],
+        "correctAnswerIndex": 2
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "isCalibration": true,
+    "content": "In physics, time dilation is a difference in the elapsed time measured by two clocks, resulting from their relative velocity to each other or their positions relative to a gravitational mass. A core principle of Albert Einstein’s theory of relativity, time dilation implies that time is not absolute but relative to the observer's frame of reference. For example, a clock moving at high speeds will tick slower compared to a stationary observer's clock. This effect becomes extreme as speeds approach the speed of light. Similarly, gravitational time dilation dictates that time passes slower closer to a massive object, meaning a clock on the surface of the Earth ticks slightly slower than a clock orbiting in space.",
+    "questions": [
+      {
+        "text": "What causes time dilation according to the text?",
+        "options": ["Magnetic fields and solar winds", "Relative velocity and gravitational mass", "Temperature and pressure", "The rotation of the Earth"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Whose theory introduced the concept of time dilation?",
+        "options": ["Isaac Newton", "Stephen Hawking", "Albert Einstein", "Niels Bohr"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "How does high speed affect a moving clock relative to a stationary observer?",
+        "options": ["It ticks faster", "It ticks slower", "It stops completely", "It ticks backwards"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "When does the velocity-based time dilation effect become extreme?",
+        "options": ["At the speed of sound", "At absolute zero", "Approaching the speed of light", "In a vacuum"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Where does time pass slower due to gravity?",
+        "options": ["Far away from mass", "Closer to a massive object", "In orbit", "In deep space"],
+        "correctAnswerIndex": 1
+      }
+    ]
+  }
+]

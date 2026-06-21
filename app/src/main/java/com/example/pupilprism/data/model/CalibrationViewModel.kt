@@ -30,8 +30,8 @@ class CalibrationViewModel(
     private val _uiState = MutableStateFlow(CalibrationFlowState())
     val uiState = _uiState.asStateFlow()
 
-    // The predefined testing speeds
-    val targetSpeeds = listOf(250, 350, 450)
+    // CHANGED: The predefined testing speeds expanded to 8 stages
+    val targetSpeeds = listOf(50, 100, 150, 200, 250, 300, 350, 400)
     private val stageResults = mutableListOf<StageResult>()
 
     init {
@@ -43,9 +43,15 @@ class CalibrationViewModel(
             // Collect the flow reactively
             assessmentDao.getMaterialsByMode(isCalibration = true).collect { materials ->
                 if (materials.isNotEmpty()) {
+                    // CHANGED: Ensure we have enough materials for all 8 speeds by looping through available ones.
+                    // This prevents crashes if your JSON seed file has fewer than 8 items.
+                    val expandedMaterials = List(targetSpeeds.size) { index ->
+                        materials[index % materials.size]
+                    }
+
                     _uiState.update {
                         it.copy(
-                            calibrationMaterials = materials.take(3),
+                            calibrationMaterials = expandedMaterials,
                             isLoading = false
                         )
                     }
@@ -69,7 +75,7 @@ class CalibrationViewModel(
             // Move to the next text and speed
             _uiState.update { it.copy(currentStageIndex = nextStage) }
         } else {
-            // All 3 stages are complete. Run the algorithm.
+            // All 8 stages are complete. Run the algorithm.
             executeCalibrationAlgorithm()
         }
     }
@@ -82,11 +88,11 @@ class CalibrationViewModel(
         // 1. Filter out any stages where comprehension dropped below 80%
         val acceptablePerformances = stageResults.filter { it.accuracy >= 0.80f }
 
-        // 2. Find the highest speed from the acceptable performances, default to 200 if all failed
+        // 2. Find the highest speed from the acceptable performances, default to 50 if all failed
         val optimal = if (acceptablePerformances.isNotEmpty()) {
             acceptablePerformances.maxOf { it.wpmUsed }
         } else {
-            200 // Fallback baseline
+            50 // CHANGED: Fallback baseline lowered to match the new lowest testing speed
         }
 
         // 3. Save to UserStats
