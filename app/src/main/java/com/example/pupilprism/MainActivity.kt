@@ -57,7 +57,10 @@ class MainActivity : ComponentActivity() {
 
         AppDatabase.INSTANCE = db
         setContent {
-            SpeedReaderTheme {
+            // Reactively collect stats to drive the whole app theme
+            val userStats by db.userStatsDao().getStatsFlow().collectAsState(initial = null)
+
+            SpeedReaderTheme(userStats = userStats) {
                 val navController = rememberNavController()
                 AppNavigation(navController, db.pdfBookDao(), db.userStatsDao(), db.assessmentDao())
             }
@@ -79,6 +82,13 @@ fun AppNavigation(
             }, onUrlSelected = { url ->
                 navController.navigate("reader/web/${Uri.encode(url)}/Web Article")
             })
+        }
+
+        composable("settings") {
+            com.example.pupilprism.ui.library.SettingsScreen(
+                userStatsDao = userStatsDao,
+                navController = navController
+            )
         }
 
         // Standard Reader
