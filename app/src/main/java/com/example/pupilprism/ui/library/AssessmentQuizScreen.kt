@@ -33,9 +33,12 @@ fun AssessmentQuizScreen(
 
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         Column(modifier = Modifier.padding(24.dp)) {
+            // FIXED: Added explicit color and trackColor
             LinearProgressIndicator(
                 progress = (index + 1) / questions.size.toFloat(),
-                modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp)
+                modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
+                color = MaterialTheme.colorScheme.primary, // Active progress uses your theme color
+                trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f) // Creates the whitish-gray background
             )
 
             Text("Question ${index + 1} of ${questions.size}", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary)
