@@ -153,7 +153,7 @@ class RSVPViewModel(
         val baseDelayMillis = (60000L / currentWpm)
 
         var finalDelay = if (isAdaptive) {
-            val lengthRatio = currentWord.length / 5.0 // Assuming 5 chars is average
+            val lengthRatio = currentWord.length / 5.0
             (baseDelayMillis * 0.5 + baseDelayMillis * 0.5 * lengthRatio).toLong()
         } else {
             baseDelayMillis
@@ -162,8 +162,8 @@ class RSVPViewModel(
         if (isAdaptive && currentWord.isNotEmpty()) {
             val lastChar = currentWord.last()
             finalDelay = when (lastChar) {
-                '.', '!', '?' -> (finalDelay * 2.0).toLong() // 100% extra delay
-                ',', ';', ':' -> (finalDelay * 1.5).toLong() // 50% extra delay
+                '.', '!', '?' -> (finalDelay * 2.0).toLong()
+                ',', ';', ':' -> (finalDelay * 1.5).toLong()
                 else -> finalDelay
             }
         }
@@ -179,7 +179,6 @@ class RSVPViewModel(
         viewModelScope.launch {
             val material = assessmentDao.getMaterialById(materialId)
             if (material != null) {
-                // Uses your existing loadContent function
                 loadContent(material.content, materialId, startWpm, isCalibration)
             }
         }

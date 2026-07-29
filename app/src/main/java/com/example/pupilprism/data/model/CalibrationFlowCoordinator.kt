@@ -25,7 +25,6 @@ fun CalibrationFlowCoordinator(
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    // 1. Reactively listen for results using StateFlow
     val savedStateHandle = navController.currentBackStackEntry?.savedStateHandle
     val correct = savedStateHandle?.getStateFlow<Int?>("quiz_correct", null)?.collectAsState()?.value
     val total = savedStateHandle?.getStateFlow<Int?>("quiz_total", null)?.collectAsState()?.value
@@ -33,7 +32,6 @@ fun CalibrationFlowCoordinator(
     LaunchedEffect(correct, total) {
         if (correct != null && total != null) {
             viewModel.processStageResult(correct, total)
-            // Clear the values explicitly to null so it doesn't double-trigger
             savedStateHandle.set("quiz_correct", null)
             savedStateHandle.set("quiz_total", null)
         }

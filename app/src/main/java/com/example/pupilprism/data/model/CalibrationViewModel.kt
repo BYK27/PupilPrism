@@ -85,22 +85,18 @@ class CalibrationViewModel(
      * Calculates the maximum WPM where the user maintained >= 80% comprehension.
      */
     private fun executeCalibrationAlgorithm() {
-        // 1. Filter out any stages where comprehension dropped below 80%
         val acceptablePerformances = stageResults.filter { it.accuracy >= 0.80f }
 
-        // 2. Find the highest speed from the acceptable performances, default to 50 if all failed
         val optimal = if (acceptablePerformances.isNotEmpty()) {
             acceptablePerformances.maxOf { it.wpmUsed }
         } else {
-            50 // CHANGED: Fallback baseline lowered to match the new lowest testing speed
+            50
         }
 
-        // 3. Save to UserStats
         viewModelScope.launch {
             val currentStats = userStatsDao.getStats() ?: UserStats()
             userStatsDao.insertOrUpdate(currentStats.copy(optimalWpm = optimal))
 
-            // 4. Trigger UI navigation/completion
             _uiState.update {
                 it.copy(
                     isCalibrationComplete = true,

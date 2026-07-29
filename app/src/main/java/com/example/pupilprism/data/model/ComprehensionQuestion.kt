@@ -25,5 +25,5 @@ data class ComprehensionQuestion(
     val optionB: String,
     val optionC: String,
     val optionD: String,
-    val correctAnswerIndex: Int // 0 for A, 1 for B, 2 for C, 3 for D
+    val correctAnswerIndex: Int
 )
