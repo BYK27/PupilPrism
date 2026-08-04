@@ -112,6 +112,9 @@ class RSVPViewModel(
         val reci = ReadingTelemetry.segmentiraj(text)
         materialId = id
         initialWpm = startWpm
+        runId = SessionTelemetryStore.runId
+        participantId = SessionTelemetryStore.participantId
+        condition = SessionTelemetryStore.condition
 
         val pocetak = startFrom.coerceIn(0, maxOf(0, reci.size - 1))
 

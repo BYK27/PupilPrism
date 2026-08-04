@@ -15,7 +15,7 @@ import java.util.Locale
 
 object PdfReportGenerator {
 
-    private const val SIRINA = 595   // A4 при 72 тачке по инчу
+    private const val SIRINA = 595
     private const val VISINA = 842
     private const val MARGINA = 48f
 
@@ -40,8 +40,8 @@ object PdfReportGenerator {
         val ogromno = paint(44f, PLAVA, true)
         val zaglavlje = paint(9.5f, CRNA, true)
 
-        // --- заглавље ---
-        c.drawText("Извештај о процени брзине читања", MARGINA, y + 20f, naslov)
+        // --- zaglavlje ---
+        c.drawText("Izveštaj o proceni brzine čitanja", MARGINA, y + 20f, naslov)
         y += 34f
 
         val datum = SimpleDateFormat("dd.MM.yyyy. HH:mm", Locale("sr")).format(Date(r.timestamp))
@@ -49,84 +49,84 @@ object PdfReportGenerator {
         y += 14f
 
         if (!ime.isNullOrBlank()) {
-            c.drawText("Учесник: ${ime.trim()}", MARGINA, y, telo)
+            c.drawText("Učesnik: ${ime.trim()}", MARGINA, y, telo)
             y += 14f
         }
-        c.drawText("Шифра: ${r.participantId}", MARGINA, y, podnaslov)
+        c.drawText("Šifra: ${r.participantId}", MARGINA, y, podnaslov)
         y += 22f
 
         linija(c, y); y += 24f
 
-        // --- главни резултат ---
-        c.drawText("Ваша брзина читања уз очувано разумевање", MARGINA, y, zaglavlje)
+        // --- glavni rezultat ---
+        c.drawText("Vaša brzina čitanja uz očuvano razumevanje", MARGINA, y, zaglavlje)
         y += 44f
         c.drawText("${r.optimalWpm}", MARGINA, y, ogromno)
         val sirinaBroja = ogromno.measureText("${r.optimalWpm}")
-        c.drawText("речи у минути", MARGINA + sirinaBroja + 10f, y, podnaslov)
+        c.drawText("reči u minuti", MARGINA + sirinaBroja + 10f, y, podnaslov)
         y += 20f
         c.drawText(
-            "То је највећа брзина на којој сте тачно одговорили на најмање 80 % питања.",
+            "To je najveća brzina na kojoj ste tačno odgovorili na najmanje 80 % pitanja.",
             MARGINA, y, malo
         )
         y += 28f
 
-        // --- крива калибрације ---
-        c.drawText("Тачност одговора по брзинама", MARGINA, y, zaglavlje)
+        // --- kriva kalibracije ---
+        c.drawText("Tačnost odgovora po brzinama", MARGINA, y, zaglavlje)
         y += 12f
         y = crtajGrafik(c, r, y) + 24f
 
-        // --- табела ---
-        c.drawText("Резултат по етапама", MARGINA, y, zaglavlje)
+        // --- tabela ---
+        c.drawText("Rezultat po etapama", MARGINA, y, zaglavlje)
         y += 16f
         y = crtajTabelu(c, r, y) + 24f
 
-        // --- номинално наспрам стварног ---
-        c.drawText("Подешена наспрам стварне брзине", MARGINA, y, zaglavlje)
+        // --- nominalno naspram stvarnog ---
+        c.drawText("Podešena naspram stvarne brzine", MARGINA, y, zaglavlje)
         y += 16f
         c.drawText(
-            "Просечно подешено: ${r.prosecnaNominalna} WPM     " +
-                    "Стварно прочитано: ${r.prosecnaEfektivna} WPM     " +
-                    "Разлика: ${r.gubitakProcenat} %",
+            "Prosečno podešeno: ${r.prosecnaNominalna} WPM     " +
+                    "Stvarno pročitano: ${r.prosecnaEfektivna} WPM     " +
+                    "Razlika: ${r.gubitakProcenat} %",
             MARGINA, y, telo
         )
         y += 14f
         c.drawText(
-            "Разлика настаје зато што апликација дужим речима и крајевима реченица " +
-                    "даје нешто више времена.",
+            "Razlika nastaje zato što aplikacija dužim rečima i krajevima rečenica " +
+                    "daje nešto više vremena.",
             MARGINA, y, malo
         )
         y += 26f
 
-        // --- понашање ---
-        c.drawText("Ток читања", MARGINA, y, zaglavlje)
+        // --- ponašanje ---
+        c.drawText("Tok čitanja", MARGINA, y, zaglavlje)
         y += 16f
         val minuta = r.aktivnoVremeMs / 60000.0
         c.drawText(
-            "Прочитано речи: ${r.ukupnoReci}     " +
-                    "Време читања: ${"%.1f".format(Locale.ROOT, minuta)} min     " +
-                    "Враћања уназад: ${r.ukupnoVracanja}     " +
-                    "Измена брзине: ${r.ukupnoIzmenaBrzine}",
+            "Pročitano reči: ${r.ukupnoReci}     " +
+                    "Vreme čitanja: ${"%.1f".format(Locale.ROOT, minuta)} min     " +
+                    "Vraćanja unazad: ${r.ukupnoVracanja}     " +
+                    "Izmena brzine: ${r.ukupnoIzmenaBrzine}",
             MARGINA, y, telo
         )
         y += 30f
 
-        // --- напомена ---
+        // --- napomena ---
         linija(c, VISINA - 72f)
         c.drawText(
-            "Ово није дијагностички тест. Резултат зависи од врсте текста, дневне " +
-                    "форме и навике на овакав приказ,",
+            "Ovo nije dijagnostički test. Rezultat zavisi od vrste teksta, dnevne " +
+                    "forme i navike na ovakav prikaz,",
             MARGINA, VISINA - 54f, malo
         )
         c.drawText(
-            "и може се разликовати између мерења. Извештај је намењен искључиво " +
-                    "учеснику.",
+            "i može se razlikovati između merenja. Izveštaj je namenjen isključivo " +
+                    "učesniku.",
             MARGINA, VISINA - 42f, malo
         )
 
         doc.finishPage(page)
 
         val dir = File(context.cacheDir, "reports").apply { mkdirs() }
-        // старији извештаји се бришу: у кешу не треба да остају документи са именима
+        // stariji izveštaji se brišu: u kešu ne treba da ostaju dokumenti sa imenima
         dir.listFiles()?.forEach { if (it.isFile) it.delete() }
 
         val naziv = "izvestaj_${r.participantId}_" +
@@ -155,7 +155,6 @@ object PdfReportGenerator {
         })
     }
 
-    /** Тачност по брзинама, са прагом од 80 %. Враћа доњу ивицу графика. */
     private fun crtajGrafik(c: Canvas, r: ReportData, top: Float): Float {
         val visina = 150f
         val levo = MARGINA + 30f
@@ -166,14 +165,14 @@ object PdfReportGenerator {
         val mreza = Paint().apply { color = SVETLA; strokeWidth = 1f }
         val oznaka = paint(7.5f, SIVA)
 
-        // водоравне линије на 0, 20, ..., 100 %
+        // vodoravne linije na 0, 20, ..., 100 %
         for (p in 0..100 step 20) {
             val yy = dno - visina * p / 100f
             c.drawLine(levo, yy, desno, yy, mreza)
             c.drawText("$p%", MARGINA - 4f, yy + 3f, oznaka)
         }
 
-        // праг
+        // prag
         val yPrag = dno - visina * 0.8f
         c.drawLine(levo, yPrag, desno, yPrag, Paint().apply {
             color = CRVENA
@@ -200,7 +199,7 @@ object PdfReportGenerator {
             prethX = x; prethY = yy
         }
 
-        c.drawText("брзина приказа (WPM)", desno - 90f, dno + 24f, oznaka)
+        c.drawText("brzina prikaza (WPM)", desno - 90f, dno + 24f, oznaka)
         return dno + 26f
     }
 
@@ -210,7 +209,7 @@ object PdfReportGenerator {
         val kolone = floatArrayOf(0f, 90f, 170f, 250f, 350f, 440f)
         var y = top
 
-        val naslovi = arrayOf("подешено", "тачно", "тачност", "стварно", "враћања", "")
+        val naslovi = arrayOf("podešeno", "tačno", "tačnost", "stvarno", "")
         naslovi.forEachIndexed { i, t ->
             if (t.isNotEmpty()) c.drawText(t, MARGINA + kolone[i], y, zaglavljeP)
         }
@@ -227,7 +226,6 @@ object PdfReportGenerator {
             c.drawText("${s.correct}/${s.total}", MARGINA + kolone[1], y, p)
             c.drawText("$procenat %", MARGINA + kolone[2], y, p)
             c.drawText("${s.effectiveWpm} WPM", MARGINA + kolone[3], y, celijaP)
-            c.drawText("${s.backtracks}", MARGINA + kolone[4], y, celijaP)
             y += 15f
         }
         return y

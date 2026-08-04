@@ -1,5 +1,6 @@
 package com.example.pupilprism.ui.library
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowForward
@@ -30,7 +31,37 @@ fun CalibrationFlowCoordinator(
     val correct = savedStateHandle?.getStateFlow<Int?>("quiz_correct", null)?.collectAsState()?.value
     val total = savedStateHandle?.getStateFlow<Int?>("quiz_total", null)?.collectAsState()?.value
 
+    LaunchedEffect(correct, total) {
+        if (correct != null && total != null) {
+            viewModel.processStageResult(correct, total)
+            savedStateHandle.set<Int?>("quiz_correct", null)
+            savedStateHandle.set<Int?>("quiz_total", null)
+        }
+    }
+
     val report by viewModel.report.collectAsState()
+
+    var showExitConfirm by remember { mutableStateOf(false) }
+
+    BackHandler(enabled = true) {
+        showExitConfirm = true
+    }
+
+    if (showExitConfirm) {
+        AlertDialog(
+            onDismissRequest = { showExitConfirm = false },
+            title = { Text("Prekid procene?") },
+            text = { Text("Ako izađeš sada, rezultati kalibracije neće biti sačuvani.") },
+            confirmButton = {
+                TextButton(onClick = {
+                    navController.popBackStack("library", inclusive = false)
+                }) { Text("Izađi") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showExitConfirm = false }) { Text("Nastavi") }
+            }
+        )
+    }
 
     if (state.isCalibrationComplete) {
         val r = report

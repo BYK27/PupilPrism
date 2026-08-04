@@ -278,5 +278,119 @@
         "correctAnswerIndex": 2
       }
     ]
+  },
+  {
+    "id": 6,
+    "isCalibration": false,
+    "content": "After World War I, many Australian veterans were given land by the government to farm wheat in the harsh environment of Western Australia. However, the onset of the Great Depression in 1929 caused wheat prices to plummet, leaving the farmers in a precarious financial situation. To make matters worse, in 1932, an estimated 20,000 emus migrated inland in search of food and water after their breeding season. Emus are large, flightless birds native to Australia, capable of running at speeds up to 50 kilometers per hour. They discovered the newly cultivated wheat fields and found them to be excellent habitats, causing massive destruction to the crops. Furthermore, the birds destroyed the exclusion fences, which allowed rabbits to enter the fields and cause even more damage. Desperate, the farmers relayed their concerns to the government. Since many farmers were ex-soldiers, they requested the deployment of machine guns to deal with the bird invasion. The Minister of Defence, Sir George Pearce, agreed to the request, deploying Major G.P.W. Meredith along with two soldiers armed with Lewis machine guns and 10,000 rounds of ammunition. The military operation, which the media quickly dubbed the 'Great Emu War,' began in November 1932. However, the military drastically underestimated the emus. The birds proved to be highly organized and incredibly resilient. They scattered in small groups, making them difficult targets for the heavy machine guns, and their thick feathers acted almost like natural armor against the bullets. In one instance, the soldiers attempted an ambush near a local dam, but the machine gun jammed after killing only a dozen birds. Over the course of the first operation, the military fired roughly 2,500 rounds but only managed to kill a few hundred emus. Major Meredith famously compared the emus to tanks and Zulu warriors, noting their remarkable ability to sustain injury and keep running. Facing public ridicule and criticism from conservationists, the government temporarily withdrew the military. Although a second campaign was launched shortly after, which was slightly more successful, the military ultimately admitted defeat. The emu population remained largely unaffected, and the farmers were eventually forced to rely on different methods, such as improved fencing and a bounty system, which proved much more effective in the long run.",
+    "questions": [
+      {
+        "text": "What type of crop were the Australian veterans farming?",
+        "options": ["Corn", "Wheat", "Cotton", "Barley"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What global event in 1929 caused crop prices to plummet?",
+        "options": ["World War II", "The Industrial Revolution", "The Great Depression", "The Cold War"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Why did the 20,000 emus migrate to the farming region?",
+        "options": ["To escape predators", "In search of food and water", "Because they were driven by wildfires", "To find warmer climates"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What secondary problem did the emus cause by breaking the fences?",
+        "options": ["They let farm animals escape", "They allowed rabbits to enter the fields", "They damaged the irrigation pipes", "They blocked the local roads"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Which government official authorized the military deployment?",
+        "options": ["The Prime Minister", "The Minister of Agriculture", "The Minister of Defence", "The King of England"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What kind of weapons were the soldiers equipped with?",
+        "options": ["Sniper rifles", "Lewis machine guns", "Artillery cannons", "Shotguns"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Why did the military ambush near the local dam fail?",
+        "options": ["The soldiers ran out of ammunition", "The emus attacked the soldiers", "The machine gun jammed", "The emus swam away across the dam"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What did Major Meredith compare the emus to?",
+        "options": ["Tanks and Zulu warriors", "Ghosts and shadows", "Armored vehicles", "Olympic runners"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "text": "Why did the government temporarily withdraw the military?",
+        "options": ["Because they ran out of money", "Due to public ridicule and criticism", "Because the soldiers got sick", "Because winter was approaching"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What eventually proved to be a more effective long-term solution for the farmers?",
+        "options": ["Poisoning the water supply", "Importing natural predators", "Relocating the farms", "Improved fencing and a bounty system"],
+        "correctAnswerIndex": 3
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "isCalibration": false,
+    "content": "On the morning of June 30, 1908, a massive explosion occurred near the Podkamennaya Tunguska River in a highly remote region of Siberia, Russia. The blast was so incredibly powerful that it flattened approximately 80 million trees over an area of 2,150 square kilometers. The explosion generated a shockwave that shattered windows and knocked people off their feet hundreds of kilometers away. Seismic stations across Eurasia recorded the massive tremors, and fluctuations in atmospheric pressure were detected as far away as Great Britain. In the days following the event, the night skies in Asia and Europe were noticeably glowing, allowing people to read newspapers outdoors at midnight. Despite the extreme magnitude of the event, the severe isolation of the region and the political turmoil in Russia meant that no scientific expedition was sent to investigate the site for nearly two decades. It wasn't until 1927 that a Russian mineralogist named Leonid Kulik led the first official expedition to the epicenter. Kulik expected to find a massive crater and remnants of an iron meteorite, which he hoped to mine for the Soviet government's industrial projects. However, to his profound astonishment, he found no crater at all. Instead, he discovered a vast 'butterfly' pattern of felled trees radiating outward from a central point. At the very center of the blast zone, a small cluster of trees remained standing upright, but they had been entirely stripped of their branches and bark, resembling telephone poles. Scientists today widely agree that the Tunguska event was caused by a meteoroid or comet fragment, estimated to be between 50 and 190 meters in diameter. Instead of striking the surface of the Earth, the object exploded in mid-air at an altitude of 5 to 10 kilometers. This phenomenon, known as an airburst, occurs when the atmospheric pressure on the front of a rapidly descending meteor exceeds its structural strength, causing it to disintegrate explosively. The energy released by the Tunguska airburst was estimated to be between 3 and 30 megatons of TNT, making it hundreds of times more powerful than the atomic bomb dropped on Hiroshima. Because it exploded high in the atmosphere, it left no impact crater and scattered its fragments over a vast area, leaving only microscopic traces of extraterrestrial material in the peat bogs.",
+    "questions": [
+      {
+        "text": "In what region of Russia did the explosion occur?",
+        "options": ["Kamchatka", "Siberia", "Ural Mountains", "Crimea"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Approximately how many trees were flattened by the blast?",
+        "options": ["10 million", "50 million", "80 million", "120 million"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What unusual phenomenon occurred in the night skies after the event?",
+        "options": ["Total darkness fell over Europe", "Meteor showers rained down", "The skies glowed brightly enough to read by", "Purple auroras appeared globally"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Why did it take nearly two decades for scientists to investigate the site?",
+        "options": ["Fear of radiation and local myths", "Lack of funding from the European scientific community", "Extreme isolation of the region and political turmoil", "Heavy snowfall blocked all the roads"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Who led the first official scientific expedition to the epicenter?",
+        "options": ["Yuri Gagarin", "Leonid Kulik", "Mikhail Lomonosov", "Dmitri Mendeleev"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What did the lead scientist expect to find at the site?",
+        "options": ["An alien spacecraft", "A massive crater and an iron meteorite", "A dormant volcano", "Underground gas reserves"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What was unusual about the trees at the exact center of the blast zone?",
+        "options": ["They were completely vaporized", "They were turned to stone", "They stood upright but stripped of branches and bark", "They were the only ones still green and alive"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What is the currently accepted scientific explanation for the event?",
+        "options": ["A volcanic eruption", "An airburst from a meteoroid or comet", "A massive underground gas explosion", "An early nuclear weapons test"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "At what altitude is the object believed to have exploded?",
+        "options": ["1 to 2 kilometers", "5 to 10 kilometers", "20 to 30 kilometers", "Right at ground level"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Why was no impact crater ever found?",
+        "options": ["It was covered by an avalanche", "The crater filled with water and became a lake", "The object exploded in mid-air", "The impact hit a glacier which later melted"],
+        "correctAnswerIndex": 2
+      }
+    ]
   }
 ]

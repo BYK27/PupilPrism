@@ -41,7 +41,8 @@ class CalibrationViewModel(
     val uiState = _uiState.asStateFlow()
 
     // CHANGED: The predefined testing speeds expanded to 8 stages
-    val targetSpeeds = listOf(50, 100, 150, 200, 250, 300, 350, 400)
+    //val targetSpeeds = listOf(50, 100, 150, 200, 250, 300, 350, 400)
+    val targetSpeeds = listOf(10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000)
     private val stageResults = mutableListOf<StageResult>()
 
     init {
@@ -53,23 +54,16 @@ class CalibrationViewModel(
 
     private fun loadCalibrationMaterials() {
         viewModelScope.launch {
-            // Collect the flow reactively
             assessmentDao.getMaterialsByMode(isCalibration = true).collect { materials ->
                 if (materials.isNotEmpty()) {
-                    runId = "run_" + System.currentTimeMillis()
-                    val pomeraj = if (materials.isEmpty()) 0
-                    else (System.currentTimeMillis() / 1000).toInt() % materials.size
+                    val pomeraj = (System.currentTimeMillis() / 1000).toInt() % materials.size
 
                     val expandedMaterials = List(minOf(targetSpeeds.size, materials.size)) { index ->
                         materials[(index + pomeraj) % materials.size]
                     }
 
-
                     _uiState.update {
-                        it.copy(
-                            calibrationMaterials = expandedMaterials,
-                            isLoading = false
-                        )
+                        it.copy(calibrationMaterials = expandedMaterials, isLoading = false)
                     }
                 }
             }

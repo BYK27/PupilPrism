@@ -32,13 +32,13 @@ fun ReportScreen(report: ReportData, onZavrsi: () -> Unit) {
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Процена је завршена", style = MaterialTheme.typography.headlineSmall,
+        Text("Procena je završena", style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(16.dp))
 
         Card(modifier = Modifier.fillMaxWidth()) {
             Column(Modifier.padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("Ваша брзина уз очувано разумевање",
+                Text("Vaša brzina uz očuvano razumevanje",
                     style = MaterialTheme.typography.labelLarge)
                 Text("${report.optimalWpm} WPM",
                     style = MaterialTheme.typography.displaySmall,
@@ -50,14 +50,13 @@ fun ReportScreen(report: ReportData, onZavrsi: () -> Unit) {
 
         Card(modifier = Modifier.fillMaxWidth()) {
             Column(Modifier.padding(16.dp)) {
-                Red("Подешено у просеку", "${report.prosecnaNominalna} WPM")
-                Red("Стварно прочитано", "${report.prosecnaEfektivna} WPM")
-                Red("Разлика", "${report.gubitakProcenat} %")
+                Red("Podešeno u proseku", "${report.prosecnaNominalna} WPM")
+                Red("Stvarno pročitano", "${report.prosecnaEfektivna} WPM")
+                Red("Razlika", "${report.gubitakProcenat} %")
                 Divider(Modifier.padding(vertical = 8.dp))
-                Red("Прочитано речи", "${report.ukupnoReci}")
-                Red("Време читања",
+                Red("Pročitano reči", "${report.ukupnoReci}")
+                Red("Vreme čitanja",
                     "${"%.1f".format(report.aktivnoVremeMs / 60000.0)} min")
-                Red("Враћања уназад", "${report.ukupnoVracanja}")
             }
         }
 
@@ -66,13 +65,12 @@ fun ReportScreen(report: ReportData, onZavrsi: () -> Unit) {
         OutlinedTextField(
             value = ime,
             onValueChange = { ime = it },
-            label = { Text("Име и презиме (необавезно)") },
+            label = { Text("Ime i prezime (neobavezno)") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
         Text(
-            "Име се уписује само у PDF који добијате. Не чува се у апликацији " +
-                    "нити у подацима истраживања.",
+            "Ime se upisuje samo u PDF koji dobijate. Ne čuva se u aplikaciji niti u podacima istraživanja.",
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(top = 4.dp)
@@ -96,7 +94,7 @@ fun ReportScreen(report: ReportData, onZavrsi: () -> Unit) {
                         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     }
                     context.startActivity(
-                        Intent.createChooser(intent, "Извештај о читању")
+                        Intent.createChooser(intent, "Izveštaj o čitanju")
                     )
                     radiSe = false
                 }
@@ -104,12 +102,12 @@ fun ReportScreen(report: ReportData, onZavrsi: () -> Unit) {
             enabled = !radiSe,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(if (radiSe) "Припремам..." else "Преузми као PDF")
+            Text(if (radiSe) "Pripremam..." else "Preuzmi kao PDF")
         }
 
         Spacer(Modifier.height(8.dp))
         TextButton(onClick = onZavrsi, modifier = Modifier.fillMaxWidth()) {
-            Text("Затвори")
+            Text("Zatvori")
         }
     }
 }
