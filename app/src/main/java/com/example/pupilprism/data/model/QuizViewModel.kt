@@ -56,6 +56,7 @@ class QuizViewModel(private val assessmentDao: AssessmentDao) : ViewModel() {
         val sesija = AssessmentSession(
             timestamp = System.currentTimeMillis(),
             materialId = p.materialId,
+            runId = p.runId,
             participantId = p.participantId,
             condition = p.condition,
             initialWpm = p.initialWpm,

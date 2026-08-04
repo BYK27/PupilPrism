@@ -20,7 +20,7 @@ import com.example.pupilprism.data.model.UserStats
         AssessmentSession::class,
         SeedMeta::class
     ],
-    version = 11,
+    version = 12,
     exportSchema = true
 )
 

@@ -5,11 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.pupilprism.data.db.AssessmentDao
 import com.example.pupilprism.data.db.UserStatsDao
 import com.example.pupilprism.data.model.ReadingMaterial
+import com.example.pupilprism.data.model.ReportData
+import com.example.pupilprism.data.model.SessionTelemetryStore
 import com.example.pupilprism.data.model.UserStats
+import com.example.pupilprism.data.repository.ReportBuilder
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+
 
 // Internal data class to hold the results of each stage
 private data class StageResult(val wpmUsed: Int, val accuracy: Float)
@@ -27,6 +32,11 @@ class CalibrationViewModel(
     private val userStatsDao: UserStatsDao
 ) : ViewModel() {
 
+    var runId: String = ""
+        private set
+    private val _report = MutableStateFlow<ReportData?>(null)
+    val report: StateFlow<ReportData?> = _report.asStateFlow()
+
     private val _uiState = MutableStateFlow(CalibrationFlowState())
     val uiState = _uiState.asStateFlow()
 
@@ -35,6 +45,9 @@ class CalibrationViewModel(
     private val stageResults = mutableListOf<StageResult>()
 
     init {
+        runId = "run_" + System.currentTimeMillis()
+        SessionTelemetryStore.runId = runId
+        SessionTelemetryStore.condition = "calibration"
         loadCalibrationMaterials()
     }
 
@@ -43,6 +56,7 @@ class CalibrationViewModel(
             // Collect the flow reactively
             assessmentDao.getMaterialsByMode(isCalibration = true).collect { materials ->
                 if (materials.isNotEmpty()) {
+                    runId = "run_" + System.currentTimeMillis()
                     val pomeraj = if (materials.isEmpty()) 0
                     else (System.currentTimeMillis() / 1000).toInt() % materials.size
 
@@ -62,9 +76,6 @@ class CalibrationViewModel(
         }
     }
 
-    /**
-     * Called by the AssessmentQuizScreen after the user finishes the quiz for a specific text.
-     */
     fun processStageResult(correctAnswers: Int, totalQuestions: Int) {
         val accuracy = if (totalQuestions > 0) correctAnswers.toFloat() / totalQuestions else 0f
         val currentSpeed = targetSpeeds[_uiState.value.currentStageIndex]
@@ -82,10 +93,6 @@ class CalibrationViewModel(
         }
     }
 
-    /**
-     * THE CORE ALGORITHM:
-     * Calculates the maximum WPM where the user maintained >= 80% comprehension.
-     */
     private fun executeCalibrationAlgorithm() {
         val acceptablePerformances = stageResults.filter { it.accuracy >= 0.80f }
 
@@ -102,9 +109,12 @@ class CalibrationViewModel(
             _uiState.update {
                 it.copy(
                     isCalibrationComplete = true,
-                    finalCalculatedWpm = optimal
+                    finalCalculatedWpm = optimal,
                 )
             }
+
+            _report.value = ReportBuilder.build(assessmentDao, runId, optimal)
+
         }
     }
 }

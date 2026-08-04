@@ -58,6 +58,7 @@ class RSVPViewModel(
 
     // --- ознаке експеримента ---
     private var materialId: String = ""
+    var runId: String = ""
     var participantId: String = ""
     var condition: String = ""
     private var optimalWpm: Int = 0
@@ -238,6 +239,7 @@ class RSVPViewModel(
         SessionTelemetryStore.put(
             PendingReadingSession(
                 materialId = materialId,
+                runId = runId,
                 participantId = participantId,
                 condition = condition,
                 initialWpm = initialWpm,

@@ -49,4 +49,14 @@ interface AssessmentDao {
     @Query("SELECT COUNT(*) FROM comprehension_questions WHERE materialId = :materialId")
     suspend fun countQuestionsForMaterial(materialId: String): Int
 
+    @Query("SELECT * FROM assessment_sessions WHERE runId = :runId ORDER BY timestamp ASC")
+    suspend fun getSessionsForRun(runId: String): List<AssessmentSession>
+
+    @Query("SELECT DISTINCT runId FROM assessment_sessions WHERE runId != '' ORDER BY runId DESC LIMIT 20")
+    suspend fun getRecentRunIds(): List<String>
+
+    @Query("SELECT COUNT(*) FROM assessment_sessions")
+    suspend fun countSessions(): Int
+
+
 }

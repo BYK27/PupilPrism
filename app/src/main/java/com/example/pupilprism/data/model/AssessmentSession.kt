@@ -9,6 +9,7 @@ data class AssessmentSession(
     val timestamp: Long = System.currentTimeMillis(),
     val materialId: String,
 
+    val runId: String = "",
     val participantId: String = "",
     val condition: String = "",
 

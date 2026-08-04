@@ -2,6 +2,7 @@ package com.example.pupilprism.data.model
 
 data class PendingReadingSession(
     val materialId: String,
+    val runId: String,
     val participantId: String,
     val condition: String,
     val initialWpm: Int,
@@ -18,6 +19,9 @@ data class PendingReadingSession(
 object SessionTelemetryStore {
     @Volatile
     private var pending: PendingReadingSession? = null
+    @Volatile var runId: String = ""
+    @Volatile var participantId: String = ""
+    @Volatile var condition: String = ""
 
     fun put(session: PendingReadingSession) { pending = session }
 

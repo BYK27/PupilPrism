@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pupilprism.ui.reader.CalibrationViewModel
+import com.example.pupilprism.ui.report.ReportScreen
 
 @Composable
 fun CalibrationFlowCoordinator(
@@ -29,12 +30,21 @@ fun CalibrationFlowCoordinator(
     val correct = savedStateHandle?.getStateFlow<Int?>("quiz_correct", null)?.collectAsState()?.value
     val total = savedStateHandle?.getStateFlow<Int?>("quiz_total", null)?.collectAsState()?.value
 
-    LaunchedEffect(correct, total) {
-        if (correct != null && total != null) {
-            viewModel.processStageResult(correct, total)
-            savedStateHandle.set("quiz_correct", null)
-            savedStateHandle.set("quiz_total", null)
+    val report by viewModel.report.collectAsState()
+
+    if (state.isCalibrationComplete) {
+        val r = report
+        if (r != null) {
+            ReportScreen(
+                report = r,
+                onZavrsi = { navController.popBackStack("library", inclusive = false) }
+            )
+        } else {
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
         }
+        return
     }
 
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
@@ -50,7 +60,9 @@ fun CalibrationFlowCoordinator(
                 Spacer(modifier = Modifier.height(16.dp))
                 Text("Loading Assessment Materials...", color = MaterialTheme.colorScheme.onSurfaceVariant)
 
-            } else if (state.isCalibrationComplete) {
+            }
+            /*
+            else if (state.isCalibrationComplete) {
                 // Sleek Completion Screen
                 Icon(Icons.Rounded.CheckCircle, contentDescription = "Complete", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(80.dp))
                 Spacer(modifier = Modifier.height(24.dp))
@@ -77,7 +89,9 @@ fun CalibrationFlowCoordinator(
                     Text("Return to Dashboard", fontSize = 16.sp)
                 }
 
-            } else {
+            }
+            */
+            else {
                 val currentMaterial = state.calibrationMaterials.getOrNull(state.currentStageIndex)
                 val targetSpeed = viewModel.targetSpeeds.getOrNull(state.currentStageIndex) ?: 250
 
