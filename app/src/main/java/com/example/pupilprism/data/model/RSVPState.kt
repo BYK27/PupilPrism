@@ -13,9 +13,12 @@ data class RSVPState(
     val isAdaptiveSpeedEnabled: Boolean = false,
     val isFinished: Boolean = false,
     val isCalibrationMode: Boolean = false,
-    // NEW: Added Display Modes
     val displayMode: ProgressDisplayMode = ProgressDisplayMode.PERCENTAGE,
-    val isMultiWordMode: Boolean = false
+    val isMultiWordMode: Boolean = false,
+    val isControlsLocked: Boolean = false,
+    val isNormalizedAdaptive: Boolean = false,
+    val isOrpEnabled: Boolean = true,
+    val contextRadius: Int = 3
 ) {
     val currentWord: String
         get() = if (words.isNotEmpty() && currentIndex < words.size) words[currentIndex] else ""
@@ -26,3 +29,11 @@ data class RSVPState(
     val remainingWords: Int
         get() = maxOf(0, words.size - currentIndex)
 }
+
+data class ReadingStats(
+    val prosecnaPodesenaWpm: Int = 0,
+    val efektivnaWpm: Int = 0,
+    val gubitakProcenat: Int = 0,
+    val preostaloSekundi: Int = 0,
+    val iznadKalibrisane: Boolean = false
+)

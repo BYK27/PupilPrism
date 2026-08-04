@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:name="com.example.pupilprism.PupilPrismApp"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/prism_of_the_pupil_round"
@@ -12,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PupilPrism">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.pupilprism.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.PupilPrism">
             <intent-filter>

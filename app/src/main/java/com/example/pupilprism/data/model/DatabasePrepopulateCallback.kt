@@ -16,6 +16,7 @@ class DatabasePrepopulateCallback(
     private val scope: CoroutineScope
 ) : RoomDatabase.Callback() {
 
+    /*
     override fun onCreate(db: SupportSQLiteDatabase) {
         super.onCreate(db)
         Log.d("DatabasePrepopulate", "onCreate triggered. Seeding data...")
@@ -72,4 +73,5 @@ class DatabasePrepopulateCallback(
             }
         }
     }
+    */
 }

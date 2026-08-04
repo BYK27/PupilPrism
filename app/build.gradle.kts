@@ -80,4 +80,9 @@ dependencies {
 
     // --- URL reading ---
     implementation("org.jsoup:jsoup:1.17.2")
+
+    implementation("androidx.room:room-ktx:2.6.1")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
+
 }

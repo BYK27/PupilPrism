@@ -43,11 +43,13 @@ class CalibrationViewModel(
             // Collect the flow reactively
             assessmentDao.getMaterialsByMode(isCalibration = true).collect { materials ->
                 if (materials.isNotEmpty()) {
-                    // CHANGED: Ensure we have enough materials for all 8 speeds by looping through available ones.
-                    // This prevents crashes if your JSON seed file has fewer than 8 items.
-                    val expandedMaterials = List(targetSpeeds.size) { index ->
-                        materials[index % materials.size]
+                    val pomeraj = if (materials.isEmpty()) 0
+                    else (System.currentTimeMillis() / 1000).toInt() % materials.size
+
+                    val expandedMaterials = List(minOf(targetSpeeds.size, materials.size)) { index ->
+                        materials[(index + pomeraj) % materials.size]
                     }
+
 
                     _uiState.update {
                         it.copy(

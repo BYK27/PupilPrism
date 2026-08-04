@@ -13,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -20,6 +21,7 @@ import androidx.navigation.NavHostController
 import com.example.pupilprism.data.db.PdfBookDao
 import com.example.pupilprism.data.db.UserStatsDao
 import com.example.pupilprism.data.model.RSVPViewModel
+import com.example.pupilprism.data.model.ReadingTelemetry
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,14 +89,28 @@ fun SpeedReaderScreen(
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = uiState.currentWord,
-                    fontSize = 56.sp,
-                    textAlign = TextAlign.Center,
-                    fontWeight = androidx.compose.ui.text.font.FontWeight.Medium,
-                    letterSpacing = 1.sp,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                if (uiState.isOrpEnabled) {
+                    OrpWord(
+                        word = uiState.currentWord.removeSuffix(ReadingTelemetry.OZNAKA_PASUSA),
+                        style = LocalTextStyle.current.copy(
+                            fontSize = 56.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.onSurface
+                        ),
+                        orpColor = MaterialTheme.colorScheme.primary,
+                        showGuides = true
+                    )
+                } else {
+                    Text(
+                        text = uiState.currentWord.removeSuffix(ReadingTelemetry.OZNAKA_PASUSA),
+                        fontSize = 56.sp,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Medium,
+                        letterSpacing = 1.sp,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+
             }
 
             // Bottom Controls Card - Fades out when playing

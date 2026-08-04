@@ -14,6 +14,8 @@ data class UserStats(
     val yesterdayWords: Int = 0,
     val themeColor: Int = 0xFF6650a4.toInt(),
     val isBackgroundEnabled: Boolean = false,
-    // NEW: The core metric derived from the calibration phase
-    val optimalWpm: Int = 250
+    val optimalWpm: Int = 250,
+    val isOrpEnabled: Boolean = true,
+    val isOrpGuidesEnabled: Boolean = true
+
 )

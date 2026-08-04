@@ -2,7 +2,7 @@
   {
     "id": 1,
     "isCalibration": true,
-    "content": "Tea is one of the oldest and most popular beverages in the world. It originated in ancient China, where it was initially used for medicinal purposes. Legend says that Emperor Shen Nong discovered tea in 2737 BCE when leaves from a wild tree blew into his pot of boiling water. The resulting brew had a pleasant aroma and refreshing taste. Over centuries, tea drinking spread to Japan and eventually to Europe. Today, there are many varieties of tea, including green, black, white, and oolong, but they all come from the same plant, Camellia sinensis. The differences in flavor and color depend entirely on how the leaves are processed and oxidized after harvesting.",
+    "content": "Tea is one of the oldest and most popular beverages in the world, second only to water. It originated in ancient China, where it was initially used for medicinal purposes. Legend says that Emperor Shen Nong discovered tea in 2737 BCE when leaves from a wild tree blew into his pot of boiling water. Over centuries, tea drinking spread to Japan, brought by Buddhist monks who used it to stay awake during meditation. Eventually, the Dutch East India Company introduced it to Europe in the 17th century. Today, there are many varieties of tea, including green, black, white, and oolong, but they all come from the same plant, Camellia sinensis. The differences in flavor and color depend entirely on how the leaves are processed and oxidized after harvesting. Green tea is unoxidized, preserving its grassy flavor, while black tea is fully oxidized, giving it a robust, dark profile. Tea is also celebrated globally for its health benefits, particularly its high concentration of antioxidants called catechins.",
     "questions": [
       {
         "text": "Where did tea originate?",
@@ -20,6 +20,21 @@
         "correctAnswerIndex": 0
       },
       {
+        "text": "In what year does the legend say tea was discovered?",
+        "options": ["1440 CE", "2737 BCE", "1000 BCE", "17th Century"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Who brought tea to Japan?",
+        "options": ["European merchants", "Chinese emperors", "Buddhist monks", "The Dutch East India Company"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Which company introduced tea to Europe?",
+        "options": ["The British Tea Corporation", "The Dutch East India Company", "The Silk Road Merchants", "The Spanish Armada"],
+        "correctAnswerIndex": 1
+      },
+      {
         "text": "Which plant do all traditional teas come from?",
         "options": ["Mentha spicata", "Camellia sinensis", "Coffea arabica", "Matricaria chamomilla"],
         "correctAnswerIndex": 1
@@ -28,37 +43,72 @@
         "text": "What determines the different flavors of tea?",
         "options": ["The soil type", "The type of plant", "The processing and oxidation", "The boiling water temperature"],
         "correctAnswerIndex": 2
+      },
+      {
+        "text": "Which type of tea is fully oxidized?",
+        "options": ["Green tea", "White tea", "Oolong tea", "Black tea"],
+        "correctAnswerIndex": 3
+      },
+      {
+        "text": "What are the specific antioxidants found in tea called?",
+        "options": ["Vitamins", "Catechins", "Caffeine", "Melatonin"],
+        "correctAnswerIndex": 1
       }
     ]
   },
   {
     "id": 2,
     "isCalibration": true,
-    "content": "The solar system consists of our star, the Sun, and everything bound to it by gravity. This includes eight planets, dozens of moons, and millions of asteroids, comets, and meteoroids. The planets are divided into two main categories: the inner, rocky planets (Mercury, Venus, Earth, and Mars) and the outer gas and ice giants (Jupiter, Saturn, Uranus, and Neptune). The asteroid belt, a region filled with rocky debris, separates these two groups. Jupiter is the largest planet, so massive that more than 1,300 Earths could fit inside it. Despite its vast size, the solar system is just a tiny drop in the ocean of the Milky Way galaxy.",
+    "content": "The solar system consists of our star, the Sun, and everything bound to it by gravity. The Sun is incredibly massive, containing 99.8% of the solar system's total mass. The system includes eight planets, dozens of moons, and millions of asteroids, comets, and meteoroids. The planets are divided into two main categories: the inner, rocky planets (Mercury, Venus, Earth, and Mars) and the outer giants. The asteroid belt, a region filled with rocky debris, separates these two groups. The outer planets are further divided into gas giants (Jupiter and Saturn), made mostly of hydrogen and helium, and ice giants (Uranus and Neptune), containing water, ammonia, and methane. Jupiter is the largest planet, so massive that more than 1,300 Earths could fit inside it. Beyond Neptune lies the Kuiper Belt, home to dwarf planets like Pluto. Despite its vast size, the solar system is just a tiny drop in the ocean of the Milky Way galaxy.",
     "questions": [
+      {
+        "text": "How much of the solar system's total mass does the Sun contain?",
+        "options": ["50%", "75.5%", "90%", "99.8%"],
+        "correctAnswerIndex": 3
+      },
       {
         "text": "How many planets are in the solar system?",
         "options": ["Seven", "Eight", "Nine", "Ten"],
         "correctAnswerIndex": 1
       },
       {
-        "text": "What binds the solar system together?",
+        "text": "What force binds the solar system together?",
         "options": ["Magnetic fields", "Dark matter", "Gravity", "Solar wind"],
         "correctAnswerIndex": 2
       },
       {
-        "text": "Which planet is NOT an inner rocky planet?",
-        "options": ["Venus", "Mars", "Earth", "Uranus"],
-        "correctAnswerIndex": 3
+        "text": "Which of these is classified as an inner rocky planet?",
+        "options": ["Mars", "Jupiter", "Saturn", "Neptune"],
+        "correctAnswerIndex": 0
       },
       {
-        "text": "What separates the rocky planets from the giants?",
+        "text": "What separates the rocky planets from the outer giants?",
         "options": ["The Oort Cloud", "The Asteroid Belt", "The Kuiper Belt", "The Sun's corona"],
         "correctAnswerIndex": 1
       },
       {
+        "text": "What are gas giants primarily composed of?",
+        "options": ["Iron and nickel", "Water and ammonia", "Hydrogen and helium", "Carbon dioxide and methane"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Which two planets are known as ice giants?",
+        "options": ["Jupiter and Saturn", "Mercury and Venus", "Earth and Mars", "Uranus and Neptune"],
+        "correctAnswerIndex": 3
+      },
+      {
         "text": "Which is the largest planet in the solar system?",
         "options": ["Saturn", "Jupiter", "Neptune", "Earth"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Approximately how many Earths could fit inside Jupiter?",
+        "options": ["100", "500", "1,300", "5,000"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "Where is the dwarf planet Pluto located?",
+        "options": ["The Asteroid Belt", "The Kuiper Belt", "Between Earth and Mars", "The Oort Cloud"],
         "correctAnswerIndex": 1
       }
     ]
@@ -66,7 +116,7 @@
   {
     "id": 3,
     "isCalibration": true,
-    "content": "Ocean tides are the rise and fall of sea levels caused by the combined effects of the gravitational forces exerted by the Moon and the Sun, and the rotation of the Earth. While the Sun is much larger, the Moon has a greater influence on the tides because it is significantly closer to our planet. When the gravitational pull of the Moon acts on the Earth, it creates a bulge in the ocean's water nearest to the Moon. Another bulge occurs on the exact opposite side of the Earth due to inertial forces. Most coastal areas experience two high tides and two low tides every lunar day, which is roughly 24 hours and 50 minutes long.",
+    "content": "Ocean tides are the rise and fall of sea levels caused by the combined effects of the gravitational forces exerted by the Moon and the Sun, and the rotation of the Earth. While the Sun is much larger, the Moon has a greater influence on the tides because it is significantly closer to our planet. When the gravitational pull of the Moon acts on the Earth, it creates a bulge in the ocean's water nearest to the Moon. Another bulge occurs on the exact opposite side of the Earth due to inertial forces. Most coastal areas experience two high tides and two low tides every lunar day, which is roughly 24 hours and 50 minutes long. When the Earth, Moon, and Sun align, their combined gravity creates exceptionally high tides known as spring tides. Conversely, when the Sun and Moon are at right angles to each other, they produce weaker tides called neap tides. The highest tides in the world occur in Canada's Bay of Fundy, reaching up to 16 meters.",
     "questions": [
       {
         "text": "What primarily causes ocean tides?",
@@ -84,174 +134,148 @@
         "correctAnswerIndex": 1
       },
       {
+        "text": "What causes the secondary bulge of water on the opposite side of the Earth?",
+        "options": ["Inertial forces", "Solar winds", "Magnetic fields", "Ocean currents"],
+        "correctAnswerIndex": 0
+      },
+      {
         "text": "How many high tides do most coastal areas experience in a lunar day?",
         "options": ["One", "Two", "Three", "Four"],
         "correctAnswerIndex": 1
       },
       {
-        "text": "How long is a lunar day?",
+        "text": "How long is a standard lunar day?",
         "options": ["24 hours", "24 hours and 50 minutes", "12 hours", "28 days"],
         "correctAnswerIndex": 1
+      },
+      {
+        "text": "What are exceptionally high tides called when the Earth, Moon, and Sun align?",
+        "options": ["Neap tides", "Red tides", "Spring tides", "Tsunami tides"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What type of tides occur when the Sun and Moon are at right angles?",
+        "options": ["Spring tides", "Neap tides", "Inertial tides", "Lunar tides"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Where do the highest tides in the world occur?",
+        "options": ["The Mariana Trench", "The Mediterranean Sea", "Canada's Bay of Fundy", "The Gulf of Mexico"],
+        "correctAnswerIndex": 2
       }
     ]
   },
   {
     "id": 4,
     "isCalibration": true,
-    "content": "Photosynthesis is the fundamental biological process by which green plants, algae, and some bacteria convert light energy into chemical energy. Using sunlight, these organisms synthesize nutrients from carbon dioxide and water. The process primarily takes place in the chloroplasts of plant cells, which contain a green pigment called chlorophyll. Chlorophyll absorbs light energy, which is then used to combine carbon dioxide from the air with water from the soil to produce glucose, a type of sugar that serves as food for the plant. As a vital byproduct of this reaction, oxygen is released into the atmosphere, making life on Earth possible for aerobic organisms.",
+    "content": "The deep ocean is one of the least explored environments on Earth, divided into several distinct depth layers. The uppermost layer, the Epipelagic zone, receives enough sunlight for marine plants to perform photosynthesis. However, below 1,000 meters lies the Bathypelagic zone, often called the midnight zone, which is entirely devoid of sunlight. In this pitch-black environment, many marine creatures have evolved bioluminescence, the biological ability to produce their own light, primarily to attract prey or communicate with mates. The water pressure at these depths is crushing, reaching hundreds of times the atmospheric pressure found at the surface. In 1977, scientists made a groundbreaking discovery: hydrothermal vents on the ocean floor. These volcanic vents spew mineral-rich, superheated water. Instead of relying on sunlight, the ecosystems around these vents depend on chemosynthesis. Specialized bacteria convert toxic hydrogen sulfide from the vents into usable energy, forming the base of a unique food web that supports bizarre creatures like giant tube worms and blind shrimp.",
     "questions": [
       {
-        "text": "What do plants convert light energy into?",
-        "options": ["Heat energy", "Kinetic energy", "Chemical energy", "Nuclear energy"],
+        "text": "Which ocean zone receives enough sunlight for photosynthesis?",
+        "options": ["The Bathypelagic zone", "The Midnight zone", "The Epipelagic zone", "The Abyssal zone"],
         "correctAnswerIndex": 2
       },
       {
-        "text": "What two ingredients are combined during photosynthesis?",
-        "options": ["Oxygen and water", "Carbon dioxide and water", "Nitrogen and sunlight", "Glucose and soil"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Where does photosynthesis primarily take place?",
-        "options": ["Mitochondria", "Nucleus", "Chloroplasts", "Cell wall"],
+        "text": "At what depth does the midnight zone begin?",
+        "options": ["100 meters", "500 meters", "1,000 meters", "5,000 meters"],
         "correctAnswerIndex": 2
       },
       {
-        "text": "What is the green pigment in plants called?",
-        "options": ["Carotene", "Melanin", "Hemoglobin", "Chlorophyll"],
-        "correctAnswerIndex": 3
+        "text": "What is the scientific name for the midnight zone?",
+        "options": ["Epipelagic zone", "Bathypelagic zone", "Mesopelagic zone", "Trench zone"],
+        "correctAnswerIndex": 1
       },
       {
-        "text": "What is the essential byproduct of photosynthesis?",
-        "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
+        "text": "What is the ability of deep-sea creatures to produce their own light called?",
+        "options": ["Chemosynthesis", "Photosynthesis", "Bioluminescence", "Fluorescence"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What is one main reason deep-sea creatures use bioluminescence?",
+        "options": ["To heat the water", "To attract prey or mates", "To navigate using echoes", "To scare away submarines"],
         "correctAnswerIndex": 1
+      },
+      {
+        "text": "When were hydrothermal vents discovered on the ocean floor?",
+        "options": ["1890", "1912", "1977", "2005"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What do hydrothermal vents spew into the ocean?",
+        "options": ["Liquid nitrogen", "Mineral-rich, superheated water", "Fresh drinking water", "Melted plastic"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "What process do vent ecosystems rely on instead of photosynthesis?",
+        "options": ["Thermosynthesis", "Bioluminescence", "Chemosynthesis", "Geosynthesis"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "What toxic chemical do specialized bacteria convert into usable energy?",
+        "options": ["Hydrogen sulfide", "Carbon monoxide", "Helium gas", "Nitrous oxide"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "text": "Which creature is explicitly mentioned as living near hydrothermal vents?",
+        "options": ["Great white sharks", "Dolphins", "Giant tube worms", "Sea turtles"],
+        "correctAnswerIndex": 2
       }
     ]
   },
   {
     "id": 5,
     "isCalibration": true,
-    "content": "The Roman aqueducts remain one of the most remarkable engineering achievements of the ancient world. Designed to bring fresh water from distant sources into cities and towns, they supplied public baths, latrines, fountains, and private households. Rome itself was served by an extensive network of eleven aqueducts built over a period of 500 years. The water moved entirely by gravity, requiring a precise, downward gradient over miles of varied terrain. To maintain this gentle slope, engineers constructed massive stone bridges across valleys and carved tunnels through mountains. The materials used, particularly the revolutionary Roman concrete (pozzolana), proved so durable that some aqueducts are still functioning today.",
+    "content": "Penicillin, the world's first true antibiotic, was discovered entirely by accident. In September 1928, Scottish bacteriologist Alexander Fleming returned from a vacation to his messy laboratory at St. Mary's Hospital in London. While inspecting his equipment, he noticed that a petri dish containing Staphylococcus bacteria had been contaminated with a strange mold. Remarkably, the area immediately surrounding the mold was completely clear of bacteria, indicating that the mold was secreting a liquid substance that killed the dangerous pathogens. Fleming identified the mold as Penicillium notatum and named the active germ-killing substance penicillin. However, Fleming struggled to stabilize the drug. It wasn't until a decade later, in 1939, that scientists Howard Florey and Ernst Chain figured out how to isolate, purify, and mass-produce the antibiotic. Penicillin revolutionized modern medicine, saving countless lives during World War II by treating infected wounds that would have otherwise been fatal. For their groundbreaking work, Fleming, Florey, and Chain shared the Nobel Prize in Physiology or Medicine in 1945.",
     "questions": [
       {
-        "text": "What was the primary purpose of the Roman aqueducts?",
-        "options": ["To transport troops", "To bring fresh water to cities", "To drain flooded valleys", "To transport grain"],
+        "text": "Who discovered the first true antibiotic?",
+        "options": ["Howard Florey", "Alexander Fleming", "Ernst Chain", "Louis Pasteur"],
         "correctAnswerIndex": 1
       },
       {
-        "text": "How many aqueducts served the city of Rome?",
-        "options": ["Seven", "Nine", "Eleven", "Fifteen"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What force moved the water through the aqueducts?",
-        "options": ["Steam power", "Windmills", "Gravity", "Animal labor"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "How did engineers cross deep valleys?",
-        "options": ["With pressurized pipes", "By building stone bridges", "By digging deeper canals", "Using wooden ramps"],
+        "text": "In what year did the initial discovery of penicillin occur?",
+        "options": ["1918", "1928", "1939", "1945"],
         "correctAnswerIndex": 1
       },
       {
-        "text": "What material contributed to the aqueducts' durability?",
-        "options": ["Roman concrete (pozzolana)", "Cast iron", "Bronze", "Marble"],
-        "correctAnswerIndex": 0
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "isCalibration": true,
-    "content": "Honey bees are complex social insects that live in highly organized colonies. A typical hive consists of three castes: the queen, the workers, and the drones. There is only one queen, and her sole responsibility is to lay eggs. Drones are male bees whose only purpose is to mate with a queen. The vast majority of the hive consists of worker bees, which are sterile females. They perform all the vital tasks necessary for the colony's survival, including foraging for nectar and pollen, nursing the young, guarding the hive, and building the hexagonal wax honeycombs. Bees communicate primarily through chemical scents called pheromones and a unique \"waggle dance\" used to indicate the location of food sources.",
-    "questions": [
-      {
-        "text": "How many queens are typically in a honey bee hive?",
-        "options": ["One", "Two", "Three", "It varies by season"],
-        "correctAnswerIndex": 0
-      },
-      {
-        "text": "What is the sole purpose of the drone bees?",
-        "options": ["To forage for food", "To guard the hive", "To mate with the queen", "To build honeycombs"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "Which bees perform the majority of the work in the hive?",
-        "options": ["The queens", "The drones", "The worker bees", "The larvae"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What shape are the wax honeycombs built by bees?",
-        "options": ["Square", "Circular", "Hexagonal", "Octagonal"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "How do bees communicate the location of food?",
-        "options": ["By buzzing loudly", "Through a \"waggle dance\"", "By changing color", "By flying in circles"],
-        "correctAnswerIndex": 1
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "isCalibration": true,
-    "content": "The invention of the mechanical movable type printing press by Johannes Gutenberg around 1440 initiated an information revolution in Europe. Prior to this, books were copied by hand, making them rare, expensive, and prone to human error. Gutenberg’s press utilized metal alloys that could melt easily and cool quickly to form durable, reusable type matrices. The resulting mass production of texts drastically lowered the cost of books and accelerated the spread of literacy and knowledge. This technological leap facilitated the Renaissance, the Scientific Revolution, and the Protestant Reformation, as ideas could now be disseminated across borders at an unprecedented speed, permanently altering the structure of human society.",
-    "questions": [
-      {
-        "text": "Who invented the mechanical movable type printing press?",
-        "options": ["Leonardo da Vinci", "Johannes Gutenberg", "Isaac Newton", "Galileo Galilei"],
+        "text": "Where was the laboratory located where penicillin was discovered?",
+        "options": ["Oxford University", "St. Mary's Hospital in London", "Cambridge Institute", "Edinburgh Royal Infirmary"],
         "correctAnswerIndex": 1
       },
       {
-        "text": "Around what year was the printing press invented?",
-        "options": ["1240", "1340", "1440", "1540"],
+        "text": "Which type of bacteria was in the contaminated petri dish?",
+        "options": ["Streptococcus", "E. coli", "Staphylococcus", "Salmonella"],
         "correctAnswerIndex": 2
       },
       {
-        "text": "How were books primarily produced before the printing press?",
-        "options": ["Woodblock printing", "Copied by hand", "Etched in stone", "Stamped on clay"],
+        "text": "What accidentally contaminated the petri dish?",
+        "options": ["A virus", "Mold", "Dust from the street", "Another type of bacteria"],
         "correctAnswerIndex": 1
       },
       {
-        "text": "What was an immediate consequence of the printing press?",
-        "options": ["Decreased literacy", "The cost of books dropped", "Books became heavier", "Paper became extinct"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Which historical movement was heavily facilitated by the printing press?",
-        "options": ["The Industrial Revolution", "The Bronze Age", "The Protestant Reformation", "The Crusades"],
-        "correctAnswerIndex": 2
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "isCalibration": true,
-    "content": "In physics, time dilation is a difference in the elapsed time measured by two clocks, resulting from their relative velocity to each other or their positions relative to a gravitational mass. A core principle of Albert Einstein’s theory of relativity, time dilation implies that time is not absolute but relative to the observer's frame of reference. For example, a clock moving at high speeds will tick slower compared to a stationary observer's clock. This effect becomes extreme as speeds approach the speed of light. Similarly, gravitational time dilation dictates that time passes slower closer to a massive object, meaning a clock on the surface of the Earth ticks slightly slower than a clock orbiting in space.",
-    "questions": [
-      {
-        "text": "What causes time dilation according to the text?",
-        "options": ["Magnetic fields and solar winds", "Relative velocity and gravitational mass", "Temperature and pressure", "The rotation of the Earth"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Whose theory introduced the concept of time dilation?",
-        "options": ["Isaac Newton", "Stephen Hawking", "Albert Einstein", "Niels Bohr"],
+        "text": "What did the mold do to the surrounding bacteria?",
+        "options": ["It caused them to multiply faster", "It changed their color", "It killed them", "It merged with them"],
         "correctAnswerIndex": 2
       },
       {
-        "text": "How does high speed affect a moving clock relative to a stationary observer?",
-        "options": ["It ticks faster", "It ticks slower", "It stops completely", "It ticks backwards"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "When does the velocity-based time dilation effect become extreme?",
-        "options": ["At the speed of sound", "At absolute zero", "Approaching the speed of light", "In a vacuum"],
+        "text": "What was the scientific name of the mold?",
+        "options": ["Aspergillus niger", "Staphylococcus aureus", "Penicillium notatum", "Bacillus subtilis"],
         "correctAnswerIndex": 2
       },
       {
-        "text": "Where does time pass slower due to gravity?",
-        "options": ["Far away from mass", "Closer to a massive object", "In orbit", "In deep space"],
+        "text": "Who figured out how to mass-produce penicillin?",
+        "options": ["Alexander Fleming alone", "Howard Florey and Ernst Chain", "Marie Curie", "Albert Einstein"],
         "correctAnswerIndex": 1
+      },
+      {
+        "text": "During which major global conflict did penicillin save countless lives?",
+        "options": ["World War I", "The Cold War", "World War II", "The Vietnam War"],
+        "correctAnswerIndex": 2
+      },
+      {
+        "text": "In what year was the Nobel Prize awarded for the discovery of penicillin?",
+        "options": ["1928", "1939", "1945", "1950"],
+        "correctAnswerIndex": 2
       }
     ]
   }

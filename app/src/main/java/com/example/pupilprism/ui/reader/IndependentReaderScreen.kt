@@ -1,6 +1,8 @@
 package com.example.pupilprism.ui.reader
 
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -11,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.*
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,15 +23,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.pupilprism.Config
 import com.example.pupilprism.data.db.PdfBookDao
 import com.example.pupilprism.data.db.UserStatsDao
 import com.example.pupilprism.data.model.PdfBook
 import com.example.pupilprism.data.model.ProgressDisplayMode
 import com.example.pupilprism.data.model.RSVPViewModel
+import com.example.pupilprism.data.model.ReadingTelemetry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IndependentReaderScreen(
@@ -156,60 +162,43 @@ fun IndependentReaderScreen(
                 contentAlignment = Alignment.Center
             ) {
                 if (uiState.isMultiWordMode) {
-                    val listState = rememberLazyListState(initialFirstVisibleItemIndex = maxOf(0, uiState.currentIndex - 2))
-
-                    // Automatically scroll context alongside the reading pace
-                    LaunchedEffect(uiState.currentIndex) {
-                        if (!uiState.isPaused) {
-                            listState.scrollToItem(maxOf(0, uiState.currentIndex - 2))
-                        }
-                    }
-
-                    // CHANGED: LazyRow is now LazyColumn
-                    LazyColumn(
-                        state = listState,
-                        modifier = Modifier.fillMaxSize(),
-                        // CHANGED: Padding is now vertical to allow space at the top and bottom
-                        contentPadding = PaddingValues(vertical = 120.dp),
-                        // CHANGED: Use verticalArrangement and horizontalAlignment
-                        verticalArrangement = Arrangement.spacedBy(24.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        items(uiState.words.size) { index ->
-                            val word = uiState.words[index]
-                            val isCurrent = index == uiState.currentIndex
-                            val alpha = if (isCurrent) 1f else 0.3f
-
-                            Text(
-                                text = word,
-                                fontSize = if (isCurrent) 56.sp else 36.sp,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha),
-                                fontWeight = if (isCurrent) FontWeight.Bold else FontWeight.Normal,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier.clickable {
-                                    // CHANGED: If playing, any tap pauses it. Jumps only happen when paused.
-                                    if (!uiState.isPaused) {
-                                        rsvpViewModel.togglePause()
-                                    } else if (isCurrent) {
-                                        rsvpViewModel.togglePause()
-                                    } else {
-                                        rsvpViewModel.jumpToIndex(index)
-                                    }
-                                }
-                            )
-                        }
-                    }
+                    ContextWords(
+                        words = uiState.words,
+                        currentIndex = uiState.currentIndex,
+                        isPaused = uiState.isPaused,
+                        isOrpEnabled = uiState.isOrpEnabled,
+                        isInteractive = !uiState.isControlsLocked,
+                        radius = uiState.contextRadius,
+                        onWordClick = { rsvpViewModel.jumpToIndex(it) },
+                        onTapWhilePlaying = { rsvpViewModel.togglePause() }
+                    )
 
                 } else {
-                    Text(
-                        text = uiState.currentWord,
-                        fontSize = 56.sp,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Medium,
-                        letterSpacing = 1.sp,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
+                    if (uiState.isOrpEnabled) {
+                        OrpWord(
+                            word = uiState.currentWord
+                                .removeSuffix(ReadingTelemetry.OZNAKA_PASUSA),
+                            style = LocalTextStyle.current.copy(
+                                fontSize = 56.sp,
+                                fontWeight = FontWeight.Medium,
+                                color = MaterialTheme.colorScheme.onSurface
+                            ),
+                            orpColor = MaterialTheme.colorScheme.primary,
+                            showGuides = true
+                        )
+                    } else {
+                        Text(
+                            text = uiState.currentWord
+                                .removeSuffix(ReadingTelemetry.OZNAKA_PASUSA),
+                            fontSize = 56.sp,
+                            textAlign = TextAlign.Center,
+                            fontWeight = FontWeight.Medium,
+                            letterSpacing = 1.sp,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
                 }
+
             }
 
             AnimatedVisibility(visible = uiState.isPaused, enter = fadeIn(), exit = fadeOut()) {
@@ -285,6 +274,30 @@ fun IndependentReaderScreen(
                                         }
                                     )
                                 }
+                                AnimatedVisibility(visible = uiState.isMultiWordMode) {
+                                    Column(modifier = Modifier.fillMaxWidth()) {
+                                        Text(
+                                            "Речи око текуће: ${uiState.contextRadius}",
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                        Slider(
+                                            value = uiState.contextRadius.toFloat(),
+                                            onValueChange = {
+                                                rsvpViewModel.setContextRadius(it.toInt())
+                                            },
+                                            onValueChangeFinished = {
+                                                prefs.edit()
+                                                    .putInt("context_radius", uiState.contextRadius)
+                                                    .apply()
+                                            },
+                                            valueRange = Config.KONTEKST_MIN.toFloat()..
+                                                    Config.KONTEKST_MAX.toFloat(),
+                                            steps = Config.KONTEKST_MAX - Config.KONTEKST_MIN - 1
+                                        )
+                                    }
+                                }
+
                             }
                         }
                     }

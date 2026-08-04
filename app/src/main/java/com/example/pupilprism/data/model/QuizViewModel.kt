@@ -3,7 +3,9 @@ package com.example.pupilprism.ui.reader
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pupilprism.data.db.AssessmentDao
+import com.example.pupilprism.data.model.AssessmentSession
 import com.example.pupilprism.data.model.ComprehensionQuestion
+import com.example.pupilprism.data.model.SessionTelemetryStore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,34 +24,60 @@ class QuizViewModel(private val assessmentDao: AssessmentDao) : ViewModel() {
 
     fun loadQuestions(materialId: String) {
         viewModelScope.launch {
-            // Load questions from DB for this material
             _questions.value = assessmentDao.getQuestionsForMaterial(materialId)
             _currentIndex.value = 0
             correctAnswersCount = 0
         }
     }
 
-    // Returns TRUE if the quiz is finished, FALSE if there are more questions
+    /** Враћа true ако је квиз завршен. */
     fun submitAnswer(selectedIndex: Int): Boolean {
-        val currentQuestion = _questions.value[_currentIndex.value]
+        val pitanje = _questions.value.getOrNull(_currentIndex.value) ?: return true
 
-        if (selectedIndex == currentQuestion.correctAnswerIndex) {
-            correctAnswersCount++
-        }
+        if (selectedIndex == pitanje.correctAnswerIndex) correctAnswersCount++
 
-        val isFinished = _currentIndex.value >= _questions.value.size - 1
-
-        if (isFinished) {
-            // Save results to DB / calculate score here
+        val gotovo = _currentIndex.value >= _questions.value.size - 1
+        return if (gotovo) {
             saveSessionResults()
-            return true
+            true
         } else {
             _currentIndex.value += 1
-            return false
+            false
         }
     }
 
     private fun saveSessionResults() {
-        // Implement logic to save the SessionData / Results to AssessmentDao
+        // Ако нема телеметрије, читање је било ван испитивања. Не уписујемо ништа.
+        val p = SessionTelemetryStore.take() ?: return
+
+        val ukupno = _questions.value.size
+        val tacnih = correctAnswersCount
+
+        val sesija = AssessmentSession(
+            timestamp = System.currentTimeMillis(),
+            materialId = p.materialId,
+            participantId = p.participantId,
+            condition = p.condition,
+            initialWpm = p.initialWpm,
+            finalWpm = p.finalWpm,
+            wpmChangeCount = p.wpmChangeCount,
+            activeReadingTimeMs = p.activeReadingTimeMs,
+            totalElapsedTimeMs = p.totalElapsedTimeMs,
+            wordsTotal = p.wordsTotal,
+            wordsConsumed = p.wordsConsumed,
+            effectiveWpm = AssessmentSession.computeWpm(
+                p.wordsConsumed, p.activeReadingTimeMs
+            ),
+            sessionWpm = AssessmentSession.computeWpm(
+                p.wordsConsumed, p.totalElapsedTimeMs
+            ),
+            alpha = p.alpha,
+            backtrackCount = p.backtrackCount,
+            correctAnswers = tacnih,
+            totalQuestions = ukupno,
+            algorithmVersion = "adaptive-v2"
+        )
+
+        viewModelScope.launch { assessmentDao.insertSession(sesija) }
     }
 }

@@ -36,4 +36,17 @@ interface AssessmentDao {
 
     @Query("SELECT * FROM reading_materials WHERE id = :materialId")
     suspend fun getMaterialById(materialId: String): ReadingMaterial?
+
+    @Query("SELECT id FROM reading_materials")
+    suspend fun getAllMaterialIds(): List<String>
+
+    @Query("DELETE FROM comprehension_questions WHERE materialId = :materialId")
+    suspend fun deleteQuestionsForMaterial(materialId: String)
+
+    @Query("DELETE FROM reading_materials WHERE id = :materialId")
+    suspend fun deleteMaterial(materialId: String)
+
+    @Query("SELECT COUNT(*) FROM comprehension_questions WHERE materialId = :materialId")
+    suspend fun countQuestionsForMaterial(materialId: String): Int
+
 }
