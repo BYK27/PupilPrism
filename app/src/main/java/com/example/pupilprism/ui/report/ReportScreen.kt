@@ -60,6 +60,44 @@ fun ReportScreen(report: ReportData, onZavrsi: () -> Unit) {
             }
         }
 
+        Spacer(Modifier.height(16.dp))
+
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Column(Modifier.padding(16.dp)) {
+                Red("Ukupno vraćanja na prethodnu reč", "${report.ukupnoVracanja}")
+                Red("Ukupno izmena brzine", "${report.ukupnoIzmenaBrzine}")
+            }
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Column(Modifier.padding(16.dp)) {
+                Text(
+                    "Pregled po tekstovima",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(Modifier.height(8.dp))
+                report.stages.forEachIndexed { index, stage ->
+                    Column(Modifier.padding(vertical = 6.dp)) {
+                        Text(
+                            "${index + 1}. " +
+                                    (if (stage.condition == "calibration") "Zaključana brzina" else "Slobodan tempo") +
+                                    " — ${stage.nominalWpm} WPM",
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Medium
+                        )
+                        Red("   Stvarno pročitano", "${stage.effectiveWpm} WPM")
+                        Red("   Tačnost", "${(stage.accuracy * 100).toInt()}% (${stage.correct}/${stage.total})")
+                        Red("   Vraćanja", "${stage.backtracks}")
+                        Red("   Izmene brzine", "${stage.wpmChanges}")
+                    }
+                    if (index < report.stages.size - 1) Divider(Modifier.padding(vertical = 4.dp))
+                }
+            }
+        }
+
         Spacer(Modifier.height(20.dp))
 
         OutlinedTextField(

@@ -38,9 +38,8 @@ class CalibrationViewModel(
     private val _uiState = MutableStateFlow(CalibrationFlowState())
     val uiState = _uiState.asStateFlow()
 
-    // CHANGED: The predefined testing speeds expanded to 8 stages
-    //val targetSpeeds = listOf(50, 100, 150, 200, 250, 300, 350, 400)
-    val targetSpeeds = listOf(10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000)
+    val targetSpeeds = listOf(50, 100, 150, 200, 250, 300, 350, 400)
+    //val targetSpeeds = listOf(10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000)
     private val stageResults = mutableListOf<StageResult>()
 
     init {

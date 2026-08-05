@@ -210,13 +210,15 @@ object PdfReportGenerator {
         val kolone = floatArrayOf(0f, 90f, 170f, 250f, 350f, 440f)
         var y = top
 
-        val naslovi = arrayOf("podešeno", "tačno", "tačnost", "stvarno", "vraćanja", "")
+        val naslovi = arrayOf("podešeno", "tačno", "tačnost", "stvarno", "vraćanja", "izmene")
+
         naslovi.forEachIndexed { i, t ->
             if (t.isNotEmpty()) c.drawText(t, MARGINA + kolone[i], y, zaglavljeP)
         }
         y += 6f
         linija(c, y)
         y += 14f
+
 
         r.stages.forEach { s ->
             val procenat = (s.accuracy * 100).toInt()
@@ -228,6 +230,7 @@ object PdfReportGenerator {
             c.drawText("$procenat %", MARGINA + kolone[2], y, p)
             c.drawText("${s.effectiveWpm} WPM", MARGINA + kolone[3], y, celijaP)
             c.drawText("${s.backtracks}", MARGINA + kolone[4], y, celijaP)
+            c.drawText("${s.wpmChanges}", MARGINA + kolone[5], y, celijaP)
             y += 15f
         }
         return y

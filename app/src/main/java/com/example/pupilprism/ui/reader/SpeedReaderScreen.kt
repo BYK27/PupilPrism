@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -84,7 +85,8 @@ fun SpeedReaderScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .clickable(enabled = !lockControls) { rsvpViewModel.togglePause() },
                 contentAlignment = Alignment.Center
             ) {
                 if (uiState.isOrpEnabled) {

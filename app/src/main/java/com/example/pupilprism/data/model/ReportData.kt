@@ -5,7 +5,9 @@ data class StageRow(
     val correct: Int,
     val total: Int,
     val effectiveWpm: Int,
-    val backtracks: Int
+    val backtracks: Int,
+    val wpmChanges: Int,
+    val condition: String
 ) {
     val accuracy: Float get() = if (total > 0) correct.toFloat() / total else 0f
 }

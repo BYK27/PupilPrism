@@ -22,7 +22,9 @@ object ReportBuilder {
                     correct = it.correctAnswers,
                     total = it.totalQuestions,
                     effectiveWpm = it.effectiveWpm.toInt(),
-                    backtracks = it.backtrackCount
+                    backtracks = it.backtrackCount,
+                    wpmChanges = it.wpmChangeCount,
+                    condition = it.condition
                 )
             }
 
