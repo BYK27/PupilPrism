@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.pupilprism.data.model.RSVPViewModel
 import com.example.pupilprism.ui.reader.CalibrationViewModel
 import com.example.pupilprism.ui.reader.QuizViewModel
+import com.example.pupilprism.ui.reader.SelfPacedViewModel
 
 object VMFactory {
     fun create(container: AppContainer): ViewModelProvider.Factory = viewModelFactory {
@@ -17,6 +18,12 @@ object VMFactory {
         }
         initializer {
             CalibrationViewModel(
+                container.database.assessmentDao(),
+                container.database.userStatsDao()
+            )
+        }
+        initializer {
+            SelfPacedViewModel(
                 container.database.assessmentDao(),
                 container.database.userStatsDao()
             )

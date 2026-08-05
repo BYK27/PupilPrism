@@ -23,10 +23,12 @@ import com.example.pupilprism.di.VMFactory
 import com.example.pupilprism.ui.library.AssessmentQuizScreen
 import com.example.pupilprism.ui.library.CalibrationFlowCoordinator
 import com.example.pupilprism.ui.library.LibraryScreen
+import com.example.pupilprism.ui.library.SelfPacedFlowCoordinator
 import com.example.pupilprism.ui.library.SettingsScreen
 import com.example.pupilprism.ui.reader.CalibrationViewModel
 import com.example.pupilprism.ui.reader.IndependentReaderScreen
 import com.example.pupilprism.ui.reader.QuizViewModel
+import com.example.pupilprism.ui.reader.SelfPacedViewModel
 import com.example.pupilprism.ui.reader.SpeedReaderScreen
 import com.example.pupilprism.ui.theme.SpeedReaderTheme
 import kotlinx.coroutines.launch
@@ -139,6 +141,33 @@ fun AppNavHost() {
             val materialId = entry.arguments?.getString("materialId") ?: ""
             val quizViewModel: QuizViewModel = viewModel(factory = factory)
             AssessmentQuizScreen(quizViewModel, materialId, navController)
+        }
+
+        composable("self_paced_flow") {
+            val selfPacedViewModel: SelfPacedViewModel = viewModel(factory = factory)
+            SelfPacedFlowCoordinator(selfPacedViewModel, navController)
+        }
+
+        composable("self_paced_reader/{materialId}/{wpm}") { entry ->
+            val materialId = entry.arguments?.getString("materialId") ?: ""
+            val wpm = entry.arguments?.getString("wpm")?.toIntOrNull() ?: 250
+
+            val rsvpViewModel: RSVPViewModel = viewModel(factory = factory)
+
+            SpeedReaderScreen(
+                pdfUri = Uri.EMPTY,
+                pdfName = "Assessment",
+                type = "db",
+                isCalibrationMode = true,
+                lockControls = false,
+                flowAnchorRoute = "self_paced_flow",
+                calibrationWpm = wpm,
+                pdfBookDao = pdfBookDao,
+                userStatsDao = userStatsDao,
+                navController = navController,
+                rsvpViewModel = rsvpViewModel,
+                materialId = materialId
+            )
         }
     }
 }

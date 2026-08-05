@@ -15,7 +15,7 @@ import java.util.Locale
 
 object PdfReportGenerator {
 
-    private const val SIRINA = 595
+    private const val SIRINA = 595   // A4 pri 72 tačke po inču
     private const val VISINA = 842
     private const val MARGINA = 48f
 
@@ -155,6 +155,7 @@ object PdfReportGenerator {
         })
     }
 
+    /** Tačnost po brzinama, sa pragom od 80 %. Vraća donju ivicu grafika. */
     private fun crtajGrafik(c: Canvas, r: ReportData, top: Float): Float {
         val visina = 150f
         val levo = MARGINA + 30f
@@ -209,7 +210,7 @@ object PdfReportGenerator {
         val kolone = floatArrayOf(0f, 90f, 170f, 250f, 350f, 440f)
         var y = top
 
-        val naslovi = arrayOf("podešeno", "tačno", "tačnost", "stvarno", "")
+        val naslovi = arrayOf("podešeno", "tačno", "tačnost", "stvarno", "vraćanja", "")
         naslovi.forEachIndexed { i, t ->
             if (t.isNotEmpty()) c.drawText(t, MARGINA + kolone[i], y, zaglavljeP)
         }
@@ -226,6 +227,7 @@ object PdfReportGenerator {
             c.drawText("${s.correct}/${s.total}", MARGINA + kolone[1], y, p)
             c.drawText("$procenat %", MARGINA + kolone[2], y, p)
             c.drawText("${s.effectiveWpm} WPM", MARGINA + kolone[3], y, celijaP)
+            c.drawText("${s.backtracks}", MARGINA + kolone[4], y, celijaP)
             y += 15f
         }
         return y

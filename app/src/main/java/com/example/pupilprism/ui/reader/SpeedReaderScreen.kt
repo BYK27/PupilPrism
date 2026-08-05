@@ -35,23 +35,22 @@ fun SpeedReaderScreen(
     userStatsDao: UserStatsDao,
     navController: NavHostController,
     rsvpViewModel: RSVPViewModel,
-    materialId: String? = null
+    materialId: String? = null,
+    lockControls: Boolean = isCalibrationMode,
+    flowAnchorRoute: String = "calibration_flow"
 ) {
     val uiState by rsvpViewModel.uiState.collectAsState()
 
-    // 1. Fetch the text from the DB when the screen loads
     LaunchedEffect(materialId) {
         if (isCalibrationMode && materialId != null) {
-            rsvpViewModel.loadMaterialFromDb(materialId, calibrationWpm, true)
+            rsvpViewModel.loadMaterialFromDb(materialId, calibrationWpm, lockControls)
         }
     }
 
-    // 2. Automatically navigate to Quiz if calibration mode text is finished
     LaunchedEffect(uiState.isFinished) {
         if (isCalibrationMode && uiState.isFinished && materialId != null) {
             navController.navigate("quiz/$materialId") {
-                // Safely clear the reader off the stack by anchoring to the coordinator
-                popUpTo("calibration_flow") { inclusive = false }
+                popUpTo(flowAnchorRoute) { inclusive = false }
             }
         }
     }
@@ -74,7 +73,6 @@ fun SpeedReaderScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            // Minimalist Progress Bar replacing the percentage text
             LinearProgressIndicator(
                 progress = uiState.progressPercentage,
                 modifier = Modifier.fillMaxWidth().height(4.dp),
@@ -127,7 +125,7 @@ fun SpeedReaderScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
 
-                        if (isCalibrationMode) {
+                        if (lockControls) {
                             Surface(
                                 color = MaterialTheme.colorScheme.errorContainer,
                                 shape = MaterialTheme.shapes.small,
@@ -144,13 +142,13 @@ fun SpeedReaderScreen(
                             Row(
                                 horizontalArrangement = Arrangement.SpaceEvenly,
                                 verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(bottom = 24.dp)
+                                modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp)
                             ) {
+                                IconButton(onClick = { rsvpViewModel.backtrack() }) { Text("◀", fontSize = 20.sp) }
                                 IconButton(onClick = { rsvpViewModel.changeWpm(-10) }) { Text("-", fontSize = 24.sp) }
                                 Text("${uiState.wpm} WPM", style = MaterialTheme.typography.headlineSmall, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
                                 IconButton(onClick = { rsvpViewModel.changeWpm(10) }) { Text("+", fontSize = 24.sp) }
+                                IconButton(onClick = { rsvpViewModel.forward() }) { Text("▶", fontSize = 20.sp) }
                             }
                         }
 

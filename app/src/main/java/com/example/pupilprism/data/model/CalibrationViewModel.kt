@@ -34,8 +34,6 @@ class CalibrationViewModel(
 
     var runId: String = ""
         private set
-    private val _report = MutableStateFlow<ReportData?>(null)
-    val report: StateFlow<ReportData?> = _report.asStateFlow()
 
     private val _uiState = MutableStateFlow(CalibrationFlowState())
     val uiState = _uiState.asStateFlow()
@@ -106,9 +104,6 @@ class CalibrationViewModel(
                     finalCalculatedWpm = optimal,
                 )
             }
-
-            _report.value = ReportBuilder.build(assessmentDao, runId, optimal)
-
         }
     }
 }
