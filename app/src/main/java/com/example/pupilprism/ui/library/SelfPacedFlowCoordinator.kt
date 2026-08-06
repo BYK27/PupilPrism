@@ -78,7 +78,13 @@ fun SelfPacedFlowCoordinator(
                         text = "Self-Paced Reading",
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(bottom = 32.dp)
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    Text(
+                        text = currentMaterial.title,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(bottom = 24.dp)
                     )
                     Card(
                         modifier = Modifier.fillMaxWidth(),

@@ -1,395 +1,346 @@
 [
   {
-    "id": 1,
+    "id": "sr_human_rights",
+    "title": "Univerzalna deklaracija o ljudskim pravima – Uvod",
     "isCalibration": true,
-    "content": "Tea is one of the oldest and most popular beverages in the world, second only to water. It originated in ancient China, where it was initially used for medicinal purposes. Legend says that Emperor Shen Nong discovered tea in 2737 BCE when leaves from a wild tree blew into his pot of boiling water. Over centuries, tea drinking spread to Japan, brought by Buddhist monks who used it to stay awake during meditation. Eventually, the Dutch East India Company introduced it to Europe in the 17th century. Today, there are many varieties of tea, including green, black, white, and oolong, but they all come from the same plant, Camellia sinensis. The differences in flavor and color depend entirely on how the leaves are processed and oxidized after harvesting. Green tea is unoxidized, preserving its grassy flavor, while black tea is fully oxidized, giving it a robust, dark profile. Tea is also celebrated globally for its health benefits, particularly its high concentration of antioxidants called catechins.",
+    "difficultyLevel": 3,
+    "content": "Univerzalna deklaracija o ljudskim pravima - Uvod\n\nPošto je priznavanje urođenog dostojanstva i jednakih i neotuđivih prava svih članova ljudske porodice temelj slobode, pravde i mira u svetu;\npošto je nepoštovanje i preziranje ljudskih prava vodilo varvarskim postupcima, koji su vređali savest čovečanstva, i pošto je stvaranje sveta u kojem će ljudska bića uživati slobodu govora i ubeđenja i biti slobodna od straha i nestašice proglašeno kao najviša težnja svakog čoveka;\npošto je bitno da ljudska prava budu zaštićena pravnim poretkom kako čovek ne bi bio primoran da kao krajnjem izlazu pribegne pobuni protiv tiranije i ugnjetavanja;\npošto je bitno da se podstiče razvoj prijateljskih odnosa među narodima;\npošto su narodi Ujedinjenih nacija u Povelji ponovo proglasili svoju veru u osnovna ljudska prava, u dostojanstvo i vrednost čovekove ličnosti i ravnopravnost muškaraca i žena i odlučili da podstiču društveni napredak i poboljšaju uslove života u većoj slobodi;\npošto su se države članice obavezale da u saradnji s Ujedinjenim nacijama obezbede opšte poštovanje i primenu ljudskih prava i osnovnih sloboda;\npošto je opšte shvatanje ovih prava i sloboda od najveće važnosti za puno ostvarenje ove obaveze;\nSada, i stoga, Generalna skupština proglašava ovu Univerzalnu deklaraciju o ljudskim pravima kao zajednički standard koji treba da postignu svi narodi i sve nacije da bi svaki pojedinac i svaki organ društva, imajući ovu Deklaraciju stalno na umu, težio da učenjem i vaspitavanjem doprinese poštovanju ovih prava i sloboda i da postupnim unutrašnjim i međunarodnim merama obezbedi njihovo opšte i stvarno priznanje i poštovanje kako među narodima samih država članica, tako i među narodima onih teritorija koje su pod njihovom upravom.",
     "questions": [
       {
-        "text": "Where did tea originate?",
-        "options": ["Japan", "India", "China", "Europe"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What was tea initially used for?",
-        "options": ["Currency", "Medicinal purposes", "Religious ceremonies", "Dyeing clothes"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Who is said to have discovered tea?",
-        "options": ["Emperor Shen Nong", "Marco Polo", "Confucius", "Emperor Meiji"],
-        "correctAnswerIndex": 0
-      },
-      {
-        "text": "In what year does the legend say tea was discovered?",
-        "options": ["1440 CE", "2737 BCE", "1000 BCE", "17th Century"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Who brought tea to Japan?",
-        "options": ["European merchants", "Chinese emperors", "Buddhist monks", "The Dutch East India Company"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "Which company introduced tea to Europe?",
-        "options": ["The British Tea Corporation", "The Dutch East India Company", "The Silk Road Merchants", "The Spanish Armada"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Which plant do all traditional teas come from?",
-        "options": ["Mentha spicata", "Camellia sinensis", "Coffea arabica", "Matricaria chamomilla"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What determines the different flavors of tea?",
-        "options": ["The soil type", "The type of plant", "The processing and oxidation", "The boiling water temperature"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "Which type of tea is fully oxidized?",
-        "options": ["Green tea", "White tea", "Oolong tea", "Black tea"],
+        "text": "Koji aspekti se smatraju temeljem slobode, pravde i mira u svetu?",
+        "options": [
+          "Prepoznavanje potrebe da se svako ljudsko biće podučava jednakim pravima.",
+          "Priznavanje jednakosti svih ljudi.",
+          "Priznavanje činjenice da svaka osoba ima isto pravo na život.",
+          "Priznavanje dostojanstva i jednakih prava svim ljudskim bićima."
+        ],
         "correctAnswerIndex": 3
       },
       {
-        "text": "What are the specific antioxidants found in tea called?",
-        "options": ["Vitamins", "Catechins", "Caffeine", "Melatonin"],
-        "correctAnswerIndex": 1
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "isCalibration": true,
-    "content": "The solar system consists of our star, the Sun, and everything bound to it by gravity. The Sun is incredibly massive, containing 99.8% of the solar system's total mass. The system includes eight planets, dozens of moons, and millions of asteroids, comets, and meteoroids. The planets are divided into two main categories: the inner, rocky planets (Mercury, Venus, Earth, and Mars) and the outer giants. The asteroid belt, a region filled with rocky debris, separates these two groups. The outer planets are further divided into gas giants (Jupiter and Saturn), made mostly of hydrogen and helium, and ice giants (Uranus and Neptune), containing water, ammonia, and methane. Jupiter is the largest planet, so massive that more than 1,300 Earths could fit inside it. Beyond Neptune lies the Kuiper Belt, home to dwarf planets like Pluto. Despite its vast size, the solar system is just a tiny drop in the ocean of the Milky Way galaxy.",
-    "questions": [
+        "text": "Šta se smatra najvećom težnjom čovečanstva?",
+        "options": [
+          "Živeti život mira, kao i život bez kriza.",
+          "Živeti u svetu jednakosti među rodovima.",
+          "Živeti život sa slobodom govora, bez straha i nestašice.",
+          "Živeti u svetu slobode i radosti za celo čovečanstvo."
+        ],
+        "correctAnswerIndex": 2
+      },
       {
-        "text": "How much of the solar system's total mass does the Sun contain?",
-        "options": ["50%", "75.5%", "90%", "99.8%"],
+        "text": "Koja je svrha Univerzalne deklaracije o ljudskim pravima?",
+        "options": [
+          "Naglašavanje univerzalne standardizacije obrazovanja.",
+          "Uspostavljanje jednakih ekonomskih mogućnosti radi osiguravanja pravde i mira.",
+          "Podsticanje društvenog napretka radi postizanja boljeg životnog standarda.",
+          "Postavljanje standarda postignuća za omogućavanje slobode, pravde i mira."
+        ],
         "correctAnswerIndex": 3
       },
       {
-        "text": "How many planets are in the solar system?",
-        "options": ["Seven", "Eight", "Nine", "Ten"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What force binds the solar system together?",
-        "options": ["Magnetic fields", "Dark matter", "Gravity", "Solar wind"],
+        "text": "Kako je Povelja Ujedinjenih nacija povezana sa Deklaracijom o ljudskim pravima?",
+        "options": [
+          "Povelja postavlja standard za promovisanje ljudskih prava.",
+          "Povelja služi kao vodič u obrazovanju o ljudskim pravima u nastavnim planovima i programima.",
+          "Povelja potvrđuje zajedničko verovanje u ljudska prava među državama članicama.",
+          "Povelja služi kao istorijska preteča Deklaracije o ljudskim pravima."
+        ],
         "correctAnswerIndex": 2
       },
       {
-        "text": "Which of these is classified as an inner rocky planet?",
-        "options": ["Mars", "Jupiter", "Saturn", "Neptune"],
-        "correctAnswerIndex": 0
-      },
-      {
-        "text": "What separates the rocky planets from the outer giants?",
-        "options": ["The Oort Cloud", "The Asteroid Belt", "The Kuiper Belt", "The Sun's corona"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What are gas giants primarily composed of?",
-        "options": ["Iron and nickel", "Water and ammonia", "Hydrogen and helium", "Carbon dioxide and methane"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "Which two planets are known as ice giants?",
-        "options": ["Jupiter and Saturn", "Mercury and Venus", "Earth and Mars", "Uranus and Neptune"],
+        "text": "Koja je osnovna ideja koja je iznesena u Univerzalnoj deklaraciji o ljudskim pravima?",
+        "options": [
+          "Prepoznavanje važnosti obrazovanja i zaštite svih pojedinaca.",
+          "Promovisanje pravednog upravljanja u obezbeđivanju jednakog tretmana svih građana.",
+          "Promovisanje kulturne raznolikosti i jednakosti kroz obrazovanje za sva ljudska bića.",
+          "Priznavanje urođenog dostojanstva i jednakih prava svih ljudi."
+        ],
         "correctAnswerIndex": 3
       },
       {
-        "text": "Which is the largest planet in the solar system?",
-        "options": ["Saturn", "Jupiter", "Neptune", "Earth"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Approximately how many Earths could fit inside Jupiter?",
-        "options": ["100", "500", "1,300", "5,000"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "Where is the dwarf planet Pluto located?",
-        "options": ["The Asteroid Belt", "The Kuiper Belt", "Between Earth and Mars", "The Oort Cloud"],
-        "correctAnswerIndex": 1
+        "text": "Zašto je ovaj tekst koristan kao uvod Deklaracije o ljudskim pravima?",
+        "options": [
+          "Predstavlja uvod u istorijski kontekst Deklaracije.",
+          "Opravdava nametanje određenih kulturnih vrednosti različitim društvima.",
+          "Tekst je filozofsko promišljanje o prirodi čovečanstva.",
+          "Pojašnjava svrhu i područja primene dokumenta."
+        ],
+        "correctAnswerIndex": 3
       }
     ]
   },
   {
-    "id": 3,
+    "id": "sr_caveman",
+    "title": "Otkriven tamnoputi, plavooki pećinski čovek",
     "isCalibration": true,
-    "content": "Ocean tides are the rise and fall of sea levels caused by the combined effects of the gravitational forces exerted by the Moon and the Sun, and the rotation of the Earth. While the Sun is much larger, the Moon has a greater influence on the tides because it is significantly closer to our planet. When the gravitational pull of the Moon acts on the Earth, it creates a bulge in the ocean's water nearest to the Moon. Another bulge occurs on the exact opposite side of the Earth due to inertial forces. Most coastal areas experience two high tides and two low tides every lunar day, which is roughly 24 hours and 50 minutes long. When the Earth, Moon, and Sun align, their combined gravity creates exceptionally high tides known as spring tides. Conversely, when the Sun and Moon are at right angles to each other, they produce weaker tides called neap tides. The highest tides in the world occur in Canada's Bay of Fundy, reaching up to 16 meters.",
+    "difficultyLevel": 2,
+    "content": "Otkriven tamnoputi, plavooki pećinski čovek\n\nDNK uzeta iz umnjaka evropskog lovca-sakupljača dala je naučnicima dosada nezabeležen uvid u moderne ljude pre razvoja poljoprivrede. Mezolitski čovek, koji je živeo u Španiji pre oko 7.000 godina, imao je neobičnu mešavinu plavih očiju, crne ili smeđe kose i tamne kože, sudeći prema analizi njegovog genskog sastava. Izgleda da je bio netolerantan na laktozu i imao teškoće da vari skrobnu hranu u odnosu na farmere koji su transformisali ishranu i stil života kada su se dohvatili oruđa u prvoj poljoprivrednoj revoluciji.  \n\nDolazak poljoprivrede doveo je ljude i životinje u mnogo bliži kontakt, a ljudi su time verovatno razvili otpornije imune sisteme da bi se odbranili od infekcija čiji su prenosnici bile životinje. Ali naučnici su možda precenili uticaj koji je poljoprivreda imala na oblikovanje ljudskog imunog sistema, jer su ispitivanja DNK lovaca-sakupljača pokazala da su oni već nosili mutaciju koja osnažuje imuni sistem kako bi se uhvatio ukoštac sa različitim opakim uzročnicima bolesti. Neke od tih mutacija i danas su prisutne kod savremenih Evropljana. „Pre nego što smo započeli ovaj posao, imao sam neke ideje o tome šta bismo mogli otkriti“, rekao je Karlos Lalueza-Foks, vođa istraživanja Instituta za evolucijsku biologiju u Barseloni. „Većina tih ideja ispostavila se kao sasvim pogrešna.“ \n\nŠpanski tim započeo je rad pošto je grupa speleologa natrčala na dva skeleta u dubokoj i kompleksnoj pećinskoj mreži visoko u Kantabrijskim planinama na severozapadu Španije, 2006. godine. Ljudski ostaci, koji su pripadali dvojici muškaraca u ranim tridesetim, bili su izuzetno dobro očuvani zbog hladnoće u pećini. Testiranje radioaktivnim ugljenikom označilo je ostatke kao 7.000 godina stare, pre nego što se poljoprivreda proširila Evropom sa Bliskog istoka. Datiranje se poklapa sa drevnim artefaktima pronađenim na istom nalazištu, uključujući i probušene zube irvasa nanizane i obešene na ljudskoj odeći. \n\nOsim što ovo ima naučni uticaj, umetnici bi mogli da preispitaju svoje crteže ljudi. „Često viđate rekonstrukcije ovih ljudi kako love i sakupljaju hranu, a izgledaju kao moderni Evropljani svetle kože. Nikada ne vidite rekonstrukciju mezolitskog lovca-sakupljača tamne kože i plavih očiju“, rekao je Lalueza-Foks. Španski tim je zatim uporedio genom lovca-sakupljača sa genomima modernih Evropljana iz različitih regiona kako bi utvrdio moguće srodnosti. Otkrili su da drevna DNK najviše odgovara genetskom sastavu ljudi koji danas žive u severnoj Evropi, naročito u Švedskoj i Finskoj.",
     "questions": [
       {
-        "text": "What primarily causes ocean tides?",
-        "options": ["Wind currents", "Gravitational forces", "Earthquakes", "Temperature changes"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Which celestial body has the greatest influence on Earth's tides?",
-        "options": ["The Sun", "Mars", "The Moon", "Venus"],
+        "text": "Gde je živeo mezolitski čovek?",
+        "options": [
+          "Na evropskim farmama.",
+          "Naučnici su suzili izbor na 7000 mogućih lokacija.",
+          "U Španiji.",
+          "U Africi."
+        ],
         "correctAnswerIndex": 2
       },
       {
-        "text": "Why does the Moon have a stronger tidal effect than the Sun?",
-        "options": ["It is denser", "It is closer to Earth", "It rotates faster", "It reflects more light"],
-        "correctAnswerIndex": 1
+        "text": "Ko je otkrio dva mezolitska kostura?",
+        "options": [
+          "Španski naučnici.",
+          "Grupa planinara.",
+          "Grupa speleologa.",
+          "Španski farmeri."
+        ],
+        "correctAnswerIndex": 2
       },
       {
-        "text": "What causes the secondary bulge of water on the opposite side of the Earth?",
-        "options": ["Inertial forces", "Solar winds", "Magnetic fields", "Ocean currents"],
+        "text": "Šta nam testiranje radioaktivnim ugljenikom govori o skeletima?",
+        "options": [
+          "Bili su iz vremena pre pojave poljoprivrede u Evropi.",
+          "Pripadali su muškarcima u ranim tridesetim godinama.",
+          "Pripadali su muškarcima koji su došli u Evropu sa Bliskog istoka.",
+          "Bili su iz perioda Srednjeg veka."
+        ],
         "correctAnswerIndex": 0
       },
       {
-        "text": "How many high tides do most coastal areas experience in a lunar day?",
-        "options": ["One", "Two", "Three", "Four"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "How long is a standard lunar day?",
-        "options": ["24 hours", "24 hours and 50 minutes", "12 hours", "28 days"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What are exceptionally high tides called when the Earth, Moon, and Sun align?",
-        "options": ["Neap tides", "Red tides", "Spring tides", "Tsunami tides"],
+        "text": "Šta se može zaključiti o mezolitskim pećinskim ljudima na osnovu predmeta pronađenih u pećini?",
+        "options": [
+          "Njihova kultura je pridavala značaj čuvanju tela u pećinama.",
+          "Lovili su sa sofisticiranim oružjem.",
+          "Imali su pristup irvasima.",
+          "Nisu nosili odeću."
+        ],
         "correctAnswerIndex": 2
       },
       {
-        "text": "What type of tides occur when the Sun and Moon are at right angles?",
-        "options": ["Spring tides", "Neap tides", "Inertial tides", "Lunar tides"],
-        "correctAnswerIndex": 1
+        "text": "Šta su naučnici pretpostavljali o imunom sistemu lovaca-sakupljača pre testova DNK iz ove studije?",
+        "options": [
+          "Evropljani su imali jači imuni sistem od drugih populacija.",
+          "Mezolitski lovci-sakupljači su imali veoma otporan imuni sistem.",
+          "Bio je veoma sličan imunom sistemu neandertalaca.",
+          "Pronalazak poljoprivrede je imao značajan uticaj na razvoj ljudskog imunog sistema."
+        ],
+        "correctAnswerIndex": 3
       },
       {
-        "text": "Where do the highest tides in the world occur?",
-        "options": ["The Mariana Trench", "The Mediterranean Sea", "Canada's Bay of Fundy", "The Gulf of Mexico"],
-        "correctAnswerIndex": 2
+        "text": "Kako ovaj nalaz utiče na način na koji umetnici treba da prikazuju mezolitske lovce-sakupljače?",
+        "options": [
+          "Trebalo bi više uključivati žene pri prikazivanju mezolitskih društava.",
+          "Trebalo bi da koriste savremene ljude iz Švedske i Finske kao modele.",
+          "Trebalo bi da crtaju mezolitske lovce-sakupljače svetle kože.",
+          "Trebalo bi da crtaju mezolitske lovce-sakupljače sa tamnom kožom i plavim očima."
+        ],
+        "correctAnswerIndex": 3
       }
     ]
   },
   {
-    "id": 4,
+    "id": "sr_alchemist",
+    "title": "Alhemičar – Prvi deo",
     "isCalibration": true,
-    "content": "The deep ocean is one of the least explored environments on Earth, divided into several distinct depth layers. The uppermost layer, the Epipelagic zone, receives enough sunlight for marine plants to perform photosynthesis. However, below 1,000 meters lies the Bathypelagic zone, often called the midnight zone, which is entirely devoid of sunlight. In this pitch-black environment, many marine creatures have evolved bioluminescence, the biological ability to produce their own light, primarily to attract prey or communicate with mates. The water pressure at these depths is crushing, reaching hundreds of times the atmospheric pressure found at the surface. In 1977, scientists made a groundbreaking discovery: hydrothermal vents on the ocean floor. These volcanic vents spew mineral-rich, superheated water. Instead of relying on sunlight, the ecosystems around these vents depend on chemosynthesis. Specialized bacteria convert toxic hydrogen sulfide from the vents into usable energy, forming the base of a unique food web that supports bizarre creatures like giant tube worms and blind shrimp.",
+    "difficultyLevel": 1,
+    "content": "Alhemičar - Prvi deo\n\nMladić se zvao Santjago. Počela je da pada noć kada je sa svojim stadom stigao do jedne stare napuštene crkve. Njen krov se odavno obrušio, a jedna ogromna egipatska smokva izrasla je na mestu gde je nekada bila crkvena riznica. \nOdlučio je da tu provede noć. Uterao je sve ovce kroz ruševna vrata, a zatim je naslonio nekoliko dasaka kako mu ovce ne bi pobegle tokom noći. Nije bilo vukova u tom kraju, ali ponekad se dešavalo da mu tokom noći neka od životinja pobegne i on bi onda proveo čitav naredni dan tražeći zalutalu ovcu. \nNa tle je prostro svoj ogrtač i legao, dok mu je knjiga koju je upravo pročitao poslužila kao uzglavlje. Prisetio se pre nego što će zaspati da bi trebalo da počne da čita deblje knjige: duže bi trajalo čitanje, a i noću bi mu bolje poslužile kao uzglavlje. \nJoš uvek je bilo mračno kada se probudio. Pogledao je naviše i video svetlost zvezda kroz polusrušen krov. \nHteo sam da spavam malo duže, pomisli on. Ponovo je usnio isti san kao prošle nedelje i opet se probudio pre njegovog kraja. \nUstao je i popio gutljaj vina. Zatim je uzeo štap i počeo da budi ovce koje su još spavale. Već je bio primetio da bi većina ovaca počela da se budi čim bi se on probudio. Kao da je postojala neka tajanstvena energija koja je povezivala njegov život sa životima tih ovaca s kojima je već dve godine lutao zemljom u potrazi za vodom i hranom. „Toliko su se već navikle na mene da poznaju moj raspored“, reče on tiho. Onda se malo zamisli i dođe do zaključka da bi moglo da bude i suprotno: da je upravo on taj koji se navikao na njihovu satnicu. \nIpak, bilo je još nekih ovaca koje su se duže budile. Mladić je uz pomoć štapa budio jednu po jednu, dozivajući ih po imenu. Uvek je verovao da su ovce u stanju da razumeju to što im on govori. Zbog toga je imao običaj da im ponekad čita delove knjiga koji su ga najviše impresionirali, ili im je pričao o usamljenosti i radosti jednog pastira u polju, ili je naglas komentarisao najnovije dogodovštine u gradovima kroz koje su prolazili.\nPoslednja dva dana, međutim, najradije je pričao o jednoj temi: o devojci, kćeri jednog trgovca, koja je živela u gradu u koji je trebalo da stignu za četiri dana. Samo je jednom bio tamo, prethodne godine. Trgovac je imao radnju s tekstilom i uvek je voleo da lično prisustvuje šišanju ovaca da bi izbegao bilo kakvu prevaru. Neki prijatelj mu je pokazao tu radnju i pastir je tamo oterao svoje ovce.",
     "questions": [
       {
-        "text": "Which ocean zone receives enough sunlight for photosynthesis?",
-        "options": ["The Bathypelagic zone", "The Midnight zone", "The Epipelagic zone", "The Abyssal zone"],
+        "text": "Zašto je mladić hteo da čita deblje knjige?",
+        "options": [
+          "Kako bi više naučio o životinjama.",
+          "Jer bi pomoću njih mogao čistiti pod.",
+          "Jer su one bolje služile kao uzglavlje.",
+          "Kako bi zadivio trgovčevu kćer."
+        ],
         "correctAnswerIndex": 2
       },
       {
-        "text": "At what depth does the midnight zone begin?",
-        "options": ["100 meters", "500 meters", "1,000 meters", "5,000 meters"],
-        "correctAnswerIndex": 2
+        "text": "Šta je mladić video kada se probudio?",
+        "options": [
+          "Stablo egipatske smokve.",
+          "Pticu kako sedi na drvetu.",
+          "Krov.",
+          "Zvezde."
+        ],
+        "correctAnswerIndex": 3
       },
       {
-        "text": "What is the scientific name for the midnight zone?",
-        "options": ["Epipelagic zone", "Bathypelagic zone", "Mesopelagic zone", "Trench zone"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What is the ability of deep-sea creatures to produce their own light called?",
-        "options": ["Chemosynthesis", "Photosynthesis", "Bioluminescence", "Fluorescence"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What is one main reason deep-sea creatures use bioluminescence?",
-        "options": ["To heat the water", "To attract prey or mates", "To navigate using echoes", "To scare away submarines"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "When were hydrothermal vents discovered on the ocean floor?",
-        "options": ["1890", "1912", "1977", "2005"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What do hydrothermal vents spew into the ocean?",
-        "options": ["Liquid nitrogen", "Mineral-rich, superheated water", "Fresh drinking water", "Melted plastic"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What process do vent ecosystems rely on instead of photosynthesis?",
-        "options": ["Thermosynthesis", "Bioluminescence", "Chemosynthesis", "Geosynthesis"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What toxic chemical do specialized bacteria convert into usable energy?",
-        "options": ["Hydrogen sulfide", "Carbon monoxide", "Helium gas", "Nitrous oxide"],
+        "text": "Zašto je mladić zagradio ulaz?",
+        "options": [
+          "Hteo je zadržati ovce unutra.",
+          "Da vukovi ne bi napali ovce.",
+          "Nije hteo da mu lopovi ukradu ovce.",
+          "Da trgovac ne bi uhvatio i ošišao ovce."
+        ],
         "correctAnswerIndex": 0
       },
       {
-        "text": "Which creature is explicitly mentioned as living near hydrothermal vents?",
-        "options": ["Great white sharks", "Dolphins", "Giant tube worms", "Sea turtles"],
+        "text": "Gde je mladić spavao?",
+        "options": [
+          "U šatoru.",
+          "U crkvi.",
+          "U polju.",
+          "U šupi."
+        ],
+        "correctAnswerIndex": 1
+      },
+      {
+        "text": "Kakav je bio odnos stada ovaca prema mladiću?",
+        "options": [
+          "Ovce su iscrpljivale mladića.",
+          "Ovce su se bojale mladića.",
+          "Ovce su mladića smatrale svojim gospodarem.",
+          "Ovce su imale prijateljski odnos s mladićem."
+        ],
+        "correctAnswerIndex": 3
+      },
+      {
+        "text": "Koji je sledeći cilj mladić sebi postavio?",
+        "options": [
+          "Želeo je da ode u selo i ošiša ovce.",
+          "Želeo je da probudi ovce i potraži vodu i hranu.",
+          "Želeo je da ode u selo i vidi trgovčevu kćer.",
+          "Želeo je da probudi ovce i razgovara s njima."
+        ],
         "correctAnswerIndex": 2
       }
     ]
   },
   {
-    "id": 5,
-    "isCalibration": true,
-    "content": "Penicillin, the world's first true antibiotic, was discovered entirely by accident. In September 1928, Scottish bacteriologist Alexander Fleming returned from a vacation to his messy laboratory at St. Mary's Hospital in London. While inspecting his equipment, he noticed that a petri dish containing Staphylococcus bacteria had been contaminated with a strange mold. Remarkably, the area immediately surrounding the mold was completely clear of bacteria, indicating that the mold was secreting a liquid substance that killed the dangerous pathogens. Fleming identified the mold as Penicillium notatum and named the active germ-killing substance penicillin. However, Fleming struggled to stabilize the drug. It wasn't until a decade later, in 1939, that scientists Howard Florey and Ernst Chain figured out how to isolate, purify, and mass-produce the antibiotic. Penicillin revolutionized modern medicine, saving countless lives during World War II by treating infected wounds that would have otherwise been fatal. For their groundbreaking work, Fleming, Florey, and Chain shared the Nobel Prize in Physiology or Medicine in 1945.",
-    "questions": [
-      {
-        "text": "Who discovered the first true antibiotic?",
-        "options": ["Howard Florey", "Alexander Fleming", "Ernst Chain", "Louis Pasteur"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "In what year did the initial discovery of penicillin occur?",
-        "options": ["1918", "1928", "1939", "1945"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Where was the laboratory located where penicillin was discovered?",
-        "options": ["Oxford University", "St. Mary's Hospital in London", "Cambridge Institute", "Edinburgh Royal Infirmary"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Which type of bacteria was in the contaminated petri dish?",
-        "options": ["Streptococcus", "E. coli", "Staphylococcus", "Salmonella"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What accidentally contaminated the petri dish?",
-        "options": ["A virus", "Mold", "Dust from the street", "Another type of bacteria"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What did the mold do to the surrounding bacteria?",
-        "options": ["It caused them to multiply faster", "It changed their color", "It killed them", "It merged with them"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What was the scientific name of the mold?",
-        "options": ["Aspergillus niger", "Staphylococcus aureus", "Penicillium notatum", "Bacillus subtilis"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "Who figured out how to mass-produce penicillin?",
-        "options": ["Alexander Fleming alone", "Howard Florey and Ernst Chain", "Marie Curie", "Albert Einstein"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "During which major global conflict did penicillin save countless lives?",
-        "options": ["World War I", "The Cold War", "World War II", "The Vietnam War"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "In what year was the Nobel Prize awarded for the discovery of penicillin?",
-        "options": ["1928", "1939", "1945", "1950"],
-        "correctAnswerIndex": 2
-      }
-    ]
-  },
-  {
-    "id": 6,
+    "id": "sr_pisa_milk",
+    "title": "Kravlje mleko – dva teksta o ishrani",
     "isCalibration": false,
-    "content": "After World War I, many Australian veterans were given land by the government to farm wheat in the harsh environment of Western Australia. However, the onset of the Great Depression in 1929 caused wheat prices to plummet, leaving the farmers in a precarious financial situation. To make matters worse, in 1932, an estimated 20,000 emus migrated inland in search of food and water after their breeding season. Emus are large, flightless birds native to Australia, capable of running at speeds up to 50 kilometers per hour. They discovered the newly cultivated wheat fields and found them to be excellent habitats, causing massive destruction to the crops. Furthermore, the birds destroyed the exclusion fences, which allowed rabbits to enter the fields and cause even more damage. Desperate, the farmers relayed their concerns to the government. Since many farmers were ex-soldiers, they requested the deployment of machine guns to deal with the bird invasion. The Minister of Defence, Sir George Pearce, agreed to the request, deploying Major G.P.W. Meredith along with two soldiers armed with Lewis machine guns and 10,000 rounds of ammunition. The military operation, which the media quickly dubbed the 'Great Emu War,' began in November 1932. However, the military drastically underestimated the emus. The birds proved to be highly organized and incredibly resilient. They scattered in small groups, making them difficult targets for the heavy machine guns, and their thick feathers acted almost like natural armor against the bullets. In one instance, the soldiers attempted an ambush near a local dam, but the machine gun jammed after killing only a dozen birds. Over the course of the first operation, the military fired roughly 2,500 rounds but only managed to kill a few hundred emus. Major Meredith famously compared the emus to tanks and Zulu warriors, noting their remarkable ability to sustain injury and keep running. Facing public ridicule and criticism from conservationists, the government temporarily withdrew the military. Although a second campaign was launched shortly after, which was slightly more successful, the military ultimately admitted defeat. The emu population remained largely unaffected, and the farmers were eventually forced to rely on different methods, such as improved fencing and a bounty system, which proved much more effective in the long run.",
+    "difficultyLevel": 2,
+    "content": "www.mlecnafarma.com\nPROIZVODI MLEČNE FARME\nHranljiva vrednost mleka: bezbrojne koristi!\n\nProizvodi Mlečne farme sadrže ključne hranljive materije: kalcijum, proteine, vitamin D, vitamin B12, riboflavin i kalijum. Ovi vitamini i minerali čine proizvode Mlečne farme važnim elementom zdrave ishrane. Svakodnevno konzumiranje proizvoda Mlečne farme predstavlja odličan način da dobijete vitamine i minerale koji su potrebni vašem organizmu.\n\nKonzumiranje proizvoda Mlečne farme podstiče gubljenje kilograma i pomaže u održavanju zdrave telesne težine. Mleko povećava snagu i gustinu kostiju. Ono poboljšava i zdravlje kardiovaskularnog sistema i pomaže u sprečavanju nastanka raka. Jedna čaša mleka puna je vitamina, minerala i višestruko korisna za zdravlje.\n\nPrema dr Bilu Sirsu, doktoru medicine i vanrednom profesoru pedijatrije na Kalifornijskom univerzitetu u Irvajnu, mleko sadrži mnoge važne hranljive materije, sabrane na jednom mestu. To potvrđuje i MUM, odnosno Međunarodno udruženje mlekara (The International Dairy Foods Association — IDFA). U stvari, MUM navodi da se mnogi stručnjaci i organizacije u zdravstvu takođe slažu sa ovom tvrdnjom.\n\nMleko sadrži kompletan paket od devet osnovnih hranljivih materija. Pored toga što je izvanredan izvor kalcijuma i vitamina D, ono sadrži i vitamin A, proteine i kalijum. Lekari preporučuju mlečne proizvode. Doprinos mlečnih proizvoda zdravoj ishrani odavno su prepoznali stručnjaci za ishranu i naučnici. Među njima su Nacionalna fondacija za osteoporozu, Ministarstvo zdravlja, nacionalni instituti za zdravlje, Odbor za nauku Američkog lekarskog društva i mnoge druge vodeće zdravstvene organizacije.\n\nMeđunarodno udruženje mlekara, 27. septembar 2007.\n\nČLANCI O ZDRAVLJU\nSAMO RECI NE KRAVLJEM MLEKU!\n\nDr R. Garza, novinar zdravstvenog časopisa\n\nKravlje mleko ima važno mesto u životu mnogih ljudi u Sjedinjenim Američkim Državama. Bebe piju kravlje mleko iz flašica. Deca jedu žitarice prelivene kravljim mlekom. Čak i odrasli povremeno popiju čašu hladnog mleka. Zaista, kravlje mleko zauzima centralno mesto u ishrani ljudi u mnogim zemljama. Međutim, sve veći broj istraživanja ukazuju na to da mleko možda i nije „savršeno za organizam”, kako se tvrdi u sloganu u jednoj popularnoj reklami u Americi.\n\nAmeričko Ministarstvo poljoprivrede, Američka Mlekarska komora, Mlekarska korporacija i druge organizacije godinama su zdušno zagovarali prednosti mleka. Oni podstiču odrasle da piju najmanje tri čaše mleka dnevno. Ipak, više studija sprovedenih u poslednjoj deceniji dovode u pitanje moć mleka da ojača kosti, kao i sve druge navodne pozitivne efekte mleka za zdravlje. Rezultati će vas možda iznenaditi.\n\nJedna od najnovijih i najvažnijih studija o posledicama konzumiranja mleka objavljena je 2014, u oktobarskom broju časopisa British Medical Journal (Britanski medicinski časopis). Otkrića u ovoj studiji dovela su do nekih čvrstih zaključaka o konzumiranju mleka. Ova studija pratila je više od 100 000 ljudi u Švedskoj, tokom perioda od 20 do 30 godina. Istraživači su otkrili da su žene koje su pile mleko imale više preloma kostiju. Osim toga, osobe koje piju mleko, bilo da su muškarci ili žene, češće su obolevale od bolesti srca i raka. Ovi zapanjujući rezultati slični su otkrićima do kojih su došle druge studije.\n\nLekarski odbor za odgovornu medicinu, LOOM (Physicians Committee for Responsible Medicine, PCRM) izjasnio se o određenim zdravstvenim problemima povezanim sa konzumiranjem mleka. Potvrdio je da mleko i mlečni proizvodi „imaju malo koristi za kosti ili ih nemaju uopšte”. LOOM ide i dalje, opisujući specifične probleme u vezi sa mlekom:\n\n„Mlečne belančevine, mlečni šećer, masnoća i zasićene masti u mlečnim proizvodima predstavljaju opasnost za zdravlje dece i podstiču nastanak gojaznosti, dijabetesa i bolesti srca.”\n\nTo su ozbiljne izjave i potrebno je još studija da potvrde ove nalaze. Međutim, sve je više dokaza da je konzumiranje kravljeg mleka možda manje korisno za zdravlje nego što se prvobitno mislilo. Ako ove tvrdnje postanu nesumnjive činjenice, možda će doći vreme da kažemo „ne” kravljem mleku.",
     "questions": [
       {
-        "text": "What type of crop were the Australian veterans farming?",
-        "options": ["Corn", "Wheat", "Cotton", "Barley"],
-        "correctAnswerIndex": 1
+        "text": "Koji je dobar način da se ljudskom telu obezbede ključne hranljive materije prema Međunarodnom udruženju mlekara?",
+        "options": [
+          "Zavisi od težine, starosti i zdravstvenih rizika osobe.",
+          "Zdrava ishrana.",
+          "Dovoljan unos hranljivih materija da se dostigne optimalna količina vitamina i minerala.",
+          "Svakodnevno konzumiranje mlečnih proizvoda."
+        ],
+        "correctAnswerIndex": 3
       },
       {
-        "text": "What global event in 1929 caused crop prices to plummet?",
-        "options": ["World War II", "The Industrial Revolution", "The Great Depression", "The Cold War"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "Why did the 20,000 emus migrate to the farming region?",
-        "options": ["To escape predators", "In search of food and water", "Because they were driven by wildfires", "To find warmer climates"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What secondary problem did the emus cause by breaking the fences?",
-        "options": ["They let farm animals escape", "They allowed rabbits to enter the fields", "They damaged the irrigation pipes", "They blocked the local roads"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Which government official authorized the military deployment?",
-        "options": ["The Prime Minister", "The Minister of Agriculture", "The Minister of Defence", "The King of England"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What kind of weapons were the soldiers equipped with?",
-        "options": ["Sniper rifles", "Lewis machine guns", "Artillery cannons", "Shotguns"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Why did the military ambush near the local dam fail?",
-        "options": ["The soldiers ran out of ammunition", "The emus attacked the soldiers", "The machine gun jammed", "The emus swam away across the dam"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What did Major Meredith compare the emus to?",
-        "options": ["Tanks and Zulu warriors", "Ghosts and shadows", "Armored vehicles", "Olympic runners"],
+        "text": "S kojom tvrdnjom se mnogi zdravstveni profesionalci i organizacije slažu prema Međunarodnom udruženju mlekara?",
+        "options": [
+          "Mleko je bogat izvor više ključnih hranljivih materija.",
+          "Mleko obezbeđuje sve ključne hranljive materije zdrave ishrane.",
+          "Pijenje mleka doprinosi zdravlju kardiovaskularnog sistema.",
+          "Konzumiranje mlečnih proizvoda smanjuje potencijal za lomljenje noktiju."
+        ],
         "correctAnswerIndex": 0
       },
       {
-        "text": "Why did the government temporarily withdraw the military?",
-        "options": ["Because they ran out of money", "Due to public ridicule and criticism", "Because the soldiers got sick", "Because winter was approaching"],
-        "correctAnswerIndex": 1
+        "text": "Koja je glavna svrha teksta Međunarodnog udruženja mlekara?",
+        "options": [
+          "Da promoviše proizvode Mlečne farme.",
+          "Da dokaže zdravstvene koristi proizvoda Mlečne farme.",
+          "Da pruži informacije o procesu proizvodnje mleka.",
+          "Da promoviše usvajanje zdrave ishrane."
+        ],
+        "correctAnswerIndex": 0
       },
       {
-        "text": "What eventually proved to be a more effective long-term solution for the farmers?",
-        "options": ["Poisoning the water supply", "Importing natural predators", "Relocating the farms", "Improved fencing and a bounty system"],
+        "text": "Šta je otkrila studija objavljena u Britanskom medicinskom časopisu 2014. godine, o osobama koje piju mleko?",
+        "options": [
+          "Imali su više preloma kostiju u zavisnosti od pola.",
+          "Imaju veće stope gubitka težine u zavisnosti od godina.",
+          "Bili su više izloženi riziku od razvoja dijabetesa u zavisnosti od godina.",
+          "Manje je verovatno da će obolevati od bolesti srca u zavisnosti od pola."
+        ],
+        "correctAnswerIndex": 0
+      },
+      {
+        "text": "Šta se može zaključiti o popularnosti kravljeg mleka u Sjedinjenim Američkim Državama?",
+        "options": [
+          "Mleko uglavnom konzumiraju deca, a ne odrasli.",
+          "Mleko se ređe konzumira u urbanim regijama, ali ne i u ruralnim delovima SAD.",
+          "Popularnost mleka je opala zbog zabrinutosti za zdravlje.",
+          "Mleko ostaje važna namirnica u ishrani ljudi svih starosnih grupa."
+        ],
         "correctAnswerIndex": 3
+      },
+      {
+        "text": "Autori dva teksta se ne slažu u vezi uloge mleka u redovnoj ishrani. Koja je osnovna tačka oko koje se ne slažu?",
+        "options": [
+          "Zastupljenost kravljeg mleka u ishrani ljudi kroz istoriju.",
+          "Koja organizacija je vodeći autoritet za mleko.",
+          "Dugoročni efekti mleka na zdravlje.",
+          "Hranljiva vrednost vitamina i minerala u mleku."
+        ],
+        "correctAnswerIndex": 2
       }
     ]
   },
   {
-    "id": 7,
+    "id": "sr_pisa_rapanui",
+    "title": "Rapa Nui – tajna nestalih stabala",
     "isCalibration": false,
-    "content": "On the morning of June 30, 1908, a massive explosion occurred near the Podkamennaya Tunguska River in a highly remote region of Siberia, Russia. The blast was so incredibly powerful that it flattened approximately 80 million trees over an area of 2,150 square kilometers. The explosion generated a shockwave that shattered windows and knocked people off their feet hundreds of kilometers away. Seismic stations across Eurasia recorded the massive tremors, and fluctuations in atmospheric pressure were detected as far away as Great Britain. In the days following the event, the night skies in Asia and Europe were noticeably glowing, allowing people to read newspapers outdoors at midnight. Despite the extreme magnitude of the event, the severe isolation of the region and the political turmoil in Russia meant that no scientific expedition was sent to investigate the site for nearly two decades. It wasn't until 1927 that a Russian mineralogist named Leonid Kulik led the first official expedition to the epicenter. Kulik expected to find a massive crater and remnants of an iron meteorite, which he hoped to mine for the Soviet government's industrial projects. However, to his profound astonishment, he found no crater at all. Instead, he discovered a vast 'butterfly' pattern of felled trees radiating outward from a central point. At the very center of the blast zone, a small cluster of trees remained standing upright, but they had been entirely stripped of their branches and bark, resembling telephone poles. Scientists today widely agree that the Tunguska event was caused by a meteoroid or comet fragment, estimated to be between 50 and 190 meters in diameter. Instead of striking the surface of the Earth, the object exploded in mid-air at an altitude of 5 to 10 kilometers. This phenomenon, known as an airburst, occurs when the atmospheric pressure on the front of a rapidly descending meteor exceeds its structural strength, causing it to disintegrate explosively. The energy released by the Tunguska airburst was estimated to be between 3 and 30 megatons of TNT, making it hundreds of times more powerful than the atomic bomb dropped on Hiroshima. Because it exploded high in the atmosphere, it left no impact crater and scattered its fragments over a vast area, leaving only microscopic traces of extraterrestrial material in the peat bogs.",
+    "difficultyLevel": 2,
+    "content": "Profesorkin blog\nPostavljeno 23. maja, u 11.22\n\nGledajući kroz svoj prozor ovog jutra, vidim predeo koji sam vremenom zavolela ovde na Rapa Nui, kako još nazivaju Uskršnje ostrvo. Trava i žbunje su zeleni, nebo je plavo, a stari vulkani, sada ugašeni, dižu se u pozadini.\n\nPomalo sam tužna kada pomislim da je ovo moja poslednja nedelja na ostrvu. Završila sam terenski rad i vraćam se kući. Tokom dana ću prošetati brežuljcima da se pozdravim sa moai statuama koje sam proučavala tokom poslednjih devet meseci. Evo fotografije nekih od tih upečatljivih statua.\n\nAko ste pratili moj blog ove godine, znate da su stanovnici Uskršnjeg ostrva klesali ove moai pre više stotina godina. Te impresivne moai statue bile su isklesane samo u jednom kamenolomu na istoku ostrva. Neke su teške više tona, pa ipak, stanovnici Uskršnjeg ostrva uspeli su da ih prenesu do mesta veoma udaljenih od kamenoloma, bez dizalica i druge teške opreme.\n\nGodinama su se arheolozi pitali kako su te ogromne statue mogle biti prenesene. Moai su predstavljali tajnu sve do devedesetih godina prošlog veka, kada je tim sastavljen od arheologa i stanovnika Uskršnjeg ostrva pokazao da su moai mogli biti preneti i uspravljeni uz pomoć užadi napravljene od biljaka, drvenih oblica i greda od ogromnog drveća koje je nekad bujalo na ostrvu. Tajna moai statua bila je razrešena.\n\nOstala je, međutim, jedna druga tajna. Šta se dogodilo s biljkama i velikim stablima koji su korišćeni za prenos moai statua? Kao što sam već rekla, gledajući kroz svoj prozor, vidim travu i žbunje, jedno ili dva mala drveta, ali ništa što bi moglo da posluži za prenošenje tih ogromnih statua. To je čudesna zagonetka kojom ću se baviti u narednim člancima i predavanjima. U međuvremenu, možete sami istraživati tu tajnu. Predlažem da započnete knjigom Džareda Dajmonda koja se zove Propast. Ovaj prikaz Propasti dobar je izbor za početak.\n\nwww.akademskaknjigaprikazi.com/Propast\nPrikaz Propasti\n\nNova knjiga Džareda Dajmonda, Propast, jasno je upozorenje na posledice ugrožavanja životne sredine. U knjizi pisac opisuje nekoliko civilizacija koje su propale zbog sopstvenih izbora i njihovog dejstva na životnu sredinu. Jedan od najzabrinjavajućih primera je onaj sa Uskršnjeg ostrva.\n\nPrema autoru, Uskršnje ostrvo naselili su Polinežani negde oko 700. godine nove ere. Izgradili su napredno društvo od oko 15 000 ljudi. Isklesali su moai, čuvene statue, i upotrebili prirodne resurse koji su im bili na raspolaganju da prenesu te ogromne moai na razna mesta na ostrvu. Kada su se prvi Evropljani iskrcali na Uskršnje ostrvo 1722, moai statue bile su još uvek tu, ali je drveće nestalo. Broj stanovnika smanjio se na svega nekoliko hiljada ljudi koji su se borili za opstanak. Gospodin Dajmond piše da su stanovnici Uskršnjeg ostrva krčili zemlju za poljoprivredu i iz drugih razloga i preterano lovili brojne vrste kopnenih i morskih ptica koje su se gnezdile na ostrvu. On pretpostavlja da je nestajanje prirodnih resursa dovelo do ratova i propasti društva na Uskršnjem ostrvu.\n\nPouka koju možemo izvući iz ove lepe, ali zastrašujuće knjige, jeste da su u prošlosti ljudi svojevoljno uništavali sopstvenu životnu sredinu, sekući sva stabla i loveći životinjske vrste do istrebljenja. Autor sa optimizmom ističe da je na nama da ne ponavljamo iste greške danas. Knjiga je dobro napisana i zaslužuje da je pročita svako ko je zabrinut za životnu sredinu.",
     "questions": [
       {
-        "text": "In what region of Russia did the explosion occur?",
-        "options": ["Kamchatka", "Siberia", "Ural Mountains", "Crimea"],
+        "text": "Kada je profesorka započela svoj terenski rad?",
+        "options": [
+          "Devedesetih godina prošlog veka.",
+          "Pre devet meseci.",
+          "Pre godinu dana otprilike.",
+          "Početkom meseca maja."
+        ],
         "correctAnswerIndex": 1
       },
       {
-        "text": "Approximately how many trees were flattened by the blast?",
-        "options": ["10 million", "50 million", "80 million", "120 million"],
+        "text": "Koja tajna je ostala nakon što je otkriveno kako su statue premeštane?",
+        "options": [
+          "Odakle su potekli žbunje i mala drveća.",
+          "Zašto je opala proizvodnja useva neophodnih za život stanovništva.",
+          "Zašto su velika stabla nestala.",
+          "Koji način prenošenja je bio korišćen za premeštanje moai statua."
+        ],
         "correctAnswerIndex": 2
       },
       {
-        "text": "What unusual phenomenon occurred in the night skies after the event?",
-        "options": ["Total darkness fell over Europe", "Meteor showers rained down", "The skies glowed brightly enough to read by", "Purple auroras appeared globally"],
+        "text": "Zašto je profesorka dodala link prikaza knjige u svoj blog?",
+        "options": [
+          "Da ukaže da je ozbiljan vremenski događaj uništio šumu na ostrvu.",
+          "Da pomene otvorena pitanja o opadanju stanovništva Uskršnjeg ostrva.",
+          "Da naglasi uticaje promena životne sredine na polinežanska društva.",
+          "Da ukaže da su ljudi promenili okolinu što je dovelo do nestanka drveta."
+        ],
+        "correctAnswerIndex": 3
+      },
+      {
+        "text": "Šta je nedostajalo na Uskršnjem ostrvu kada su došli Evropljani 1722. godine?",
+        "options": [
+          "Moai.",
+          "Minerali.",
+          "Drveće.",
+          "Ptice."
+        ],
         "correctAnswerIndex": 2
       },
       {
-        "text": "Why did it take nearly two decades for scientists to investigate the site?",
-        "options": ["Fear of radiation and local myths", "Lack of funding from the European scientific community", "Extreme isolation of the region and political turmoil", "Heavy snowfall blocked all the roads"],
+        "text": "Koji faktor Džared Dajmond navodi kao potencijalni uzrok građanskih ratova na Uskršnjem ostrvu?",
+        "options": [
+          "Religijski sukob.",
+          "Kolaps društva na Uskršnjem ostrvu.",
+          "Nestajanje prirodnih resursa.",
+          "Dolazak Evropljana."
+        ],
         "correctAnswerIndex": 2
       },
       {
-        "text": "Who led the first official scientific expedition to the epicenter?",
-        "options": ["Yuri Gagarin", "Leonid Kulik", "Mikhail Lomonosov", "Dmitri Mendeleev"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What did the lead scientist expect to find at the site?",
-        "options": ["An alien spacecraft", "A massive crater and an iron meteorite", "A dormant volcano", "Underground gas reserves"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "What was unusual about the trees at the exact center of the blast zone?",
-        "options": ["They were completely vaporized", "They were turned to stone", "They stood upright but stripped of branches and bark", "They were the only ones still green and alive"],
-        "correctAnswerIndex": 2
-      },
-      {
-        "text": "What is the currently accepted scientific explanation for the event?",
-        "options": ["A volcanic eruption", "An airburst from a meteoroid or comet", "A massive underground gas explosion", "An early nuclear weapons test"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "At what altitude is the object believed to have exploded?",
-        "options": ["1 to 2 kilometers", "5 to 10 kilometers", "20 to 30 kilometers", "Right at ground level"],
-        "correctAnswerIndex": 1
-      },
-      {
-        "text": "Why was no impact crater ever found?",
-        "options": ["It was covered by an avalanche", "The crater filled with water and became a lake", "The object exploded in mid-air", "The impact hit a glacier which later melted"],
-        "correctAnswerIndex": 2
+        "text": "Koja je glavna svrha knjige Džareda Dajmonda?",
+        "options": [
+          "Istražiti istorijsku ulogu uništavanja životne sredine, od strane ljudi, u kolapsu civilizacija.",
+          "Analizirati političke i ekonomske faktore koji su doveli do propasti društva na Uskršnjem ostrvu.",
+          "Analizirati uticaj Evropljana na propast više istorijskih društava.",
+          "Istaći ulogu religije i duhovnosti u oblikovanju sudbine društva na Uskršnjem ostrvu."
+        ],
+        "correctAnswerIndex": 0
       }
     ]
   }

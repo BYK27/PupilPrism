@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 data class SelfPacedFlowState(
     val isLoading: Boolean = true,
@@ -40,8 +41,9 @@ class SelfPacedViewModel(
             val optimal = userStatsDao.getStats()?.optimalWpm ?: 250
             assessmentDao.getMaterialsByMode(isCalibration = false).collect { materials ->
                 if (materials.isNotEmpty()) {
+                    val izabranTekst = materials[Random.nextInt(materials.size)]
                     _uiState.update {
-                        it.copy(materials = materials, startWpm = optimal, isLoading = false)
+                        it.copy(materials = listOf(izabranTekst), startWpm = optimal, isLoading = false)
                     }
                 }
             }
