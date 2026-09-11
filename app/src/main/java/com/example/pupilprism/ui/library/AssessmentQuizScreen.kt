@@ -1,6 +1,8 @@
 package com.example.pupilprism.ui.library
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,13 +34,16 @@ fun AssessmentQuizScreen(
     val currentQ = questions[index]
 
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-        Column(modifier = Modifier.padding(24.dp)) {
-            // FIXED: Added explicit color and trackColor
+        Column(
+            modifier = Modifier
+                .padding(24.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
             LinearProgressIndicator(
                 progress = (index + 1) / questions.size.toFloat(),
                 modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
-                color = MaterialTheme.colorScheme.primary, // Active progress uses your theme color
-                trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f) // Creates the whitish-gray background
+                color = MaterialTheme.colorScheme.primary,
+                trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f)
             )
 
             Text("Question ${index + 1} of ${questions.size}", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary)
@@ -51,20 +56,27 @@ fun AssessmentQuizScreen(
 
             options.forEachIndexed { i, text ->
                 OutlinedButton(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp)
+                        .heightIn(min = 56.dp),
                     shape = MaterialTheme.shapes.medium,
                     onClick = {
                         val isFinished = viewModel.submitAnswer(i)
 
                         if (isFinished) {
-                            // Pass the results back to the Coordinator before navigating away
                             navController.previousBackStackEntry?.savedStateHandle?.set("quiz_correct", viewModel.correctAnswersCount)
                             navController.previousBackStackEntry?.savedStateHandle?.set("quiz_total", questions.size)
                             navController.popBackStack()
                         }
                     }
                 ) {
-                    Text(text, style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Start
+                    )
                 }
             }
         }

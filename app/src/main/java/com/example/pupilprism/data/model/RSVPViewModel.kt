@@ -183,10 +183,6 @@ class RSVPViewModel(
         startStatsTicker()
 
         readingJob = viewModelScope.launch {
-            // Циљни тренуци се сабирају УНАПРЕД, да кашњење једне итерације не би
-            // померало наредне. delay() гарантује најмање задато време и по правилу
-            // враћа контролу нешто касније; без компензације тај вишак се сабира
-            // кроз стотине речи.
             var nextSwitchNanos = System.nanoTime()
 
             while (isActive && !_uiState.value.isPaused) {
@@ -210,8 +206,6 @@ class RSVPViewModel(
                 if (sleepMillis > 0L) {
                     delay(sleepMillis)
                 } else {
-                    // Систем је заостао. Не надокнађујемо прескакањем речи, јер би то
-                    // била реч коју корисник никада није видео.
                     nextSwitchNanos = System.nanoTime()
                 }
 

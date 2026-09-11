@@ -277,7 +277,7 @@ fun IndependentReaderScreen(
                                 AnimatedVisibility(visible = uiState.isMultiWordMode) {
                                     Column(modifier = Modifier.fillMaxWidth()) {
                                         Text(
-                                            "Речи око текуће: ${uiState.contextRadius}",
+                                            "Surrounding word number: ${uiState.contextRadius}",
                                             style = MaterialTheme.typography.bodyMedium,
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )

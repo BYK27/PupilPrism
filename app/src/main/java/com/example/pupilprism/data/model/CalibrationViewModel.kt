@@ -2,6 +2,7 @@ package com.example.pupilprism.ui.reader
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pupilprism.Config
 import com.example.pupilprism.data.db.AssessmentDao
 import com.example.pupilprism.data.db.UserStatsDao
 import com.example.pupilprism.data.model.ReadingMaterial
@@ -39,8 +40,6 @@ class CalibrationViewModel(
     val uiState = _uiState.asStateFlow()
 
     val targetSpeeds = listOf(100, 250, 350)
-    //val targetSpeeds = listOf(50, 100, 150, 200, 250, 300, 350, 400)
-    //val targetSpeeds = listOf(10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000)
     private val stageResults = mutableListOf<StageResult>()
 
     init {
@@ -80,13 +79,13 @@ class CalibrationViewModel(
             // Move to the next text and speed
             _uiState.update { it.copy(currentStageIndex = nextStage) }
         } else {
-            // All 8 stages are complete. Run the algorithm.
+            // Run the algorithm.
             executeCalibrationAlgorithm()
         }
     }
 
     private fun executeCalibrationAlgorithm() {
-        val acceptablePerformances = stageResults.filter { it.accuracy >= 0.80f }
+        val acceptablePerformances = stageResults.filter { it.accuracy >= Config.PRAG_RAZUMEVANJA }
 
         val optimal = if (acceptablePerformances.isNotEmpty()) {
             acceptablePerformances.maxOf { it.wpmUsed }
